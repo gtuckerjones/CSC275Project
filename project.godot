@@ -10,7 +10,11 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
 config/name="CSC 275 Project"
+=======
+config/name="CSC275Project"
+>>>>>>> 6fa3cc83d77dca5640d16308a06db4bc69ecf021
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
