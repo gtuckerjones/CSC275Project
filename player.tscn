@@ -120,7 +120,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_c5xe1")
 animation = &"up"
-frame_progress = 0.555756
+frame_progress = 0.457094
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
