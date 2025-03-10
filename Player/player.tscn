@@ -106,5 +106,5 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hqtel")
+&"": SubResource("AnimationLibrary_hqtel")
 }
