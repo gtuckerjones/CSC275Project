@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhdxhtov61apx"]
 
-[ext_resource type="Script" path="res://World/world_map.gd" id="1_2lf17"]
+[ext_resource type="Script" uid="uid://d1e4fu7apbint" path="res://World/world_map.gd" id="1_2lf17"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Player/player.tscn" id="3_fks77"]
 
