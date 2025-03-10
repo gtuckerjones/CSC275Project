@@ -101,10 +101,11 @@ _data = {
 script = ExtResource("1_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_btcbx")
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hqtel")
+&"": SubResource("AnimationLibrary_hqtel")
 }
