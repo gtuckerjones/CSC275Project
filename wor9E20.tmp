@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhdxhtov61apx"]
+
+[ext_resource type="Script" path="res://world_map.gd" id="1_uirw7"]
+[ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_5xhdx"]
+
+[sub_resource type="Gradient" id="Gradient_6o00c"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.529126)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5sxmu"]
+frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_thkdx"]
+color_ramp = SubResource("Gradient_6o00c")
+noise = SubResource("FastNoiseLite_5sxmu")
+
+[node name="world_map" type="Node2D"]
+script = ExtResource("1_uirw7")
+noise_height_text = SubResource("NoiseTexture2D_thkdx")
+
+[node name="ground" type="TileMapLayer" parent="."]
+position = Vector2(63, 46)
+tile_set = ExtResource("2_5xhdx")
+
+[node name="roads" type="TileMapLayer" parent="."]
+z_index = 1
+position = Vector2(63, 46)
+tile_set = ExtResource("2_5xhdx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
