@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=9 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://d1e4fu7apbint" path="res://World/world_map.gd" id="1_2lf17"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Player/player.tscn" id="3_fks77"]
+[ext_resource type="PackedScene" uid="uid://dnkau2a5v7b2y" path="res://testMob.tscn" id="4_pl1lu"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -35,3 +36,9 @@ tile_set = ExtResource("2_fe2eg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_ydmks")
+
+[node name="testMob" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("4_pl1lu")]
+position = Vector2(82, 45)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="testMob"]
