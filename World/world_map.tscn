@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1e4fu7apbint" path="res://World/world_map.gd" id="1_2lf17"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Player/player.tscn" id="3_fks77"]
-[ext_resource type="PackedScene" uid="uid://dnkau2a5v7b2y" path="res://testMob.tscn" id="4_pl1lu"]
+[ext_resource type="PackedScene" path="res://testMob.tscn" id="4_pl1lu"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1

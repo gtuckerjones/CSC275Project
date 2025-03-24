@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=8 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://cmn3ewwtl11ik" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Spritesheets/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_btcbx"]
+[ext_resource type="PackedScene" uid="uid://co027cx31yym1" path="res://Revolver/revolver.tscn" id="3_btcbx"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -85,3 +86,6 @@ vframes = 3
 libraries = {
 &"": SubResource("AnimationLibrary_hqtel")
 }
+
+[node name="Revolver" parent="." instance=ExtResource("3_btcbx")]
+position = Vector2(4, 6)
