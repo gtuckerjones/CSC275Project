@@ -33,6 +33,7 @@ position = Vector2(63, 46)
 tile_set = ExtResource("2_fe2eg")
 
 [node name="Player" parent="." instance=ExtResource("3_fks77")]
+position = Vector2(1, -2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_ydmks")
