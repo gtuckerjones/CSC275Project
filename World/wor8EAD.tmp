@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhdxhtov61apx"]
 
-[ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://World/world_map.gd" id="1_2lf17"]
+[ext_resource type="Script" path="res://World/world_map.gd" id="1_2lf17"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Player/player.tscn" id="3_fks77"]
 
@@ -22,9 +22,6 @@ noise = SubResource("FastNoiseLite_5sxmu")
 script = ExtResource("1_2lf17")
 noise_height_text = SubResource("NoiseTexture2D_thkdx")
 
-[node name="water" type="TileMapLayer" parent="."]
-position = Vector2(63, 46)
-
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(63, 46)
 tile_set = ExtResource("2_fe2eg")
@@ -35,7 +32,6 @@ position = Vector2(63, 46)
 tile_set = ExtResource("2_fe2eg")
 
 [node name="Player" parent="." instance=ExtResource("3_fks77")]
-z_index = 2
 position = Vector2(-61, -45)
 
 [node name="Camera2D" type="Camera2D" parent="."]
