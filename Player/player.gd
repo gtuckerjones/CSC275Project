@@ -5,21 +5,21 @@ extends CharacterBody2D
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = moveDirection*speed
+	if moveDirection.length() > 0:
+		moveDirection = moveDirection.normalized()  # Normalize to prevent diagonal speed boost
+	velocity = moveDirection * speed
 
 func updateAnimation():
 	if velocity.length() == 0:
 		animations.stop()
 	else:
-		var Direction = "Right"
-		if velocity.x < 0: Direction = "Left"
-		elif velocity.y > 0: Direction = "Down"
-		elif velocity.y < 0: Direction = "Up"
-		
-		if (Direction == "Up" or "Down") and (velocity.x < 0):
-			animations.play("WalkLeft")
-		else:
-			animations.play("WalkRight") 
+		var direction = "Right"
+		if velocity.x < 0:
+			direction = "Left"
+		elif abs(velocity.x) < abs(velocity.y):  
+			direction = "Up" if velocity.y < 0 else "Down"
+
+		animations.play("Walk" + direction)
 
 func _physics_process(delta):
 	handleInput()
