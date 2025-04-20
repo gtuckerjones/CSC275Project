@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://epp6giysi7kw"]
+
+[ext_resource type="Texture2D" uid="uid://b1tuhivmbf1wt" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/pixil-frame-0 (12).png" id="1_k7rnr"]
+[ext_resource type="Script" uid="uid://du3c4ba6w26hu" path="res://Scenes/Bullet/bullet.gd" id="1_lv0gj"]
+
+[node name="Bullet" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_lv0gj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+rotation = 4.71239
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_k7rnr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, 4.29153e-06)
+scale = Vector2(9.6, 8.4)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
