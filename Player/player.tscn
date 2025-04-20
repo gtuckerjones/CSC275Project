@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=8 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://cmn3ewwtl11ik" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Spritesheets/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_btcbx"]
@@ -73,8 +73,11 @@ _data = {
 &"WalkRight": SubResource("Animation_onrkg")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nc41"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4ntmi")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -85,3 +88,7 @@ vframes = 3
 libraries = {
 &"": SubResource("AnimationLibrary_hqtel")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_3nc41")
