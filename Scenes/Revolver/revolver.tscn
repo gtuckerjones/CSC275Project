@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5dbuc80hqc7j"]
+
+[ext_resource type="Script" uid="uid://ctsqu227ltrlr" path="res://Scenes/Revolver/revolver.gd" id="1_gwr4s"]
+[ext_resource type="Texture2D" uid="uid://bmvdm5ueqailc" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="2_44yvb"]
+
+[node name="Revolver" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_gwr4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, -10)
+rotation = -0.00872665
+texture = ExtResource("2_44yvb")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(40, -16)
