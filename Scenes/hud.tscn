@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://codpcep2d3frw"]
+
+[ext_resource type="Texture2D" uid="uid://pdch852ruuc2" path="res://Spritesheets/Props/Briefcase.png" id="1_fccik"]
+[ext_resource type="PackedScene" uid="uid://csyfbj3xrmex3" path="res://Scenes/Inventory/inv_ui.tscn" id="2_bjfho"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Briefcase" type="Sprite2D" parent="."]
+position = Vector2(27, 22)
+scale = Vector2(0.0874317, 0.0938069)
+texture = ExtResource("1_fccik")
+
+[node name="Inv_UI" parent="." instance=ExtResource("2_bjfho")]
+offset_left = 8.0
+offset_top = 43.0
+offset_right = 94.0
+offset_bottom = 111.0
