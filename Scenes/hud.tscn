@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://codpcep2d3frw"]
+[gd_scene load_steps=4 format=3 uid="uid://codpcep2d3frw"]
 
 [ext_resource type="Texture2D" uid="uid://pdch852ruuc2" path="res://Spritesheets/Props/Briefcase.png" id="1_fccik"]
 [ext_resource type="PackedScene" uid="uid://csyfbj3xrmex3" path="res://Scenes/Inventory/inv_ui.tscn" id="2_bjfho"]
+[ext_resource type="Texture2D" uid="uid://b2mv5qahep763" path="res://Spritesheets/Props/health_heart.png" id="3_bjfho"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -21,3 +22,16 @@ offset_left = 8.0
 offset_top = 43.0
 offset_right = 94.0
 offset_bottom = 111.0
+
+[node name="Health Heart" type="Sprite2D" parent="."]
+position = Vector2(266, 22)
+scale = Vector2(0.0866935, 0.0839214)
+texture = ExtResource("3_bjfho")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 12.0
+offset_right = 430.0
+offset_bottom = 39.0
+scale = Vector2(0.7, 0.7)

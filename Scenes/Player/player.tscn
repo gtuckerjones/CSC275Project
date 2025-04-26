@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=10 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://cmn3ewwtl11ik" path="res://Scenes/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Spritesheets/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_btcbx"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/Revolver/revolver.tscn" id="3_xpcdj"]
+=======
+[ext_resource type="Resource" uid="uid://lvuqj3cgfbbr" path="res://Scenes/Inventory/player_inventory.tres" id="2_mtuoh"]
+[ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="3_xpcdj"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -78,6 +83,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4ntmi")
+inv = ExtResource("2_mtuoh")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var inv: Inv #Created by Megan 4/26 for Inventory
 @export var speed: int = 100
 @onready var animations = $AnimationPlayer
 @onready var revolver = $Revolver
