@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Spritesheets/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_btcbx"]
 [ext_resource type="Resource" uid="uid://lvuqj3cgfbbr" path="res://Scenes/Inventory/player_inventory.tres" id="2_mtuoh"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="3_xpcdj"]
 =======
+=======
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="3_xpcdj"]
 >>>>>>> Stashed changes
 
