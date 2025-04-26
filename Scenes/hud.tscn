@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://codpcep2d3frw"]
+[gd_scene load_steps=3 format=3 uid="uid://ctusnxw6ukhgb"]
 
 [ext_resource type="Texture2D" uid="uid://pdch852ruuc2" path="res://Spritesheets/Props/Briefcase.png" id="1_fccik"]
 [ext_resource type="PackedScene" uid="uid://csyfbj3xrmex3" path="res://Scenes/Inventory/inv_ui.tscn" id="2_bjfho"]
