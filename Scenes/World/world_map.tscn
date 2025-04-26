@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=9 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_2lf17"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="3_fks77"]
+[ext_resource type="Script" uid="uid://bfnelvqj7c2y0" path="res://Scenes/World/hud.tres.gd" id="4_c1j0w"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -40,4 +41,12 @@ z_index = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_ydmks")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_c1j0w")
+
+[node name="CurrentWeaponLabel" type="Label" parent="HUD"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 188.0
+offset_bottom = 33.0
+text = "Current Weapon: None"

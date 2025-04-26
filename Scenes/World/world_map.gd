@@ -3,6 +3,7 @@ extends Node2D
 @export var noise_height_text : NoiseTexture2D
 @onready var ground_tile_map = $ground  # Imports tile_map for generation
 @onready var road_tile_map = $roads
+@onready var hud = $HUD
 var noise : Noise
 
 var map_width : int = 200
@@ -81,6 +82,7 @@ func setup_player_and_camera():
 
 	# Position the player at the center of the map
 	player.position = Vector2(0, 0)
+	player.hud = hud  # give Player a reference to the HUD
 
 	# Set the camera zoom
 	camera.zoom = Vector2(2, 2)

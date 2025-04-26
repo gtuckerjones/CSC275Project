@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @export var speed: int = 100
 @onready var animations = $AnimationPlayer
-@onready var rangedWeapons = $RangedWeapons
+@onready var rangedWeapons = $Ranged_Weapons
 @onready var sprite = $Sprite2D
 var weapons_inventory: Array = []
 var current_weapon: String = ""
+var hud
 
 func pickup_weapon(weapon_name: String):
 	if weapon_name not in weapons_inventory:
@@ -13,6 +14,9 @@ func pickup_weapon(weapon_name: String):
 	current_weapon = weapon_name
 	rangedWeapons.current_weapon = weapon_name
 	rangedWeapons.selectedGun()
+	
+	if hud:
+		hud.set_weapon_name(weapon_name)
 
 func switch_weapon():
 	if weapons_inventory.size() > 0:
@@ -53,6 +57,6 @@ func _process(delta):
 		switch_weapon()
 	
 	if has_node("rangedWeapons"):
-		var weapon = $RangedWeapons
+		var weapon = $Ranged_Weapons
 		var offset_x = 5
 		weapon.position.x = -offset_x if $Sprite2D.flip_h else offset_x
