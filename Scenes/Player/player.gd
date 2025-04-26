@@ -8,6 +8,7 @@ var weapons_inventory: Array = []
 var current_weapon: String = ""
 var hud
 
+
 func pickup_weapon(weapon_name: String):
 	if weapon_name not in weapons_inventory:
 		weapons_inventory.append(weapon_name)
@@ -57,6 +58,7 @@ func _process(delta):
 		switch_weapon()
 	
 	if has_node("rangedWeapons"):
-		var weapon = $Ranged_Weapons
+		var weapon = $RangedWeapons
+
 		var offset_x = 5
 		weapon.position.x = -offset_x if $Sprite2D.flip_h else offset_x
