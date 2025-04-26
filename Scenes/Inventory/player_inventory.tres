@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://lvuqj3cgfbbr"]
 
-[ext_resource type="Script" uid="uid://w1cq07t17aiu" path="res://Scenes/Inventory/inventory_item.gd" id="1_sawbj"]
+[ext_resource type="Script" path="res://Scenes/Inventory/inventory_item.gd" id="1_sawbj"]
 [ext_resource type="Resource" uid="uid://ctgm4ds1tio0o" path="res://Scenes/Inventory/items/baton_test.tres" id="2_prtvq"]
-[ext_resource type="Script" uid="uid://bwlu6rv67levq" path="res://Scenes/Inventory/inventory.gd" id="3_58xlm"]
+[ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="3_58xlm"]
 
 [resource]
 script = ExtResource("3_58xlm")
