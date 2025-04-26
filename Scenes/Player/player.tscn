@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmn3ewwtl11ik" path="res://Scenes/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Spritesheets/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_btcbx"]
-[ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/Revolver/revolver.tscn" id="3_xpcdj"]
+[ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/Revolver/ranged_weapons.tscn" id="3_xpcdj"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
