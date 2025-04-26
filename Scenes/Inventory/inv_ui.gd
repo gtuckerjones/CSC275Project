@@ -1,5 +1,6 @@
 extends Control
 
+
 @onready var grid_container = $NinePatchRect/GridContainer
 @onready var vbox_container = $PopupPanel/VBoxContainer
 

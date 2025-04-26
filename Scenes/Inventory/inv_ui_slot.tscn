@@ -1,5 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gmt5h0bib8dt"]
 
+
 [ext_resource type="Texture2D" uid="uid://c27tlscy68dcl" path="res://inventory/Inventory Art/inventory-slot.png" id="1_dfngl"]
 
 [node name="inv_UI_slot" type="Panel"]
