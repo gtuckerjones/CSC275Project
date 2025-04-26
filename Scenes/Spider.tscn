@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwvian32unebf"]
+
+[ext_resource type="Script" uid="uid://ddfptx5gblcaq" path="res://Scripts/Mob Scripts/spider.gd" id="1_cgp8y"]
+[ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Spritesheets/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbg4t"]
+atlas = ExtResource("2_oc654")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln14a"]
+atlas = ExtResource("2_oc654")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nj3u"]
+atlas = ExtResource("2_oc654")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83tiq"]
+atlas = ExtResource("2_oc654")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68pf8"]
+atlas = ExtResource("2_oc654")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kcfa"]
+atlas = ExtResource("2_oc654")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w567f"]
+atlas = ExtResource("2_oc654")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl5gw"]
+atlas = ExtResource("2_oc654")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubdgf"]
+atlas = ExtResource("2_oc654")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjr06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbg4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln14a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nj3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83tiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68pf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kcfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w567f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl5gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubdgf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vvjur"]
+radius = 21.973
+height = 58.1269
+
+[node name="Spider Mob" type="RigidBody2D"]
+script = ExtResource("1_cgp8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pjr06")
+animation = &"walk"
+frame_progress = 0.366214
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.62032
+shape = SubResource("CapsuleShape2D_vvjur")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
