@@ -9,13 +9,17 @@
 config_version=5
 
 [application]
+
 config/name="CSC275Project"
-Global="*res://Scripts/World Scripts/Global.gd"
-PlayerSingleton="*res://Scripts/player_singleton.gd"
-run/main_scene="res://World/world_map.tscn"
+run/main_scene="uid://bhdxhtov61apx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+Global="*res://Scripts/World Scripts/Global.gd"
+PlayerSingleton="*res://Scripts/player_singleton.gd"
 
+[autoload]
+
+Global="*res://Scenes/World/Global.gd"
 
 [display]
 

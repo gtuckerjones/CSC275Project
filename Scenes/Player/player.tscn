@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtnewlnjvtsyw"]
+
+[ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
+
+[sub_resource type="GDScript" id="GDScript_uvnfx"]
+script/source = "extends CharacterBody2D
+
+@export var base_speed: int = 200
+@export var road_speed_bonus: int = 50
+@onready var animations = $AnimationPlayer
+@onready var road_tile_map = $\"../Layers/roads\" # Adjust path to your TileMap
+
+func handleInput():
+	var moveDirection = Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
+	if moveDirection.length() > 0:
+		moveDirection = moveDirection.normalized()
+
+	var is_on_road = false
+
+	if road_tile_map and is_instance_valid(road_tile_map):
+		var current_tile = road_tile_map.local_to_map(global_position)
+		var tile_data = road_tile_map.get_cell_tile_data(current_tile)
+
+		if tile_data and tile_data.get_custom_data(\"is_road\"):
+			is_on_road = true
+	else:
+		print_debug(\"Warning: Road tile map not found or invalid.\")
+
+	var effective_speed = base_speed + (road_speed_bonus if is_on_road else 0)
+	velocity = moveDirection * effective_speed
+
+func updateAnimation():
+	if velocity.length() == 0:
+		animations.stop()
+	else:
+		var direction = \"Right\"
+		if velocity.x < 0:
+			direction = \"Left\"
+
+		animations.play(\"Walk\" + direction)
+
+func _physics_process(delta):
+	handleInput()
+	move_and_slide()
+	updateAnimation()
+"
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "WalkLeft"
+length = 0.75
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+resource_name = "WalkRight"
+length = 0.75
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtel"]
+_data = {
+&"RESET": SubResource("Animation_i3pqv"),
+&"WalkLeft": SubResource("Animation_4flbx"),
+&"WalkRight": SubResource("Animation_onrkg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nc41"]
+
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_uvnfx")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6t5aa")
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hqtel")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_3nc41")
