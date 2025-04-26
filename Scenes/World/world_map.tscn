@@ -39,3 +39,5 @@ z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_ydmks")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

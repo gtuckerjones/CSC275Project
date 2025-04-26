@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://c5dbuc80hqc7j"]
+
+[ext_resource type="Script" uid="uid://ctsqu227ltrlr" path="res://Scenes/rangedWeapons/ranged_weapons.gd" id="1_5apgt"]
+[ext_resource type="Texture2D" uid="uid://bmvdm5ueqailc" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="2_ryi5e"]
+[ext_resource type="Script" uid="uid://dwfl0d1gp7jl2" path="res://Scenes/rangedWeapons/revolverPickup.tres.gd" id="3_gdhog"]
+[ext_resource type="Texture2D" uid="uid://dc2xpeledojhg" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/shotgun.png" id="3_ryi5e"]
+[ext_resource type="Texture2D" uid="uid://b8n70ln3otg5j" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/rifle.png" id="4_n7l55"]
+[ext_resource type="Texture2D" uid="uid://bgar4djrybr8x" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="5_vg2ue"]
+[ext_resource type="Script" uid="uid://30t1i04mnxhv" path="res://Scenes/rangedWeapons/shotgunPickup.tres.gd" id="5_wp81g"]
+[ext_resource type="Script" uid="uid://dvdfobxfyvy4a" path="res://Scenes/rangedWeapons/riflePickup.tres.gd" id="7_cpplj"]
+[ext_resource type="Script" uid="uid://c5h00jpmcpflp" path="res://Scenes/rangedWeapons/tommygunPickup.tres.gd" id="9_4mvl6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vyhm"]
+size = Vector2(46, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdhog"]
+size = Vector2(76, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp81g"]
+size = Vector2(64, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpplj"]
+size = Vector2(84, 44)
+
+[node name="Ranged Weapons" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_5apgt")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(40, -16)
+
+[node name="Revolver2" type="Node2D" parent="."]
+visible = false
+
+[node name="Revolver" type="Sprite2D" parent="Revolver2"]
+position = Vector2(17, -10)
+rotation = -0.00872665
+texture = ExtResource("2_ryi5e")
+
+[node name="Area2D" type="Area2D" parent="Revolver2"]
+script = ExtResource("3_gdhog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Revolver2/Area2D"]
+position = Vector2(13, -7)
+shape = SubResource("RectangleShape2D_2vyhm")
+
+[node name="Shotgun2" type="Node2D" parent="."]
+visible = false
+
+[node name="Shotgun" type="Sprite2D" parent="Shotgun2"]
+position = Vector2(8, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ryi5e")
+
+[node name="Area2D" type="Area2D" parent="Shotgun2"]
+script = ExtResource("5_wp81g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shotgun2/Area2D"]
+position = Vector2(2, -8)
+shape = SubResource("RectangleShape2D_gdhog")
+
+[node name="Rifle2" type="Node2D" parent="."]
+visible = false
+
+[node name="Rifle" type="Sprite2D" parent="Rifle2"]
+position = Vector2(8, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("4_n7l55")
+
+[node name="Area2D" type="Area2D" parent="Rifle2"]
+script = ExtResource("7_cpplj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rifle2/Area2D"]
+position = Vector2(4, -14)
+shape = SubResource("RectangleShape2D_wp81g")
+
+[node name="Tommygun2" type="Node2D" parent="."]
+visible = false
+
+[node name="Tommygun" type="Sprite2D" parent="Tommygun2"]
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("5_vg2ue")
+
+[node name="Area2D" type="Area2D" parent="Tommygun2"]
+script = ExtResource("9_4mvl6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tommygun2/Area2D"]
+position = Vector2(-6, -6)
+shape = SubResource("RectangleShape2D_cpplj")
