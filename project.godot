@@ -9,15 +9,13 @@
 config_version=5
 
 [application]
-
 config/name="CSC275Project"
-run/main_scene="res://Scenes/world_map.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
-
-[autoload]
-
 Global="*res://Scripts/World Scripts/Global.gd"
 PlayerSingleton="*res://Scripts/player_singleton.gd"
+run/main_scene="res://World/world_map.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
 
 [display]
 
