@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0iuds1nrcox1"]
+
+[ext_resource type="Texture2D" uid="uid://gno1k2sboccf" path="res://Artwork/Tilemap/Premium_TreesUpdated_No_Outline.png" id="1_0vwjc"]
+
+[node name="Tree" type="Node2D"]
+y_sort_enabled = true
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(103, -147)
+scale = Vector2(3.39063, 2.84901)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+z_index = 3
+z_as_relative = false
+position = Vector2(-27.4286, 5.26499)
+texture = ExtResource("1_0vwjc")
+region_enabled = true
+region_rect = Rect2(448, 111.364, 64, 101.818)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-28.3134, 5.61599)
+polygon = PackedVector2Array(6.19355, 36.8549, 10.0276, 37.5569, 9.43779, 43.8749, -4.42396, 45.9809, -8.84793, 39.3119, -5.01382, 37.9079, -3.53917, 30.1859, 5.60369, 30.5369)
