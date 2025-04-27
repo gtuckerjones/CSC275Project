@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0w4x0tniud7w"]
+[gd_scene load_steps=3 format=3 uid="uid://dmw84lj7a7q2a"]
 
-[ext_resource type="Script" uid="uid://bmqfnjypaf20m" path="res://Scenes/Pickups/food.gd" id="1_j4qko"]
+[ext_resource type="Script" path="res://Scenes/Pickups/food.gd" id="1_j4qko"]
 [ext_resource type="Texture2D" uid="uid://dt67qk47lorqg" path="res://Artwork/Tilemap/ProjectUtumno_full.png" id="2_fhto3"]
 
 [node name="Food" type="Node2D"]
