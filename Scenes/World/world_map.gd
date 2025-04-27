@@ -82,7 +82,6 @@ func setup_player_and_camera():
 
 	# Position the player at the center of the map
 	player.position = Vector2(0, 0)
-	player.hud = hud  # give Player a reference to the HUD
 
 	# Set the camera zoom
 	camera.zoom = Vector2(2, 2)

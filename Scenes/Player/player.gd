@@ -4,27 +4,6 @@ extends CharacterBody2D
 @onready var animations = $AnimationPlayer
 @onready var rangedWeapons = $Ranged_Weapons
 @onready var sprite = $Sprite2D
-var weapons_inventory: Array = []
-var current_weapon: String = ""
-var hud
-
-func pickup_weapon(weapon_name: String):
-	if weapon_name not in weapons_inventory:
-		weapons_inventory.append(weapon_name)
-	current_weapon = weapon_name
-	rangedWeapons.current_weapon = weapon_name
-	rangedWeapons.selectedGun()
-	
-	if hud:
-		hud.set_weapon_name(weapon_name)
-
-func switch_weapon():
-	if weapons_inventory.size() > 0:
-		var current_index = weapons_inventory.find(current_weapon)
-		var next_index = (current_index + 1) % weapons_inventory.size()
-		current_weapon = weapons_inventory[next_index]
-		rangedWeapons.current_weapon = current_weapon
-		rangedWeapons.selectedGun()
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -53,10 +32,10 @@ func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	$Sprite2D.flip_h = mouse_pos.x < global_position.x
 	
-	if Input.is_action_just_pressed("switch_weapon"):
-		switch_weapon()
-	
-	if has_node("rangedWeapons"):
-		var weapon = $Ranged_Weapons
-		var offset_x = 5
-		weapon.position.x = -offset_x if $Sprite2D.flip_h else offset_x
+	if $Sprite2D.flip_h == true:
+		$"Ranged Weapons".position.x = -4
+	else:
+		$"Ranged Weapons".position.x = 4
+		
+func _on_revolver_pickup_pickedup_gun() -> void:
+	$"Ranged Weapons".hasRevolver = true
