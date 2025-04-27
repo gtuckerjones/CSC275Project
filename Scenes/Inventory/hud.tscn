@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://codpcep2d3frw"]
+[gd_scene load_steps=3 format=3 uid="uid://h2mpcklmkgvs"]
 
 [ext_resource type="Texture2D" uid="uid://dt8hcij2tptro" path="res://Artwork/Briefcase redo.png" id="1_s44yr"]
-[ext_resource type="PackedScene" uid="uid://csyfbj3xrmex3" path="res://Scenes/Inventory/inv_ui.tscn" id="2_kfp2g"]
+[ext_resource type="PackedScene" uid="uid://csyfbj3xrmex3" path="res://Megan's HUD Stuff/Inventory/inv_ui - m.tscn" id="2_kfp2g"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3

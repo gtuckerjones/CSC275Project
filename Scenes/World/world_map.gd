@@ -240,7 +240,6 @@ func get_player_position() -> Vector2i:
 #All ground, water, and road tiles by Sam Pritchett
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
-=======
 @export var noise_height_text : NoiseTexture2D
 @onready var ground_tile_map = $ground  # Imports tile_map for generation
 @onready var road_tile_map = $roads
