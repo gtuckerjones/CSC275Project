@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4gaa52x2y4fb"]
 
 [ext_resource type="Texture2D" uid="uid://c8av0q6srthnb" path="res://Artwork/Props/pixel-house-no-background.png" id="1_okrnj"]
-[ext_resource type="Script" uid="uid://cglwdkqy61l8" path="res://Scenes/World/house_doors.gd" id="2_n87ef"]
+[ext_resource type="Script" path="res://Scenes/World/house_doors.gd" id="2_n87ef"]
 [ext_resource type="PackedScene" uid="uid://c52q3ed7bn2n8" path="res://Scenes/World/house_interior.tscn" id="3_3jr7h"]
 
 [sub_resource type="GDScript" id="GDScript_3jr7h"]

@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyfbj3xrmex3"]
+[gd_scene load_steps=4 format=3 uid="uid://cf2ecvf5dpfmg"]
 
-[ext_resource type="Script" uid="uid://6st68lbv3lg" path="res://Scenes/Inventory/inv_ui.gd" id="1_64hv7"]
-
-[ext_resource type="Texture2D" uid="uid://1ra430npxukb" path="res://Artwork/Spritesheets2/Props/inventory-background.png" id="2_m5xpj"]
-
-[ext_resource type="PackedScene" uid="uid://gmt5h0bib8dt" path="res://Scenes/Inventory/inv_ui_slot.tscn" id="3_dn3an"]
+[ext_resource type="Script" uid="uid://6st68lbv3lg" path="res://Megan's HUD Stuff/Inventory/inv_ui - m.gd" id="1_64hv7"]
+[ext_resource type="Texture2D" uid="uid://1ra430npxukb" path="res://Spritesheets/Props/inventory-background.png" id="2_m5xpj"]
+[ext_resource type="PackedScene" uid="uid://gmt5h0bib8dt" path="res://Megan's HUD Stuff/Inventory/inv_ui_slot - m.tscn" id="3_dn3an"]
 
 [node name="Inv_UI" type="Control"]
 custom_minimum_size = Vector2(86, 63)
