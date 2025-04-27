@@ -27,14 +27,6 @@ noise_height_text = SubResource("NoiseTexture2D_thkdx")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Player" parent="World" instance=ExtResource("2_g8h5j")]
-z_index = 2
-z_as_relative = false
-
-[node name="Camera2D" type="Camera2D" parent="World/Player"]
-position = Vector2(-3, 2)
-script = SubResource("GDScript_ydmks")
-
 [node name="Layers" type="Node2D" parent="World"]
 
 [node name="ground" type="TileMapLayer" parent="World/Layers"]
@@ -60,3 +52,11 @@ offset_top = 6.0
 offset_right = 319.0
 offset_bottom = 29.0
 text = "Current Weapon: None"
+
+[node name="Player" parent="." instance=ExtResource("2_g8h5j")]
+z_index = 2
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")

@@ -5,7 +5,7 @@ extends Node2D
 @onready var road_tile_map = $World/Layers/roads
 @onready var player_scene = preload("res://Scenes/Player/player.tscn")
 @onready var player: CharacterBody2D = $World/Player
-@onready var camera: Camera2D = $World/Player/Camera2D
+@onready var camera: Camera2D = $Player/Camera2D
 @onready var house_scene = preload("res://Scenes/World/house.tscn")
 @onready var tree_scene = preload("res://Scenes/World/tree.tscn")
 
