@@ -1,10 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bhdxhtov61apx"]
 
-[ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_2lf17"]
-[ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Sam's Art/custom_tileset.tres" id="2_fe2eg"]
+
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="3_fks77"]
 [ext_resource type="PackedScene" uid="uid://rg44lectlk7r" path="res://Scenes/rangedWeapons/revolver_pickup.tscn" id="4_c1j0w"]
 [ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="5_iulwy"]
+[ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
+[ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="3_67byq"]
+[ext_resource type="PackedScene" uid="uid://codpcep2d3frw" path="res://Scenes/Inventory/hud.tscn" id="4_g8h5j"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -20,24 +22,15 @@ noise = SubResource("FastNoiseLite_5sxmu")
 
 [sub_resource type="GDScript" id="GDScript_ydmks"]
 
-[node name="world_map" type="Node2D"]
-script = ExtResource("1_2lf17")
+[node name="Main" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_llh6y")
 noise_height_text = SubResource("NoiseTexture2D_thkdx")
 
-[node name="water" type="TileMapLayer" parent="."]
-position = Vector2(63, 46)
+[node name="World" type="Node2D" parent="."]
 
-[node name="ground" type="TileMapLayer" parent="."]
-position = Vector2(63, 46)
-tile_set = ExtResource("2_fe2eg")
 
-[node name="roads" type="TileMapLayer" parent="."]
-z_index = 1
-position = Vector2(63, 46)
-tile_set = ExtResource("2_fe2eg")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = SubResource("GDScript_ydmks")
 
 [node name="RevolverPickup" parent="." instance=ExtResource("4_c1j0w")]
 position = Vector2(102, 31)
@@ -47,5 +40,29 @@ scale = Vector2(0.5, 0.5)
 z_index = 2
 
 [node name="Ranged Weapons2" parent="Player" instance=ExtResource("5_iulwy")]
+
+[node name="Camera2D" type="Camera2D" parent="World/Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")
+
+[node name="Layers" type="Node2D" parent="World"]
+
+[node name="ground" type="TileMapLayer" parent="World/Layers"]
+z_as_relative = false
+tile_set = ExtResource("3_67byq")
+
+[node name="roads" type="TileMapLayer" parent="World/Layers"]
+z_index = 1
+z_as_relative = false
+tile_set = ExtResource("3_67byq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_g8h5j")]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 2.0
+offset_bottom = 3.0
+
 
 [connection signal="pickedupGun" from="RevolverPickup" to="Player" method="_on_revolver_pickup_pickedup_gun"]

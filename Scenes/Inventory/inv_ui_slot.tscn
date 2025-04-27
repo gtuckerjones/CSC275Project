@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://gmt5h0bib8dt"]
+
+
+[ext_resource type="Texture2D" uid="uid://c27tlscy68dcl" path="res://inventory/Inventory Art/inventory-slot.png" id="1_dfngl"]
+
+[node name="inv_UI_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -384.0
+offset_bottom = -384.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 17.0
+texture = ExtResource("1_dfngl")
+stretch_mode = 5
+
+[node name="QuantityLabel" type="RichTextLabel" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 20.0
+mouse_force_pass_scroll_events = false
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 6
+scroll_active = false
+shortcut_keys_enabled = false
