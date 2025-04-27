@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://epp6giysi7kw"]
 
-[ext_resource type="Texture2D" uid="uid://b1tuhivmbf1wt" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/pixil-frame-0 (12).png" id="1_k7rnr"]
+[ext_resource type="Texture2D" uid="uid://b1tuhivmbf1wt" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/weapons/pixil-frame-0 (12).png" id="1_k7rnr"]
 [ext_resource type="Script" uid="uid://du3c4ba6w26hu" path="res://Scenes/Bullet/bullet.gd" id="1_lv0gj"]
 
 [node name="Bullet" type="Node2D"]

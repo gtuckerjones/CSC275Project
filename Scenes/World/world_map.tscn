@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=13 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="3_67byq"]
 [ext_resource type="PackedScene" uid="uid://codpcep2d3frw" path="res://Scenes/Inventory/hud.tscn" id="4_g8h5j"]
+[ext_resource type="PackedScene" uid="uid://dfp3olwusga1y" path="res://Scenes/Pickups/shotgun_pickup.tscn" id="4_hdk3q"]
+[ext_resource type="PackedScene" uid="uid://bdnolrg1iett6" path="res://Scenes/Pickups/revolver_pickup.tscn" id="5_hdk3q"]
+[ext_resource type="PackedScene" uid="uid://bmn61j08v1q0p" path="res://Scenes/Pickups/rifle_pickup.tscn" id="6_rag27"]
+[ext_resource type="PackedScene" uid="uid://dctlu8nmy7fam" path="res://Scenes/Pickups/tommygun_pickup.tscn" id="7_81c5q"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -27,14 +31,6 @@ noise_height_text = SubResource("NoiseTexture2D_thkdx")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Player" parent="World" instance=ExtResource("2_g8h5j")]
-z_index = 2
-z_as_relative = false
-
-[node name="Camera2D" type="Camera2D" parent="World/Player"]
-position = Vector2(-3, 2)
-script = SubResource("GDScript_ydmks")
-
 [node name="Layers" type="Node2D" parent="World"]
 
 [node name="ground" type="TileMapLayer" parent="World/Layers"]
@@ -46,10 +42,35 @@ z_index = 1
 z_as_relative = false
 tile_set = ExtResource("3_67byq")
 
+[node name="Player" parent="World" instance=ExtResource("2_g8h5j")]
+z_index = 2
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="World/Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")
+
+[node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
+position = Vector2(120, -43)
+
+[node name="RevolverPickup" parent="World" instance=ExtResource("5_hdk3q")]
+position = Vector2(64, -45)
+
+[node name="RiflePickup" parent="World" instance=ExtResource("6_rag27")]
+position = Vector2(65, -76)
+
+[node name="TommygunPickup" parent="World" instance=ExtResource("7_81c5q")]
+position = Vector2(128, -72)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_g8h5j")]
 offset_left = 2.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 2.0
-offset_bottom = 3.0
+offset_bottom = 2.0
+
+[connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
+[connection signal="pickedupGun" from="World/RevolverPickup" to="World/Player" method="_on_revolver_pickup_pickedup_gun"]
+[connection signal="pickedupRifle" from="World/RiflePickup" to="World/Player" method="_on_rifle_pickup_pickedup_rifle"]
+[connection signal="pickedupTommy" from="World/TommygunPickup" to="World/Player" method="_on_tommygun_pickup_pickedup_tommy"]

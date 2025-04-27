@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmn61j08v1q0p"]
+
+[ext_resource type="Texture2D" uid="uid://k02ppllxvot8" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/rifle.png" id="1_8n10r"]
+[ext_resource type="Script" uid="uid://d0tw8cl0w6er" path="res://Scenes/Pickups/rifle_pickup.gd" id="1_614v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n10r"]
+size = Vector2(34, 10)
+
+[node name="RiflePickup" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_614v0")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8n10r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_8n10r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

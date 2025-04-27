@@ -2,20 +2,17 @@ extends Node2D
 
 const BULLET = preload("res://Scenes/Bullet/bullet.tscn")
 @onready var muzzle: Marker2D = $Marker2D
-@onready var revolver = $Revolver
-@onready var shotgun = $Shotgun
-@onready var rifle = $Rifle
-@onready var tommygun = $Tommygun
-var current_weapon = ""
-
-func selectedGun():
-	revolver.visible = current_weapon == "revolver"
-	shotgun.visible = current_weapon == "shotgun"
-	rifle.visible = current_weapon == "rifle"
-	tommygun.visible = current_weapon == "tommygun"
+var hasRevolver = false
+var hasShotgun = false
+var hasRifle = false
+var hasTommygun = false
+var damage = 0
+var fire_cooldown = 0.0
+var fire_rate = 0.1 
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
+	fire_cooldown -= delta
 	
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	if rotation_degrees > 90 and rotation_degrees < 270:
@@ -23,10 +20,72 @@ func _process(delta: float) -> void:
 	else:
 		scale.y = .25
 		
-	selectedGun()
+	if hasRevolver == true:
+		$Revolver.visible = true
+		$Shotgun.visible = false
+		$Rifle.visible = false
+		$Tommygun.visible = false
+		damage = randi_range(15,40)
+		fire_rate = 0.25
 		
-	if Input.is_action_just_pressed("fire"):
-		var bullet_instance = BULLET.instantiate()
-		get_tree().root.add_child(bullet_instance)
-		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.rotation = rotation
+		if Input.is_action_just_pressed("fire") and fire_cooldown <= 0.0:
+			var bullet_instance = BULLET.instantiate()
+			get_tree().root.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation = rotation
+			bullet_instance.max_distance = 300
+			fire_cooldown = fire_rate
+			
+			
+	if hasShotgun == true:
+		$Revolver.visible = false
+		$Shotgun.visible = true
+		$Rifle.visible = false
+		$Tommygun.visible = false
+		damage = randi_range(10,20)
+		fire_rate = 0.5
+		
+		if Input.is_action_just_pressed("fire") and fire_cooldown <= 0.0:
+			var spread_num = 5
+			var spread_degrees = 30
+			
+			for i in range(spread_num):
+				var bullet_instance = BULLET.instantiate()
+				get_tree().root.add_child(bullet_instance)
+				bullet_instance.global_position = muzzle.global_position
+				var spread = deg_to_rad(randf_range(-spread_degrees/2, spread_degrees/2))
+				bullet_instance.rotation = rotation + spread
+				bullet_instance.max_distance = 75.0
+				fire_cooldown = fire_rate
+			
+	if hasRifle == true:
+		$Revolver.visible = false
+		$Shotgun.visible = false
+		$Rifle.visible = true
+		$Tommygun.visible = false
+		damage = randi_range(30,70)
+		fire_rate = 0.8
+		
+		if Input.is_action_just_pressed("fire") and fire_cooldown <= 0.0:
+			var bullet_instance = BULLET.instantiate()
+			get_tree().root.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation = rotation
+			bullet_instance.max_distance = 500
+			fire_cooldown = fire_rate
+			
+	if hasTommygun == true:
+		$Revolver.visible = false
+		$Shotgun.visible = false
+		$Rifle.visible = false
+		$Tommygun.visible = true
+		damage = randi_range(5,15)
+		fire_rate = 0.1
+		
+		if Input.is_action_pressed("fire") and fire_cooldown <= 0.0:
+			var bullet_instance = BULLET.instantiate()
+			get_tree().root.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation = rotation
+			bullet_instance.max_distance = 200
+			fire_cooldown = fire_rate
