@@ -1,32 +1,30 @@
 extends CharacterBody2D
 
-@export var speed: int = 100
+@export var base_speed: int = 100
+@export var road_speed_bonus: int = 50
 @onready var animations = $AnimationPlayer
-@onready var rangedWeapons = $RangedWeapons
+@onready var road_tile_map = $"../Layers/roads" # Adjust path to your TileMap
+@onready var rangedWeapons = $"Ranged Weapons"
 @onready var sprite = $Sprite2D
-var weapons_inventory: Array = []
-var current_weapon: String = ""
-
-func pickup_weapon(weapon_name: String):
-	if weapon_name not in weapons_inventory:
-		weapons_inventory.append(weapon_name)
-	current_weapon = weapon_name
-	rangedWeapons.current_weapon = weapon_name
-	rangedWeapons.selectedGun()
-
-func switch_weapon():
-	if weapons_inventory.size() > 0:
-		var current_index = weapons_inventory.find(current_weapon)
-		var next_index = (current_index + 1) % weapons_inventory.size()
-		current_weapon = weapons_inventory[next_index]
-		rangedWeapons.current_weapon = current_weapon
-		rangedWeapons.selectedGun()
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if moveDirection.length() > 0:
-		moveDirection = moveDirection.normalized()  # Normalize to prevent diagonal speed boost
-	velocity = moveDirection * speed
+		moveDirection = moveDirection.normalized()
+
+	var is_on_road = false
+
+	if road_tile_map and is_instance_valid(road_tile_map):
+		var current_tile = road_tile_map.local_to_map(global_position)
+		var tile_data = road_tile_map.get_cell_tile_data(current_tile)
+
+		if tile_data and tile_data.get_custom_data("is_road"):
+			is_on_road = true
+	else:
+		print_debug("Warning: Road tile map not found or invalid.")
+
+	var effective_speed = base_speed + (road_speed_bonus if is_on_road else 0)
+	velocity = moveDirection * effective_speed
 
 func updateAnimation():
 	if velocity.length() == 0:
@@ -44,15 +42,37 @@ func _physics_process(delta):
 	handleInput()
 	move_and_slide()
 	updateAnimation()
-	
+
+
 func _process(delta): 
 	var mouse_pos = get_global_mouse_position()
 	$Sprite2D.flip_h = mouse_pos.x < global_position.x
 	
-	if Input.is_action_just_pressed("switch_weapon"):
-		switch_weapon()
-	
-	if has_node("rangedWeapons"):
-		var weapon = $RangedWeapons
-		var offset_x = 5
-		weapon.position.x = -offset_x if $Sprite2D.flip_h else offset_x
+	if $Sprite2D.flip_h == true:
+		$"Ranged Weapons".position.x = -4
+	else:
+		$"Ranged Weapons".position.x = 4
+		
+func _on_revolver_pickup_pickedup_gun() -> void:
+	$"Ranged Weapons".hasRevolver = true
+	$"Ranged Weapons".hasShotgun = false
+	$"Ranged Weapons".hasRifle = false
+	$"Ranged Weapons".hasTommygun = false
+
+func _on_shotgun_pickup_pickedup_shotgun() -> void:
+	$"Ranged Weapons".hasShotgun = true
+	$"Ranged Weapons".hasRifle = false
+	$"Ranged Weapons".hasTommygun = false
+	$"Ranged Weapons".hasRevolver = false
+
+func _on_rifle_pickup_pickedup_rifle() -> void:
+	$"Ranged Weapons".hasShotgun = false
+	$"Ranged Weapons".hasRifle = true
+	$"Ranged Weapons".hasTommygun = false
+	$"Ranged Weapons".hasRevolver = false
+
+func _on_tommygun_pickup_pickedup_tommy() -> void:
+	$"Ranged Weapons".hasShotgun = false
+	$"Ranged Weapons".hasRifle = false
+	$"Ranged Weapons".hasTommygun = true
+	$"Ranged Weapons".hasRevolver = false

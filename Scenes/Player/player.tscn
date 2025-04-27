@@ -1,49 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=9 format=3 uid="uid://dtnewlnjvtsyw"]
 
+[ext_resource type="Script" uid="uid://7i6ixhxkk214" path="res://Scenes/Player/player.gd" id="1_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
-
-[sub_resource type="GDScript" id="GDScript_uvnfx"]
-script/source = "extends CharacterBody2D
-
-@export var base_speed: int = 200
-@export var road_speed_bonus: int = 50
-@onready var animations = $AnimationPlayer
-@onready var road_tile_map = $\"../Layers/roads\" # Adjust path to your TileMap
-
-func handleInput():
-	var moveDirection = Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
-	if moveDirection.length() > 0:
-		moveDirection = moveDirection.normalized()
-
-	var is_on_road = false
-
-	if road_tile_map and is_instance_valid(road_tile_map):
-		var current_tile = road_tile_map.local_to_map(global_position)
-		var tile_data = road_tile_map.get_cell_tile_data(current_tile)
-
-		if tile_data and tile_data.get_custom_data(\"is_road\"):
-			is_on_road = true
-	else:
-		print_debug(\"Warning: Road tile map not found or invalid.\")
-
-	var effective_speed = base_speed + (road_speed_bonus if is_on_road else 0)
-	velocity = moveDirection * effective_speed
-
-func updateAnimation():
-	if velocity.length() == 0:
-		animations.stop()
-	else:
-		var direction = \"Right\"
-		if velocity.x < 0:
-			direction = \"Left\"
-
-		animations.play(\"Walk\" + direction)
-
-func _physics_process(delta):
-	handleInput()
-	move_and_slide()
-	updateAnimation()
-"
+[ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="2_a3d8c"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -142,10 +101,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nc41"]
 
 [node name="Player" type="CharacterBody2D"]
-script = SubResource("GDScript_uvnfx")
+script = ExtResource("1_xpcdj")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_6t5aa")
 vframes = 3
 
@@ -157,3 +117,7 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_3nc41")
+
+[node name="Ranged Weapons" parent="." instance=ExtResource("2_a3d8c")]
+position = Vector2(5, 5)
+scale = Vector2(0.25, 0.25)

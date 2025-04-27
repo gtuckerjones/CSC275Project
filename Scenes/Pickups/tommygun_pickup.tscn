@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dctlu8nmy7fam"]
+
+[ext_resource type="Texture2D" uid="uid://cffxut8sgriom" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="1_am3xj"]
+[ext_resource type="Script" uid="uid://ch4mig7qghdm6" path="res://Scenes/Pickups/tommygun_pickup.gd" id="1_xo6k7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo6k7"]
+size = Vector2(46, 19)
+
+[node name="TommygunPickup" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_xo6k7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_am3xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -0.5)
+shape = SubResource("RectangleShape2D_xo6k7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

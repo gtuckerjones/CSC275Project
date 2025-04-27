@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdnolrg1iett6"]
+
+[ext_resource type="Texture2D" uid="uid://cutp4kcy06g66" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="1_2ixsk"]
+[ext_resource type="Script" uid="uid://cls6014b1cnpq" path="res://Scenes/Pickups/revolver_pickup.gd" id="1_fl1uc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl1uc"]
+size = Vector2(44, 30)
+
+[node name="RevolverPickup" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_fl1uc")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ixsk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_fl1uc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

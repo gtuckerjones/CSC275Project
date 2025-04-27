@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfp3olwusga1y"]
+
+[ext_resource type="Texture2D" uid="uid://cjnowiaipftwn" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/shotgun.png" id="1_nwncj"]
+[ext_resource type="Script" uid="uid://bgq0etq7omywi" path="res://Scenes/Pickups/shotgun_pickup.gd" id="1_sj583"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj583"]
+size = Vector2(39, 13)
+
+[node name="ShotgunPickup" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_sj583")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nwncj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 1.5)
+shape = SubResource("RectangleShape2D_sj583")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
