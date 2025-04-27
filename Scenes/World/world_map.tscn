@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=10 format=3 uid="uid://bhdxhtov61apx"]
 
+
+[ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="3_fks77"]
+[ext_resource type="PackedScene" uid="uid://rg44lectlk7r" path="res://Scenes/rangedWeapons/revolver_pickup.tscn" id="4_c1j0w"]
+[ext_resource type="PackedScene" uid="uid://c5dbuc80hqc7j" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="5_iulwy"]
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
-[ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="3_67byq"]
 [ext_resource type="PackedScene" uid="uid://codpcep2d3frw" path="res://Scenes/Inventory/hud.tscn" id="4_g8h5j"]
 
@@ -27,9 +30,16 @@ noise_height_text = SubResource("NoiseTexture2D_thkdx")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Player" parent="World" instance=ExtResource("2_g8h5j")]
+
+
+[node name="RevolverPickup" parent="." instance=ExtResource("4_c1j0w")]
+position = Vector2(102, 31)
+scale = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("3_fks77")]
 z_index = 2
-z_as_relative = false
+
+[node name="Ranged Weapons2" parent="Player" instance=ExtResource("5_iulwy")]
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
 position = Vector2(-3, 2)
@@ -54,9 +64,5 @@ offset_top = 3.0
 offset_right = 2.0
 offset_bottom = 3.0
 
-[node name="CurrentWeaponLabel" type="Label" parent="HUD"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 188.0
-offset_bottom = 33.0
-text = "Current Weapon: None"
+
+[connection signal="pickedupGun" from="RevolverPickup" to="Player" method="_on_revolver_pickup_pickedup_gun"]
