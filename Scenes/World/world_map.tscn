@@ -58,4 +58,20 @@ offset_top = 3.0
 offset_right = 2.0
 offset_bottom = 3.0
 
+[node name="HUD#CurrentWeaponLabel" type="Label" parent="."]
+offset_left = 141.0
+offset_top = 6.0
+offset_right = 319.0
+offset_bottom = 29.0
+text = "Current Weapon: None"
+
+[node name="Player" parent="." instance=ExtResource("2_g8h5j")]
+z_index = 2
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")
+
 [connection signal="pickedupGun" from="RevolverPickup" to="Player" method="_on_revolver_pickup_pickedup_gun"]
+

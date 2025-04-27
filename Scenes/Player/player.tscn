@@ -122,3 +122,4 @@ shape = SubResource("CapsuleShape2D_3nc41")
 [node name="Ranged Weapons" parent="." instance=ExtResource("3_xpcdj")]
 position = Vector2(4, 6)
 metadata/_edit_group_ = true
+

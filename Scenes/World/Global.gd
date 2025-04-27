@@ -14,7 +14,16 @@ var player_data := {
 }
 
 var findable_items := {
-	"item_name": {"traits": "Example"},
+	"crumpled_note": {"traits": "Handwritten, smudged ink"},
+	"rusty_key": {"traits": "Old, corroded, unknown door"},
+	"bloodstained_glove": {"traits": "Left-handed, leather"},
+	"broken_watch": {"traits": "Stopped at midnight"},
+	"mysterious_photograph": {"traits": "Torn edges, unknown faces"},
+	"empty_wallet": {"traits": "Monogrammed initials"},
+	"silver_locket": {"traits": "Hinged, missing photo"},
+	"strange_coin": {"traits": "Foreign markings, worn smooth"},
+	"matchbox": {"traits": "Bar logo, one match left"},
+	"half-smoked cigar": {"traits": "Distinctive scent, rare brand"},
 }
 
 var food_dictionary = {
