@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv5vaugwgbj6n"]
+[gd_scene load_steps=3 format=3 uid="uid://0gnaecvrnmdt"]
 
-[ext_resource type="Script" uid="uid://do56o5a37o2u5" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_47fe0"]
+[ext_resource type="Script" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_47fe0"]
 [ext_resource type="Texture2D" uid="uid://b8io1vgthkxwg" path="res://Artwork/Title and Death Screen/agent-1294795_1920.png" id="2_c8wq5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 401.0
-offset_bottom = 401.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_47fe0")
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
