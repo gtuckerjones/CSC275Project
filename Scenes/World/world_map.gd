@@ -240,3 +240,13 @@ func get_player_position() -> Vector2i:
 #All ground, water, and road tiles by Sam Pritchett
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
+
+func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
+	if weapon_fired == "revolver":
+		$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
+	elif weapon_fired == "shotgun":
+		$HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
+	elif weapon_fired == "rifle":
+		$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
+	else:
+		$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
