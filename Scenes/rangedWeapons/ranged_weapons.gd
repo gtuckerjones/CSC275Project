@@ -9,10 +9,10 @@ var hasTommygun = false
 var damage = 0
 var fire_cooldown = 0.0
 var fire_rate = 0.1 
-var revolverAmmo = Global.player_data["inventory"].get("pistol ammo", 0)
-var shotgunAmmo = Global.player_data["inventory"].get("shotgun ammo", 0)
-var rifleAmmo = Global.player_data["inventory"].get("rifle ammo", 0)
-var tommyAmmo = Global.player_data["inventory"].get("submachine gun ammo", 0)
+var revolverAmmo = 0
+var shotgunAmmo = 0
+var rifleAmmo = 0
+var tommyAmmo = 0
 signal ammo_fired(weapon_fired: String, current_amount: int)
 
 func _process(delta: float) -> void:
