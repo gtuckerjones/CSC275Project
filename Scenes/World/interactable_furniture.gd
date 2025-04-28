@@ -48,7 +48,7 @@ func search_furniture():
 		await get_tree().create_timer(3.0).timeout  # Wait 3 seconds
 
 		var found_item = "Nothing"
-		if randf() > 0.6:  # 25% chance to actually find something
+		if randf() > 0.25:  # 25% chance to find nothing
 			var keys = Global.findable_items.keys()
 			var random_key = keys[randi() % keys.size()]
 			found_item = random_key

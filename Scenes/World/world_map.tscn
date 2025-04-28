@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=22 format=3 uid="uid://bhdxhtov61apx"]
 
 
@@ -15,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://s6e2tqkvl5vw" path="res://Scenes/Pickups/revolver_ammo_pickup.tscn" id="8_lh8t4"]
 [ext_resource type="PackedScene" uid="uid://cuctnwehnwbby" path="res://Scenes/Pickups/shotgun_ammo_pickup.tscn" id="9_ige11"]
 [ext_resource type="PackedScene" uid="uid://ba66qwal6i0c8" path="res://Scenes/Pickups/rifle_ammo_pickup.tscn" id="10_c103g"]
-[ext_resource type="Script" uid="uid://d0tw8cl0w6er" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
+[ext_resource type="Script" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
 [ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="12_t6a4a"]
+[ext_resource type="PackedScene" uid="uid://b0w4x0tniud7w" path="res://Scenes/Pickups/food.tscn" id="13_j3p7k"]
 [ext_resource type="Texture2D" uid="uid://cutp4kcy06g66" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="15_4bofr"]
 [ext_resource type="Texture2D" uid="uid://cjnowiaipftwn" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/shotgun.png" id="16_h6arw"]
 [ext_resource type="Texture2D" uid="uid://k02ppllxvot8" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/rifle.png" id="17_r1ohy"]
 [ext_resource type="Texture2D" uid="uid://cffxut8sgriom" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="18_kda2h"]
-
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -104,6 +103,10 @@ script = ExtResource("11_t6a4a")
 [node name="TommyAmmoPickup" parent="World" instance=ExtResource("12_t6a4a")]
 position = Vector2(125, -94)
 
+[node name="Food" parent="World" instance=ExtResource("13_j3p7k")]
+visible = false
+position = Vector2(18, -12)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
@@ -177,5 +180,7 @@ horizontal_alignment = 1
 [connection signal="pickedupShotgunAmmo" from="World/shotgunAmmoPickup" to="World/Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]
 [connection signal="pickedupRifle" from="World/rifleAmmoPickup" to="World/Player" method="_on_rifle_ammo_pickup_pickedup_rifle"]
 [connection signal="pickedupTommyAmmo" from="World/TommyAmmoPickup" to="World/Player" method="_on_tommy_ammo_pickup_pickedup_tommy_ammo"]
+[connection signal="pickedUpFood" from="World/Food" to="World/Player" method="_on_food_picked_up_food"]
 
 [editable path="World/Player"]
+
