@@ -97,3 +97,7 @@ func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
 	var addedAmmo = randi_range(10,30)
 	$"Ranged Weapons".tommyAmmo += addedAmmo
 	Global.add_item_to_inventory("submachine gun ammo", addedAmmo)
+
+
+func _on_food_picked_up_food() -> void:
+	pass # Replace with function body.
