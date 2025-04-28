@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=10 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://7i6ixhxkk214" path="res://Scenes/Player/player.gd" id="1_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
@@ -100,8 +100,15 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nc41"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpcdj"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D"]
+
+collision_layer = 3
+
 collision_mask = 6
+
 script = ExtResource("1_xpcdj")
 metadata/_edit_group_ = true
 
@@ -122,3 +129,15 @@ shape = SubResource("CapsuleShape2D_3nc41")
 [node name="Ranged Weapons" parent="." instance=ExtResource("2_a3d8c")]
 position = Vector2(5, 5)
 scale = Vector2(0.25, 0.25)
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_xpcdj")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
