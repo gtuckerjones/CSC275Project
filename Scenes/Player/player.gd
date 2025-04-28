@@ -78,16 +78,22 @@ func _on_tommygun_pickup_pickedup_tommy() -> void:
 	$"Ranged Weapons".hasRevolver = false
 
 func _on_revolver_ammo_pickup_pickedup_revolver_ammo() -> void:
-	$"Ranged Weapons".revolverAmmo += randi_range(3,8)
-
+	var addedAmmo = randi_range(3,8)
+	$"Ranged Weapons".revolverAmmo += addedAmmo
+	Global.add_item_to_inventory("pistol ammo", addedAmmo)
 
 func _on_shotgun_ammo_pickup_pickedup_shotgun_ammo() -> void:
-	$"Ranged Weapons".shotgunAmmo += randi_range(2,5) * 5
-
+	var addedAmmo = randi_range(2,5) * 5
+	$"Ranged Weapons".shotgunAmmo += addedAmmo
+	Global.add_item_to_inventory("shotgun ammo", addedAmmo)
 
 func _on_rifle_ammo_pickup_pickedup_rifle() -> void:
-	$"Ranged Weapons".rifleAmmo += randi_range(2,5)
+	var addedAmmo = randi_range(2,5)
+	$"Ranged Weapons".rifleAmmo += addedAmmo
+	Global.add_item_to_inventory("rifle ammo", addedAmmo)
 
 
 func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
-	$"Ranged Weapons".tommyAmmo += randi_range(10,30)
+	var addedAmmo = randi_range(10,30)
+	$"Ranged Weapons".tommyAmmo += addedAmmo
+	Global.add_item_to_inventory("submachine gun ammo", addedAmmo)
