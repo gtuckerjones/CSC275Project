@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://d0tw8cl0w6er" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
 [ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="12_t6a4a"]
 
-
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.529126)

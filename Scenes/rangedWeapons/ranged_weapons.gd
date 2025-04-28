@@ -9,10 +9,10 @@ var hasTommygun = false
 var damage = 0
 var fire_cooldown = 0.0
 var fire_rate = 0.1 
-var revolverAmmo = 0
-var shotgunAmmo = 0
-var rifleAmmo = 0
-var tommyAmmo = 0
+var revolverAmmo = Global.player_data["inventory"].get("pistol ammo", 0)
+var shotgunAmmo = Global.player_data["inventory"].get("shotgun ammo", 0)
+var rifleAmmo = Global.player_data["inventory"].get("rifle ammo", 0)
+var tommyAmmo = Global.player_data["inventory"].get("submachine gun ammo", 0)
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 			bullet_instance.max_distance = 300
 			fire_cooldown = fire_rate
 			revolverAmmo -= 1
+			Global.remove_item_from_inventory("pistol ammo", 1)
 			
 			
 	if hasShotgun == true:
@@ -63,6 +64,7 @@ func _process(delta: float) -> void:
 				bullet_instance.max_distance = 75.0
 				fire_cooldown = fire_rate
 				shotgunAmmo -= 1
+				Global.remove_item_from_inventory("shotgun ammo", 1)
 			
 	if hasRifle == true:
 		$Revolver.visible = false
@@ -80,6 +82,7 @@ func _process(delta: float) -> void:
 			bullet_instance.max_distance = 500
 			fire_cooldown = fire_rate
 			rifleAmmo -= 1 
+			Global.remove_item_from_inventory("rifle ammo", 1)
 			
 	if hasTommygun == true:
 		$Revolver.visible = false
@@ -97,3 +100,4 @@ func _process(delta: float) -> void:
 			bullet_instance.max_distance = 200
 			fire_cooldown = fire_rate
 			tommyAmmo -= 1
+			Global.remove_item_from_inventory("submachine gun ammo", 1)
