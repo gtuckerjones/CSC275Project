@@ -1,5 +1,5 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhdxhtov61apx"]
 
+[gd_scene load_steps=23 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
@@ -9,10 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bdnolrg1iett6" path="res://Scenes/Pickups/revolver_pickup.tscn" id="5_hdk3q"]
 [ext_resource type="PackedScene" uid="uid://bmn61j08v1q0p" path="res://Scenes/Pickups/rifle_pickup.tscn" id="6_rag27"]
 [ext_resource type="PackedScene" uid="uid://dctlu8nmy7fam" path="res://Scenes/Pickups/tommygun_pickup.tscn" id="7_81c5q"]
-
-[ext_resource type="PackedScene" uid="uid://bg5s34m5sl756" path="res://Scenes/Cacodeaemon/cacodaemon.tscn" id="9_lh8t4"]
 [ext_resource type="PackedScene" uid="uid://s6e2tqkvl5vw" path="res://Scenes/Pickups/revolver_ammo_pickup.tscn" id="8_lh8t4"]
 [ext_resource type="PackedScene" uid="uid://cuctnwehnwbby" path="res://Scenes/Pickups/shotgun_ammo_pickup.tscn" id="9_ige11"]
+[ext_resource type="PackedScene" uid="uid://bg5s34m5sl756" path="res://Scenes/Cacodeaemon/cacodaemon.tscn" id="9_lh8t4"]
 [ext_resource type="PackedScene" uid="uid://ba66qwal6i0c8" path="res://Scenes/Pickups/rifle_ammo_pickup.tscn" id="10_c103g"]
 [ext_resource type="Script" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
 [ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="12_t6a4a"]
@@ -52,6 +51,13 @@ z_as_relative = false
 position = Vector2(-3, 2)
 script = SubResource("GDScript_ydmks")
 
+[node name="Camera2D2" type="Camera2D" parent="World/Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")
+
+[node name="Cacodaemon" parent="World" instance=ExtResource("9_lh8t4")]
+position = Vector2(464, -244)
+
 [node name="Layers" type="Node2D" parent="World"]
 
 [node name="ground" type="TileMapLayer" parent="World/Layers"]
@@ -62,21 +68,6 @@ tile_set = ExtResource("3_67byq")
 z_index = 1
 z_as_relative = false
 tile_set = ExtResource("3_67byq")
-
-
-[node name="Player" parent="World" instance=ExtResource("2_g8h5j")]
-z_index = 2
-z_as_relative = false
-position = Vector2(1, -2)
-collision_layer = 3
-
-[node name="Camera2D" type="Camera2D" parent="World/Player"]
-position = Vector2(-3, 2)
-script = SubResource("GDScript_ydmks")
-
-[node name="Cacodaemon" parent="World" instance=ExtResource("9_lh8t4")]
-position = Vector2(163, 48)
-
 
 [node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
 position = Vector2(120, -43)
