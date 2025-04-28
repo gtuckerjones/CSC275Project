@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0w4x0tniud7w"]
+[gd_scene load_steps=4 format=3 uid="uid://b0w4x0tniud7w"]
 
 [ext_resource type="Script" uid="uid://bmqfnjypaf20m" path="res://Scenes/Pickups/food.gd" id="1_j4qko"]
 [ext_resource type="Texture2D" uid="uid://dt67qk47lorqg" path="res://Artwork/Tilemap/ProjectUtumno_full.png" id="2_fhto3"]
 
-[node name="Food" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4n8"]
+size = Vector2(1, 1)
+
+[node name="Food" type="Area2D"]
 script = ExtResource("1_j4qko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_fhto3")
 region_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ok4n8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
