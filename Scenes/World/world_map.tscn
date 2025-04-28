@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=22 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="3_67byq"]
-[ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="3_e7hyo"]
 [ext_resource type="PackedScene" uid="uid://codpcep2d3frw" path="res://Scenes/Inventory/hud.tscn" id="4_g8h5j"]
 [ext_resource type="PackedScene" uid="uid://dfp3olwusga1y" path="res://Scenes/Pickups/shotgun_pickup.tscn" id="4_hdk3q"]
 [ext_resource type="PackedScene" uid="uid://bdnolrg1iett6" path="res://Scenes/Pickups/revolver_pickup.tscn" id="5_hdk3q"]
@@ -48,8 +47,6 @@ z_as_relative = false
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
 position = Vector2(-3, 2)
 script = SubResource("GDScript_ydmks")
-
-[node name="Ranged Weapons2" parent="World/Player" instance=ExtResource("3_e7hyo")]
 
 [node name="Layers" type="Node2D" parent="World"]
 
@@ -112,6 +109,7 @@ texture = ExtResource("15_4bofr")
 
 [node name="rAmmoAmount" type="Label" parent="HUD/WeaponDisplay/RevolverSlot"]
 layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
 [node name="ShotgunSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
@@ -123,6 +121,7 @@ texture = ExtResource("16_h6arw")
 
 [node name="sAmmoAmount" type="Label" parent="HUD/WeaponDisplay/ShotgunSlot"]
 layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
 [node name="RifleSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
@@ -134,6 +133,7 @@ texture = ExtResource("17_r1ohy")
 
 [node name="riAmmoAmount" type="Label" parent="HUD/WeaponDisplay/RifleSlot"]
 layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
 [node name="TommySlot4" type="VBoxContainer" parent="HUD/WeaponDisplay"]
@@ -145,9 +145,10 @@ texture = ExtResource("18_kda2h")
 
 [node name="tAmmoAmount" type="Label" parent="HUD/WeaponDisplay/TommySlot4"]
 layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
-[connection signal="ammo_fired" from="World/Player/Ranged Weapons2" to="." method="_on_ranged_weapons_2_ammo_fired"]
+[connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupGun" from="World/RevolverPickup" to="World/Player" method="_on_revolver_pickup_pickedup_gun"]
 [connection signal="pickedupRifle" from="World/RiflePickup" to="World/Player" method="_on_rifle_pickup_pickedup_rifle"]
@@ -156,3 +157,5 @@ horizontal_alignment = 1
 [connection signal="pickedupShotgunAmmo" from="World/shotgunAmmoPickup" to="World/Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]
 [connection signal="pickedupRifle" from="World/rifleAmmoPickup" to="World/Player" method="_on_rifle_ammo_pickup_pickedup_rifle"]
 [connection signal="pickedupTommyAmmo" from="World/TommyAmmoPickup" to="World/Player" method="_on_tommy_ammo_pickup_pickedup_tommy_ammo"]
+
+[editable path="World/Player"]
