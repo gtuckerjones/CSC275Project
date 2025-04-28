@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		$Shotgun.visible = false
 		$Rifle.visible = false
 		$Tommygun.visible = false
-		damage = randi_range(15,40)
+		damage = randi_range(15,30)
 		fire_rate = 0.25
 		
 		if Input.is_action_just_pressed("fire") and fire_cooldown <= 0.0 and revolverAmmo > 0:
@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 		$Shotgun.visible = false
 		$Rifle.visible = false
 		$Tommygun.visible = true
-		damage = randi_range(5,15)
+		damage = randi_range(5,10)
 		fire_rate = 0.1
 		
 		if Input.is_action_pressed("fire") and fire_cooldown <= 0.0 and tommyAmmo > 0:
