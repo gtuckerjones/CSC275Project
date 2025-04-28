@@ -9,23 +9,47 @@ var world_data := {
 
 var player_data := {
 	"last_player_position": Vector2i.ZERO,
-	"inventory": {"apple": 3,
-		"bread": 2}
+	"inventory": {
+		"apple": 3,
+		"bread": 2,
+		"banana": 1,
+		"pistol ammo": 50,
+		"rifle ammo": 30,
+		"shotgun ammo": 15,
+		"submachine gun ammo": 150
+	}
 }
 
+# Now this is a full usable loot table
 var findable_items := {
-	"item_name": {"traits": "Example"},
+	"crumpled_note": {"traits": "Handwritten, smudged ink"},
+	"rusty_key": {"traits": "Old, corroded, unknown door"},
+	"bloodstained_glove": {"traits": "Left-handed, leather"},
+	"broken_watch": {"traits": "Stopped at midnight"},
+	"mysterious_photograph": {"traits": "Torn edges, unknown faces"},
+	"empty_wallet": {"traits": "Monogrammed initials"},
+	"silver_locket": {"traits": "Hinged, missing photo"},
+	"strange_coin": {"traits": "Foreign markings, worn smooth"},
+	"matchbox": {"traits": "Bar logo, one match left"},
+	"half_smoked_cigar": {"traits": "Distinctive scent, rare brand"},
 }
 
 var food_dictionary = {
-
 	"apple": {
 		"id": "apple",
 		"name": "Apple",
 		"description": "A juicy red apple.",
-		"heal": 10,
+		"heal": 5,
 		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
 		"region_rect": get_region_from_coords(40, 1)
+	},
+	"banana": {
+		"id": "banana",
+		"name": "Banana",
+		"description": "A perfectly ripe banana.",
+		"heal": 5,
+		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
+		"region_rect": get_region_from_coords(40, 4)
 	},
 	"bread": {
 		"id": "bread",
@@ -34,6 +58,39 @@ var food_dictionary = {
 		"heal": 5,
 		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
 		"region_rect": get_region_from_coords(40, 9)
+	}
+}
+
+var ammo_dictionary = {
+	"pistol ammo": {
+		"id": "pistol ammo",
+		"name": "Pistol Ammo",
+		"description": "Shiny bullets, they look like they'll fit in a pistol",
+		"damage": 5,
+		"texture": preload("res://Artwork/Tilemap/2D Pickups v6.2 spritesheet.png"),
+		"region_rect": get_region_from_coords(1, 0)	
+	},
+	"shotgun ammo": {
+		"id": "shotgun ammo",
+		"name": "Shotgun Ammo",
+		"description": "Filled with heavy pellets, good for multiple targets at once",
+		"damage": 10,
+		"texture": preload("res://Artwork/Tilemap/2D Pickups v6.2 spritesheet.png"),
+		"region_rect": get_region_from_coords(1, 2)
+	},
+	"rifle ammo": {
+		"id": "rifle ammo",
+		"name": "Rifle Ammo",
+		"description": "Full Metal Jacket, will pack a punch",
+		"texture": preload("res://Artwork/Tilemap/2D Pickups v6.2 spritesheet.png"),
+		"region_rect": get_region_from_coords(1, 1)
+	},
+	"submachine gun ammo": {
+		"id": "submachine gun ammo",
+		"name": "Submachine Gun Ammo",
+		"description": "Aim? Never heard of it.",
+		"texture": preload("res://Artwork/Tilemap/2D Pickups v6.2 spritesheet.png"),
+		"region_rect": get_region_from_coords(2, 1)
 	}
 
 }
@@ -60,3 +117,12 @@ func get_region_from_coords(row: int, column: int, tile_size := Vector2(32, 32))
 	var x = column * tile_size.x
 	var y = row * tile_size.y
 	return Rect2(x, y, tile_size.x, tile_size.y)
+
+func get_item_data(item_id: String) -> Dictionary:
+	if food_dictionary.has(item_id):
+		return food_dictionary[item_id]
+	elif ammo_dictionary.has(item_id):
+		return ammo_dictionary[item_id]
+	# You could add other categories here too (weapons, armor, etc)
+	else:
+		return {}
