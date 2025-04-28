@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=19 format=3 uid="uid://bhdxhtov61apx"]
+
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
@@ -12,8 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://cuctnwehnwbby" path="res://Scenes/Pickups/shotgun_ammo_pickup.tscn" id="9_ige11"]
 [ext_resource type="PackedScene" uid="uid://bg5s34m5sl756" path="res://Scenes/Cacodeaemon/cacodaemon.tscn" id="9_lh8t4"]
 [ext_resource type="PackedScene" uid="uid://ba66qwal6i0c8" path="res://Scenes/Pickups/rifle_ammo_pickup.tscn" id="10_c103g"]
-[ext_resource type="Script" uid="uid://d0tw8cl0w6er" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
+[ext_resource type="Script" path="res://Scenes/Pickups/rifle_pickup.gd" id="11_t6a4a"]
 [ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="12_t6a4a"]
+
+[ext_resource type="PackedScene" uid="uid://b0w4x0tniud7w" path="res://Scenes/Pickups/food.tscn" id="13_j3p7k"]
+[ext_resource type="Texture2D" uid="uid://cutp4kcy06g66" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="15_4bofr"]
+[ext_resource type="Texture2D" uid="uid://cjnowiaipftwn" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/shotgun.png" id="16_h6arw"]
+[ext_resource type="Texture2D" uid="uid://k02ppllxvot8" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/rifle.png" id="17_r1ohy"]
+[ext_resource type="Texture2D" uid="uid://cffxut8sgriom" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="18_kda2h"]
+
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1
@@ -45,6 +54,13 @@ z_as_relative = false
 position = Vector2(-3, 2)
 script = SubResource("GDScript_ydmks")
 
+[node name="Camera2D2" type="Camera2D" parent="World/Player"]
+position = Vector2(-3, 2)
+script = SubResource("GDScript_ydmks")
+
+[node name="Cacodaemon" parent="World" instance=ExtResource("9_lh8t4")]
+position = Vector2(464, -244)
+
 [node name="Layers" type="Node2D" parent="World"]
 
 [node name="ground" type="TileMapLayer" parent="World/Layers"]
@@ -55,9 +71,10 @@ tile_set = ExtResource("3_67byq")
 z_index = 1
 z_as_relative = false
 tile_set = ExtResource("3_67byq")
-
+ 
 [node name="Cacodaemon" parent="World" instance=ExtResource("9_lh8t4")]
 position = Vector2(163, 48)
+
 
 [node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
 position = Vector2(120, -43)
@@ -84,7 +101,12 @@ script = ExtResource("11_t6a4a")
 [node name="TommyAmmoPickup" parent="World" instance=ExtResource("12_t6a4a")]
 position = Vector2(125, -94)
 
+[node name="Food" parent="World" instance=ExtResource("13_j3p7k")]
+visible = false
+position = Vector2(18, -12)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_g8h5j")]
 offset_left = -1.0
@@ -92,6 +114,62 @@ offset_top = 3.0
 offset_right = -1.0
 offset_bottom = 3.0
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="WeaponDisplay" type="HBoxContainer" parent="HUD"]
+offset_right = 104.0
+offset_bottom = 132.0
+scale = Vector2(1.5, 1.5)
+
+[node name="RevolverSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+
+[node name="revolverIcon" type="TextureRect" parent="HUD/WeaponDisplay/RevolverSlot"]
+layout_mode = 2
+texture = ExtResource("15_4bofr")
+
+[node name="rAmmoAmount" type="Label" parent="HUD/WeaponDisplay/RevolverSlot"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ShotgunSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+
+[node name="shotgunIcon" type="TextureRect" parent="HUD/WeaponDisplay/ShotgunSlot"]
+layout_mode = 2
+texture = ExtResource("16_h6arw")
+
+[node name="sAmmoAmount" type="Label" parent="HUD/WeaponDisplay/ShotgunSlot"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="RifleSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+
+[node name="rifleIcon" type="TextureRect" parent="HUD/WeaponDisplay/RifleSlot"]
+layout_mode = 2
+texture = ExtResource("17_r1ohy")
+
+[node name="riAmmoAmount" type="Label" parent="HUD/WeaponDisplay/RifleSlot"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="TommySlot4" type="VBoxContainer" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+
+[node name="tommyIcon" type="TextureRect" parent="HUD/WeaponDisplay/TommySlot4"]
+layout_mode = 2
+texture = ExtResource("18_kda2h")
+
+[node name="tAmmoAmount" type="Label" parent="HUD/WeaponDisplay/TommySlot4"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupGun" from="World/RevolverPickup" to="World/Player" method="_on_revolver_pickup_pickedup_gun"]
 [connection signal="pickedupRifle" from="World/RiflePickup" to="World/Player" method="_on_rifle_pickup_pickedup_rifle"]
@@ -100,3 +178,7 @@ offset_bottom = 3.0
 [connection signal="pickedupShotgunAmmo" from="World/shotgunAmmoPickup" to="World/Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]
 [connection signal="pickedupRifle" from="World/rifleAmmoPickup" to="World/Player" method="_on_rifle_ammo_pickup_pickedup_rifle"]
 [connection signal="pickedupTommyAmmo" from="World/TommyAmmoPickup" to="World/Player" method="_on_tommy_ammo_pickup_pickedup_tommy_ammo"]
+[connection signal="pickedUpFood" from="World/Food" to="World/Player" method="_on_food_picked_up_food"]
+
+[editable path="World/Player"]
+

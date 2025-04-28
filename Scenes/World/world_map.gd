@@ -29,7 +29,7 @@ func _ready():
 		_load_world_from_global()
 	else:
 		_generate_world()
-
+	_start_random_drops_timer()
 func _generate_world():
 	print("Generating new world...")
 
@@ -236,7 +236,73 @@ func can_place_building_at(origin: Vector2i, width: int, height: int, existing: 
 func get_player_position() -> Vector2i:
 	return player.global_position
 
+func random_drops():
+	var max_attempts = 100
+	var attempt = 0
+
+	while attempt < max_attempts:
+		attempt += 1
+		var tile_pos = ground_tiles_arr[randi() % ground_tiles_arr.size()]
+		if placed_houses.has(tile_pos): continue
+		if placed_trees.has(tile_pos): continue
+		if expanded_path.has(tile_pos): continue
+		if tile_pos == Vector2i(0, 0): continue
+
+		# Drop table with weights
+		var drop_table = [
+			{"name": "food", "scene": preload("res://Scenes/Pickups/food.tscn"), "weight": 50},
+			{"name": "pistol ammo", "scene": preload("res://Scenes/Pickups/revolver_ammo_pickup.tscn"), "weight": 30},
+			{"name": "rifle ammo", "scene": preload("res://Scenes/Pickups/rifle_ammo_pickup.tscn"), "weight": 20},
+			{"name": "shotgun ammo", "scene": preload("res://Scenes/Pickups/shotgun_ammo_pickup.tscn"), "weight": 10},
+			{"name": "submachine gun ammo", "scene": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"), "weight": 10},
+			{"name": "rifle", "scene": preload("res://Scenes/Pickups/rifle_pickup.tscn"), "weight": 5},
+			{"name": "shotgun", "scene": preload("res://Scenes/Pickups/shotgun_pickup.tscn"), "weight": 3},
+			{"name": "tommy gun", "scene": preload("res://Scenes/Pickups/tommygun_pickup.tscn"), "weight": 3}
+		]
+
+		var chosen_drop = choose_weighted_drop(drop_table)
+		var item = chosen_drop["scene"].instantiate()
+		item.position = tile_pos * ground_tile_map.tile_set.tile_size
+		add_child(item)
+
+		print("Spawned drop: %s at %s" % [chosen_drop["name"], tile_pos])
+		return
+
+	print("No valid spot found for a random drop.")
+
+
+func choose_weighted_drop(drop_table):
+	var total_weight = 0
+	for item in drop_table:
+		total_weight += item["weight"]
+
+	var random_value = randf() * total_weight
+	var current = 0
+
+	for item in drop_table:
+		current += item["weight"]
+		if random_value <= current:
+			return item
+	return drop_table[0]  # fallback
+
+func _start_random_drops_timer():
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.autostart = true
+	timer.one_shot = false
+	timer.timeout.connect(random_drops)
+	add_child(timer)
 #Artwork Credits
 #All ground, water, and road tiles by Sam Pritchett
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
+
+func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
+	if weapon_fired == "revolver":
+		$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
+	elif weapon_fired == "shotgun":
+		$HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
+	elif weapon_fired == "rifle":
+		$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
+	else:
+		$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)

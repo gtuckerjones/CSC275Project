@@ -8,6 +8,7 @@ size = Vector2(39, 13)
 
 [node name="ShotgunPickup" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 2
 script = ExtResource("1_sj583")
 metadata/_edit_group_ = true
 
