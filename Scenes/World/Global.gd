@@ -10,7 +10,7 @@ var world_data := {
 var player_data := {
 	"last_player_position": Vector2i.ZERO,
 	"inventory": {
-		"apple": 0,
+		"revolver": 0,
 		"bread": 0,
 		"banana": 0,
 		"pistol ammo": 0,
@@ -21,6 +21,22 @@ var player_data := {
 }
 
 # Now this is a full usable loot table
+
+var gun_dictionary = {
+	"revolver": {
+		"id": "revolver",
+		"name": "revolver",
+		"texture": preload("res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png"),
+		"region_rect": get_region_from_coords(1, 0)	
+	},
+	
+	"shotgun": {
+		"id": "pistol ammo",
+		"name": "Pistol Ammo",
+		"texture": preload("res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png"),
+		"region_rect": get_region_from_coords(1, 2)	
+	},
+}
 var findable_items := {
 	"crumpled_note": {"traits": "Handwritten, smudged ink"},
 	"rusty_key": {"traits": "Old, corroded, unknown door"},

@@ -16,6 +16,7 @@ func _process(delta):
 		if is_open:
 			close()
 		else:
+			_update_inventory_ui()
 			open()
 			
 func open():
