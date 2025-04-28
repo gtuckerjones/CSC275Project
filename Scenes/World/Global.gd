@@ -1,5 +1,7 @@
 extends Node
 
+var player_current_attack = false
+
 var world_data := {
 	"seed": null,
 	"road_points": [],
