@@ -6,6 +6,13 @@ extends CharacterBody2D
 @onready var road_tile_map = $"../Layers/roads" # Adjust path to your TileMap
 @onready var rangedWeapons = $"Ranged Weapons"
 @onready var sprite = $Sprite2D
+#mj edit start
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+var health = 100
+var player_alive = true
+
+#mj edit finish
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -39,9 +46,20 @@ func updateAnimation():
 			animations.play("WalkLeft")
 
 func _physics_process(delta):
+	enemy_attack()
 	handleInput()
 	move_and_slide()
 	updateAnimation()
+	#mj edit start
+	
+	
+	if health <= 0:
+		player_alive = false
+		health = 0
+		print("player has been killed")
+		call_deferred("game_over")
+		self.queue_free()
+		
 
 
 func _process(delta): 
@@ -97,3 +115,33 @@ func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
 	var addedAmmo = randi_range(10,30)
 	$"Ranged Weapons".tommyAmmo += addedAmmo
 	Global.add_item_to_inventory("submachine gun ammo", addedAmmo)
+
+#mj edit start
+func player():
+	pass
+
+func _on_player_hitbox_body_entered(body: Node2D):
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+		
+
+func _on_player_hitbox_body_exited(body: Node2D):
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+		
+		
+func enemy_attack():
+	if enemy_inattack_range == true and enemy_attack_cooldown == true:
+		health = health - 20
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(health)
+		
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
+	
+func game_over():
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+
+#mj edit finish
