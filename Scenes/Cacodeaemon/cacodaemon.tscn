@@ -1,7 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://bg5s34m5sl756"]
+[gd_scene load_steps=30 format=3 uid="uid://bg5s34m5sl756"]
 
 [ext_resource type="Script" uid="uid://0n2yclhm0kd4" path="res://Scenes/Cacodeaemon/cacodaemon.gd" id="1_wj647"]
-[ext_resource type="Texture2D" uid="uid://j2ufgam5jk8m" path="res://Spritesheets/Mob Sprites/Cacodeaemon/Cacodaemon Sprite Sheet.png" id="2_mpf6j"]
+[ext_resource type="Texture2D" uid="uid://j2ufgam5jk8m" path="res://Artwork/Spritesheets2/Mob Sprites/Cacodeaemon/Cacodaemon Sprite Sheet.png" id="2_mpf6j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqpfm"]
 atlas = ExtResource("2_mpf6j")
@@ -194,20 +194,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbrs5"]
+radius = 162.077
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqpfm"]
 radius = 21.4647
 height = 55.443
 
-[node name="Cacodaemon" type="RigidBody2D"]
+[node name="Cacodaemon" type="CharacterBody2D"]
+top_level = true
+motion_mode = 1
 script = ExtResource("1_wj647")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1xqd8")
-animation = &"preparetoattack"
-frame_progress = 0.807613
+animation = &"attack"
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_jbrs5")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.15362
 shape = SubResource("CapsuleShape2D_hqpfm")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

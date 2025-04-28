@@ -81,23 +81,27 @@ func _on_revolver_ammo_pickup_pickedup_revolver_ammo() -> void:
 	var addedAmmo = randi_range(3,8)
 	$"Ranged Weapons".revolverAmmo += addedAmmo
 	Global.add_item_to_inventory("pistol ammo", addedAmmo)
+	$"Ranged Weapons".emit_signal("ammo_fired", "revolver", $"Ranged Weapons".revolverAmmo)
 
 func _on_shotgun_ammo_pickup_pickedup_shotgun_ammo() -> void:
 	var addedAmmo = randi_range(2,5) * 5
 	$"Ranged Weapons".shotgunAmmo += addedAmmo
-	Global.add_item_to_inventory("shotgun ammo", addedAmmo)
+	Global.add_item_to_inventory("shotgun ammo", addedAmmo/5)
+	$"Ranged Weapons".emit_signal("ammo_fired", "shotgun", $"Ranged Weapons".shotgunAmmo)
 
 func _on_rifle_ammo_pickup_pickedup_rifle() -> void:
 	var addedAmmo = randi_range(2,5)
 	$"Ranged Weapons".rifleAmmo += addedAmmo
 	Global.add_item_to_inventory("rifle ammo", addedAmmo)
+	$"Ranged Weapons".emit_signal("ammo_fired", "rifle", $"Ranged Weapons".rifleAmmo)
 
 
 func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
 	var addedAmmo = randi_range(10,30)
 	$"Ranged Weapons".tommyAmmo += addedAmmo
 	Global.add_item_to_inventory("submachine gun ammo", addedAmmo)
-
-
+	$"Ranged Weapons".emit_signal("ammo_fired", "tommy", $"Ranged Weapons".tommyAmmo)
+  
 func _on_food_picked_up_food() -> void:
 	pass # Replace with function body.
+

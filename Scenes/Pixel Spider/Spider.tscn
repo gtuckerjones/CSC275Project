@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dwvian32unebf"]
 
 [ext_resource type="Script" uid="uid://ddfptx5gblcaq" path="res://Scenes/Pixel Spider/spider.gd" id="1_cgp8y"]
-[ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Spritesheets/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
+[ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Artwork/Spritesheets2/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbg4t"]
 atlas = ExtResource("2_oc654")
