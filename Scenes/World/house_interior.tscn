@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c52q3ed7bn2n8"]
+[gd_scene load_steps=34 format=4 uid="uid://c52q3ed7bn2n8"]
 
 [ext_resource type="Script" uid="uid://dbajvkwbppg28" path="res://Scenes/World/house_interior.gd" id="1_mj5fi"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="1_wetxt"]
@@ -8,6 +8,31 @@
 [ext_resource type="Script" uid="uid://besta0vh38k8i" path="res://Scenes/World/interactable_furniture.gd" id="5_v5yls"]
 [ext_resource type="Texture2D" uid="uid://b4padjnjsjv43" path="res://Artwork/Tilemap/house/bedroom  furniture.png" id="7_mtvy5"]
 [ext_resource type="Script" uid="uid://c031tx2dlt4l" path="res://Scenes/exit_door.gd" id="8_ebh1n"]
+[ext_resource type="Texture2D" uid="uid://bcx3s21jvoojh" path="res://Artwork/Tilemap/house/bathroom.png" id="9_eps7e"]
+[ext_resource type="Texture2D" uid="uid://bf42o821y85r5" path="res://Artwork/Tilemap/house/kitchen furniture.png" id="10_gr21l"]
+
+[sub_resource type="GDScript" id="GDScript_ebh1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8un7"]
+size = Vector2(55, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7t88"]
+size = Vector2(26, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6u4c"]
+size = Vector2(33, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ll8"]
+size = Vector2(44, 56.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0fxm"]
+size = Vector2(52, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtvy5"]
+size = Vector2(27, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o423p"]
+size = Vector2(32, 73.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5yls"]
 size = Vector2(34, 50)
@@ -18,201 +43,44 @@ size = Vector2(95, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebh1n"]
 size = Vector2(117, 65)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtvy5"]
-size = Vector2(27, 55)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr21l"]
+size = Vector2(25, 63)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o423p"]
-size = Vector2(32, 73.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y0hq"]
+size = Vector2(31, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ll8"]
-size = Vector2(44, 56.375)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5lhg"]
+size = Vector2(17, 31)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0fxm"]
-size = Vector2(52, 71)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bajav"]
+size = Vector2(29, 38)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7t88"]
-size = Vector2(26, 27)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdyjj"]
+size = Vector2(26, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6u4c"]
-size = Vector2(33, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhvjm"]
+size = Vector2(38, 44)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8un7"]
-size = Vector2(55, 62)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5h5u"]
+size = Vector2(23, 41)
 
-[sub_resource type="GDScript" id="GDScript_ebh1n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q54tc"]
+size = Vector2(30, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvjng"]
+size = Vector2(44, 27.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcqe1"]
+size = Vector2(58, 37.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5gu5"]
+size = Vector2(24, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ogif"]
+size = Vector2(30, 62)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mj5fi")
-
-[node name="Floor" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAABIAAAABAAEAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAAAABYAAAABAAEAAAAAABcAAAABAAEAAAABABIAAAABAAEAAAABABMAAAABAAEAAAABABQAAAABAAEAAAABABUAAAABAAEAAAABABYAAAABAAEAAAABABcAAAABAAEAAAACABIAAAABAAEAAAACABMAAAABAAEAAAACABQAAAABAAEAAAACABUAAAABAAEAAAACABYAAAABAAEAAAACABcAAAABAAEAAAADABIAAAABAAEAAAADABMAAAABAAEAAAADABQAAAABAAEAAAADABUAAAABAAEAAAADABYAAAABAAEAAAADABcAAAABAAEAAAAEABIAAAABAAEAAAAEABMAAAABAAEAAAAEABQAAAABAAEAAAAEABUAAAABAAEAAAAEABYAAAABAAEAAAAEABcAAAABAAEAAAAFABIAAAABAAEAAAAFABMAAAABAAEAAAAFABQAAAABAAEAAAAFABUAAAABAAEAAAAFABYAAAABAAEAAAAFABcAAAABAAEAAAAGABIAAAABAAEAAAAGABMAAAABAAEAAAAGABQAAAABAAEAAAAGABUAAAABAAEAAAAGABYAAAABAAEAAAAGABcAAAABAAEAAAAHABIAAAABAAEAAAAHABMAAAABAAEAAAAHABQAAAABAAEAAAAHABUAAAABAAEAAAAHABYAAAABAAEAAAAHABcAAAABAAEAAAAIABIAAAABAAEAAAAIABMAAAABAAEAAAAIABQAAAABAAEAAAAIABUAAAABAAEAAAAIABYAAAABAAEAAAAIABcAAAABAAEAAAAJABIAAAABAAEAAAAJABMAAAABAAEAAAAJABQAAAABAAEAAAAJABUAAAABAAEAAAAJABYAAAABAAEAAAAJABcAAAABAAEAAAAKABIAAAABAAEAAAAKABMAAAABAAEAAAAKABQAAAABAAEAAAAKABUAAAABAAEAAAAKABYAAAABAAEAAAAKABcAAAABAAEAAAALABIAAAABAAEAAAALABMAAAABAAEAAAALABQAAAABAAEAAAALABUAAAABAAEAAAALABYAAAABAAEAAAALABcAAAABAAEAAAAMABIAAAABAAEAAAAMABMAAAABAAEAAAAMABQAAAABAAEAAAAMABUAAAABAAEAAAAMABYAAAABAAEAAAAMABcAAAABAAEAAAANABIAAAABAAEAAAANABMAAAABAAEAAAANABQAAAABAAEAAAANABUAAAABAAEAAAANABYAAAABAAEAAAANABcAAAABAAEAAAAOABIAAAABAAEAAAAOABMAAAABAAEAAAAOABQAAAABAAEAAAAOABUAAAABAAEAAAAOABYAAAABAAEAAAAOABcAAAABAAEAAAAPABIAAAABAAEAAAAPABMAAAABAAEAAAAPABQAAAABAAEAAAAPABUAAAABAAEAAAAPABYAAAABAAEAAAAPABcAAAABAAEAAAAQABIAAAABAAEAAAAQABMAAAABAAEAAAAQABQAAAABAAEAAAAQABUAAAABAAEAAAAQABYAAAABAAEAAAAQABcAAAABAAEAAAARABIAAAABAAEAAAARABMAAAABAAEAAAARABQAAAABAAEAAAARABUAAAABAAEAAAARABYAAAABAAEAAAARABcAAAABAAEAAAASABIAAAABAAEAAAASABMAAAABAAEAAAASABQAAAABAAEAAAASABUAAAABAAEAAAASABYAAAABAAEAAAASABcAAAABAAEAAAATABIAAAABAAEAAAATABMAAAABAAEAAAATABQAAAABAAEAAAATABUAAAABAAEAAAATABYAAAABAAEAAAATABcAAAABAAEAAAAUABIAAAABAAEAAAAUABMAAAABAAEAAAAUABQAAAABAAEAAAAUABUAAAABAAEAAAAUABYAAAABAAEAAAAUABcAAAABAAEAAAAVABIAAAABAAEAAAAVABMAAAABAAEAAAAVABQAAAABAAEAAAAVABUAAAABAAEAAAAVABYAAAABAAEAAAAVABcAAAABAAEAAAAWABIAAAABAAEAAAAWABMAAAABAAEAAAAWABQAAAABAAEAAAAWABUAAAABAAEAAAAWABYAAAABAAEAAAAWABcAAAABAAEAAAAXABIAAAABAAEAAAAXABMAAAABAAEAAAAXABQAAAABAAEAAAAXABUAAAABAAEAAAAXABYAAAABAAEAAAAXABcAAAABAAEAAAAAAA4AAAAEAAEAAAABAA4AAAAEAAEAAAACAA4AAAAEAAEAAAADAA4AAAAEAAEAAAAEAA4AAAAEAAEAAAAFAA4AAAAEAAEAAAAGAA4AAAAEAAEAAAAHAA4AAAAEAAEAAAAIAA4AAAAEAAEAAAAJAA4AAAAEAAEAAAAAAAoAAAAEAAEAAAAAAAsAAAAEAAEAAAAAAAwAAAAEAAEAAAAAAA0AAAAEAAEAAAABAAoAAAAEAAEAAAABAAsAAAAEAAEAAAABAAwAAAAEAAEAAAABAA0AAAAEAAEAAAACAAoAAAAEAAEAAAACAAsAAAAEAAEAAAACAAwAAAAEAAEAAAACAA0AAAAEAAEAAAADAAoAAAAEAAEAAAADAAsAAAAEAAEAAAADAAwAAAAEAAEAAAADAA0AAAAEAAEAAAAEAAoAAAAEAAEAAAAEAAsAAAAEAAEAAAAEAAwAAAAEAAEAAAAEAA0AAAAEAAEAAAAFAAoAAAAEAAEAAAAFAAsAAAAEAAEAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAGAAoAAAAEAAEAAAAGAAsAAAAEAAEAAAAGAAwAAAAEAAEAAAAGAA0AAAAEAAEAAAAHAAoAAAAEAAEAAAAHAAsAAAAEAAEAAAAHAAwAAAAEAAEAAAAHAA0AAAAEAAEAAAAIAAoAAAAEAAEAAAAIAAsAAAAEAAEAAAAIAAwAAAAEAAEAAAAIAA0AAAAEAAEAAAAJAAoAAAAEAAEAAAAJAAsAAAAEAAEAAAAJAAwAAAAEAAEAAAAJAA0AAAAEAAEAAAAOAAoAAAAHAAEAAAAOAAsAAAAHAAEAAAAOAAwAAAAHAAEAAAAOAA0AAAAHAAEAAAAOAA4AAAAHAAEAAAAPAAoAAAAHAAEAAAAPAAsAAAAHAAEAAAAPAAwAAAAHAAEAAAAPAA0AAAAHAAEAAAAPAA4AAAAHAAEAAAAQAAoAAAAHAAEAAAAQAAsAAAAHAAEAAAAQAAwAAAAHAAEAAAAQAA0AAAAHAAEAAAAQAA4AAAAHAAEAAAARAAoAAAAHAAEAAAARAAsAAAAHAAEAAAARAAwAAAAHAAEAAAARAA0AAAAHAAEAAAARAA4AAAAHAAEAAAASAAoAAAAHAAEAAAASAAsAAAAHAAEAAAASAAwAAAAHAAEAAAASAA0AAAAHAAEAAAASAA4AAAAHAAEAAAATAAoAAAAHAAEAAAATAAsAAAAHAAEAAAATAAwAAAAHAAEAAAATAA0AAAAHAAEAAAATAA4AAAAHAAEAAAAUAAoAAAAHAAEAAAAUAAsAAAAHAAEAAAAUAAwAAAAHAAEAAAAUAA0AAAAHAAEAAAAUAA4AAAAHAAEAAAAVAAoAAAAHAAEAAAAVAAsAAAAHAAEAAAAVAAwAAAAHAAEAAAAVAA0AAAAHAAEAAAAVAA4AAAAHAAEAAAAWAAoAAAAHAAEAAAAWAAsAAAAHAAEAAAAWAAwAAAAHAAEAAAAWAA0AAAAHAAEAAAAWAA4AAAAHAAEAAAAXAAoAAAAHAAEAAAAXAAsAAAAHAAEAAAAXAAwAAAAHAAEAAAAXAA0AAAAHAAEAAAAXAA4AAAAHAAEAAAALAAoAAAABAAEAAAALAAsAAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAALAA4AAAABAAEAAAAMAAoAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAABAAAAABAAEAAAAAABEAAAABAAEAAAABAA8AAAABAAEAAAABABAAAAABAAEAAAABABEAAAABAAEAAAACAA8AAAABAAEAAAACABAAAAABAAEAAAACABEAAAABAAEAAAADAA8AAAABAAEAAAADABAAAAABAAEAAAADABEAAAABAAEAAAAEAA8AAAABAAEAAAAEABAAAAABAAEAAAAEABEAAAABAAEAAAAFAA8AAAABAAEAAAAFABAAAAABAAEAAAAFABEAAAABAAEAAAAGAA8AAAABAAEAAAAGABAAAAABAAEAAAAGABEAAAABAAEAAAAHAA8AAAABAAEAAAAHABAAAAABAAEAAAAHABEAAAABAAEAAAAIAA8AAAABAAEAAAAIABAAAAABAAEAAAAIABEAAAABAAEAAAAJAA8AAAABAAEAAAAJABAAAAABAAEAAAAJABEAAAABAAEAAAAKAA8AAAABAAEAAAAKABAAAAABAAEAAAAKABEAAAABAAEAAAALAA8AAAABAAEAAAALABAAAAABAAEAAAALABEAAAABAAEAAAAMAA8AAAABAAEAAAAMABAAAAABAAEAAAAMABEAAAABAAEAAAANAA8AAAABAAEAAAANABAAAAABAAEAAAANABEAAAABAAEAAAAOAA8AAAABAAEAAAAOABAAAAABAAEAAAAOABEAAAABAAEAAAAPAA8AAAABAAEAAAAPABAAAAABAAEAAAAPABEAAAABAAEAAAAQAA8AAAABAAEAAAAQABAAAAABAAEAAAAQABEAAAABAAEAAAARAA8AAAABAAEAAAARABAAAAABAAEAAAARABEAAAABAAEAAAASAA8AAAABAAEAAAASABAAAAABAAEAAAASABEAAAABAAEAAAATAA8AAAABAAEAAAATABAAAAABAAEAAAATABEAAAABAAEAAAAUAA8AAAABAAEAAAAUABAAAAABAAEAAAAUABEAAAABAAEAAAAVAA8AAAABAAEAAAAVABAAAAABAAEAAAAVABEAAAABAAEAAAAWAA8AAAABAAEAAAAWABAAAAABAAEAAAAWABEAAAABAAEAAAAXAA8AAAABAAEAAAAXABAAAAABAAEAAAAXABEAAAABAAEAAAAKAAoAAAABAAEAAAAKAAsAAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAANAAoAAAABAAEAAAANAAsAAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAANAA4AAAABAAEAAAA=")
-tile_set = ExtResource("1_wetxt")
-
-[node name="BackWalls" type="TileMapLayer" parent="."]
-z_index = 1
-tile_map_data = PackedByteArray("AAABAAkABAAHAAAAAAACAAkABAAHAAAAAAADAAkABAAHAAAAAAAEAAkABAAHAAAAAAAFAAkABAAHAAAAAAAGAAkABAAHAAAAAAAHAAkABAAHAAAAAAAIAAkABAAHAAAAAAAJAAkABAAHAAAAAAAKAAkABAAHAAAAAAALAAkABAAHAAAAAAAMAAkABAAHAAAAAAANAAkABAAHAAAAAAAOAAkABAAHAAAAAAAPAAkABAAHAAAAAAAQAAkABAAHAAAAAAARAAkABAAHAAAAAAASAAkABAAHAAAAAAATAAkABAAHAAAAAAAUAAkABAAHAAAAAAAVAAkABAAHAAAAAAAWAAkABAAHAAAAAAAAAAcABAAGAAAAAAAAAA0ABAAGAAMAAAAXAAcABAAKAAAAAAAIABAABAAHAAAAAAAFABAABAAHAAAAAAACABAABAAHAAAAAAABABAABAAHAAAAAAAPABAABAAHAAAAAAAQABAABAAHAAAAAAARABAABAAHAAAAAAASABAABAAHAAAAAAATABAABAAHAAAAAAAUABAABAAHAAAAAAAVABAABAAHAAAAAAAWABAABAAHAAAAAAANAA4ABAAKAAIAAAANAA8ABAAKAAIAAAANABAABAAKAAIAAAAKAA4ABAAGAAIAAAAKAA8ABAAGAAIAAAAKABAABAAGAAIAAAA=")
-tile_set = ExtResource("1_wetxt")
-
-[node name="SideWalls" type="TileMapLayer" parent="."]
-z_index = 2
-tile_map_data = PackedByteArray("AAAXAAkABAAKAAEAAAAXAAoABAAKAAEAAAAXAAsABAAKAAEAAAAXAAwABAAKAAEAAAAXAA0ABAAKAAEAAAAXAA4ABAAKAAEAAAAXAA8ABAAKAAEAAAAXABAABAAKAAEAAAAXABEABAAKAAEAAAAXABIABAAKAAEAAAAXABMABAAKAAEAAAAXABQABAAKAAEAAAAXABUABAAKAAEAAAAXABYABAAKAAEAAAAXABcABAAKAAEAAAAXAAgABAAKAAEAAAAXAAcABAAKAAEAAAAAAAcABAAGAAEAAAAAAAgABAAGAAEAAAAAAAkABAAGAAEAAAAAAAoABAAGAAEAAAAAAAsABAAGAAEAAAAAAAwABAAGAAEAAAAAAA0ABAAGAAEAAAAAAA4ABAAGAAEAAAAAAA8ABAAGAAEAAAAAABAABAAGAAEAAAAAABEABAAGAAEAAAAAABIABAAGAAEAAAAAABMABAAGAAEAAAAAABQABAAGAAEAAAAAABUABAAGAAEAAAAAABYABAAGAAEAAAAAABcABAAGAAEAAAAKAAoABAAGAAEAAAANAAoABAAKAAEAAAANAA0ABAAKAAIAAAAKAA0ABAAGAAIAAAAKAA4ABAAGAAIAAAAKAA8ABAAGAAIAAAAKABAABAAGAAIAAAANAA4ABAAKAAIAAAANAA8ABAAKAAIAAAANABAABAAKAAIAAAABABoABAAHAAAAAAACABoABAAHAAAAAAADABoABAAHAAAAAAAEABoABAAHAAAAAAAFABoABAAHAAAAAAAGABoABAAHAAAAAAAHABoABAAHAAAAAAAIABoABAAHAAAAAAAJABoABAAHAAAAAAAKABoABAAHAAAAAAALABoABAAHAAAAAAAMABoABAAHAAAAAAANABoABAAHAAAAAAAOABoABAAHAAAAAAAPABoABAAHAAAAAAAQABoABAAHAAAAAAARABoABAAHAAAAAAASABoABAAHAAAAAAATABoABAAHAAAAAAAUABoABAAHAAAAAAAVABoABAAHAAAAAAAWABoABAAHAAAAAAA=")
-tile_set = ExtResource("1_wetxt")
-
-[node name="Door" type="StaticBody2D" parent="."]
-position = Vector2(-1, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Door"]
-z_index = 2
-position = Vector2(193, 408)
-scale = Vector2(1, 0.75)
-texture = ExtResource("2_1trbi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-z_index = 2
-position = Vector2(193, 408)
-shape = SubResource("RectangleShape2D_v5yls")
-
-[node name="Couch" type="StaticBody2D" parent="."]
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Couch"]
-z_index = 1
-position = Vector2(72, 280)
-scale = Vector2(1.51948, 1.14894)
-texture = ExtResource("4_1trbi")
-region_enabled = true
-region_rect = Rect2(9.64877, 85.2822, 77.6152, 47.19)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Couch"]
-z_index = 1
-position = Vector2(71.5, 280)
-shape = SubResource("RectangleShape2D_mj5fi")
-
-[node name="Area2D" type="Area2D" parent="Couch"]
-position = Vector2(7.62939e-06, 0)
-script = ExtResource("5_v5yls")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Couch/Area2D"]
-z_index = 2
-position = Vector2(72.5, 277.5)
-shape = SubResource("RectangleShape2D_ebh1n")
-
-[node name="SearchPrompt" type="Label" parent="Couch/Area2D"]
-z_index = 3
-offset_left = 56.0
-offset_top = 269.0
-offset_right = 96.0
-offset_bottom = 292.0
-theme_override_font_sizes/font_size = 10
-
-[node name="Cabinet" type="StaticBody2D" parent="."]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet"]
-z_index = 2
-position = Vector2(360.5, 263.5)
-shape = SubResource("RectangleShape2D_mtvy5")
-
-[node name="Sprite2D" type="Sprite2D" parent="Cabinet"]
-z_index = 1
-position = Vector2(361, 264)
-texture = ExtResource("4_1trbi")
-region_enabled = true
-region_rect = Rect2(16.7201, 18.6266, 31.229, 66.584)
-
-[node name="Area2D" type="Area2D" parent="Cabinet"]
-script = ExtResource("5_v5yls")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet/Area2D"]
-z_index = 2
-position = Vector2(362, 272)
-shape = SubResource("RectangleShape2D_o423p")
-
-[node name="SearchPrompt" type="Label" parent="Cabinet/Area2D"]
-z_index = 3
-offset_left = 335.0
-offset_top = 257.0
-offset_right = 401.0
-offset_bottom = 280.0
-theme_override_font_sizes/font_size = 10
-
-[node name="Bed" type="StaticBody2D" parent="."]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-z_index = 2
-position = Vector2(318, 277.188)
-shape = SubResource("RectangleShape2D_g4ll8")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bed"]
-z_index = 1
-position = Vector2(317, 282)
-texture = ExtResource("7_mtvy5")
-region_enabled = true
-region_rect = Rect2(113.689, 75.7999, 47.5838, 57.3016)
-
-[node name="Area2D" type="Area2D" parent="Bed"]
-script = ExtResource("5_v5yls")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area2D"]
-z_index = 3
-position = Vector2(318, 274.5)
-shape = SubResource("RectangleShape2D_y0fxm")
-
-[node name="SearchPrompt" type="Label" parent="Bed/Area2D"]
-z_index = 3
-offset_left = 277.0
-offset_top = 264.0
-offset_right = 343.0
-offset_bottom = 287.0
-theme_override_font_sizes/font_size = 10
-
-[node name="NightStand" type="StaticBody2D" parent="."]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NightStand"]
-z_index = 2
-position = Vector2(273, 272.5)
-shape = SubResource("RectangleShape2D_d7t88")
-
-[node name="Sprite2D" type="Sprite2D" parent="NightStand"]
-z_index = 1
-position = Vector2(273, 273)
-texture = ExtResource("7_mtvy5")
-region_enabled = true
-region_rect = Rect2(260.484, 16.7833, 28.6981, 32.3857)
-
-[node name="Area2D" type="Area2D" parent="NightStand"]
-script = ExtResource("5_v5yls")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NightStand/Area2D"]
-z_index = 3
-position = Vector2(272.5, 277)
-shape = SubResource("RectangleShape2D_q6u4c")
-
-[node name="SearchPrompt" type="Label" parent="NightStand/Area2D"]
-z_index = 3
-offset_left = 273.0
-offset_top = 277.0
-offset_right = 339.0
-offset_bottom = 300.0
-theme_override_font_sizes/font_size = 10
-
-[node name="ExitDoor" type="Area2D" parent="."]
-script = ExtResource("8_ebh1n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
-z_index = 3
-position = Vector2(193.5, 401)
-shape = SubResource("RectangleShape2D_d8un7")
-
-[node name="ExitPrompt" type="Label" parent="ExitDoor"]
-z_index = 3
-offset_left = 160.0
-offset_top = 398.0
-offset_right = 226.0
-offset_bottom = 421.0
-theme_override_font_sizes/font_size = 10
 
 [node name="Player" parent="." instance=ExtResource("3_mj5fi")]
 z_index = 2
@@ -223,3 +91,381 @@ position = Vector2(194.567, 359.571)
 position = Vector2(-3, 2)
 zoom = Vector2(2.2, 2.2)
 script = SubResource("GDScript_ebh1n")
+
+[node name="Main Room" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Area2D" parent="Main Room"]
+script = ExtResource("8_ebh1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/ExitDoor"]
+z_index = 3
+position = Vector2(193.5, 401)
+shape = SubResource("RectangleShape2D_d8un7")
+
+[node name="ExitPrompt" type="Label" parent="Main Room/ExitDoor"]
+z_index = 3
+offset_left = 160.0
+offset_top = 398.0
+offset_right = 226.0
+offset_bottom = 421.0
+theme_override_font_sizes/font_size = 10
+
+[node name="NightStand" type="StaticBody2D" parent="Main Room"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/NightStand"]
+z_index = 2
+position = Vector2(273, 272.5)
+shape = SubResource("RectangleShape2D_d7t88")
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Room/NightStand"]
+z_index = 1
+position = Vector2(273, 273)
+texture = ExtResource("7_mtvy5")
+region_enabled = true
+region_rect = Rect2(260.484, 16.7833, 28.6981, 32.3857)
+
+[node name="Area2D" type="Area2D" parent="Main Room/NightStand"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/NightStand/Area2D"]
+z_index = 3
+position = Vector2(272.5, 277)
+shape = SubResource("RectangleShape2D_q6u4c")
+
+[node name="SearchPrompt" type="Label" parent="Main Room/NightStand/Area2D"]
+z_index = 3
+offset_left = 273.0
+offset_top = 277.0
+offset_right = 339.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Bed" type="StaticBody2D" parent="Main Room"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Bed"]
+z_index = 2
+position = Vector2(318, 277.188)
+shape = SubResource("RectangleShape2D_g4ll8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Room/Bed"]
+z_index = 1
+position = Vector2(317, 282)
+texture = ExtResource("7_mtvy5")
+region_enabled = true
+region_rect = Rect2(113.689, 75.7999, 47.5838, 57.3016)
+
+[node name="Area2D" type="Area2D" parent="Main Room/Bed"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Bed/Area2D"]
+z_index = 3
+position = Vector2(318, 274.5)
+shape = SubResource("RectangleShape2D_y0fxm")
+
+[node name="SearchPrompt" type="Label" parent="Main Room/Bed/Area2D"]
+z_index = 3
+offset_left = 277.0
+offset_top = 264.0
+offset_right = 343.0
+offset_bottom = 287.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Cabinet" type="StaticBody2D" parent="Main Room"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Cabinet"]
+z_index = 2
+position = Vector2(360.5, 263.5)
+shape = SubResource("RectangleShape2D_mtvy5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Room/Cabinet"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("4_1trbi")
+region_enabled = true
+region_rect = Rect2(16.7201, 18.6266, 31.229, 66.584)
+
+[node name="Area2D" type="Area2D" parent="Main Room/Cabinet"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Cabinet/Area2D"]
+z_index = 2
+position = Vector2(362, 272)
+shape = SubResource("RectangleShape2D_o423p")
+
+[node name="SearchPrompt" type="Label" parent="Main Room/Cabinet/Area2D"]
+z_index = 3
+offset_left = 335.0
+offset_top = 257.0
+offset_right = 401.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Door" type="StaticBody2D" parent="Main Room"]
+position = Vector2(-1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Room/Door"]
+z_index = 2
+position = Vector2(193, 408)
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_1trbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Door"]
+z_index = 2
+position = Vector2(193, 408)
+shape = SubResource("RectangleShape2D_v5yls")
+
+[node name="Couch" type="StaticBody2D" parent="Main Room"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Room/Couch"]
+z_index = 1
+position = Vector2(72, 280)
+scale = Vector2(1.51948, 1.14894)
+texture = ExtResource("4_1trbi")
+region_enabled = true
+region_rect = Rect2(9.64877, 85.2822, 77.6152, 47.19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Couch"]
+z_index = 1
+position = Vector2(71.5, 280)
+shape = SubResource("RectangleShape2D_mj5fi")
+
+[node name="Area2D" type="Area2D" parent="Main Room/Couch"]
+position = Vector2(7.62939e-06, 0)
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Room/Couch/Area2D"]
+z_index = 2
+position = Vector2(72.5, 277.5)
+shape = SubResource("RectangleShape2D_ebh1n")
+
+[node name="SearchPrompt" type="Label" parent="Main Room/Couch/Area2D"]
+z_index = 3
+offset_left = 56.0
+offset_top = 269.0
+offset_right = 96.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="Structure"]
+tile_map_data = PackedByteArray("AAAAABIAAAABAAEAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAAAABYAAAABAAEAAAAAABcAAAABAAEAAAABABIAAAABAAEAAAABABMAAAABAAEAAAABABQAAAABAAEAAAABABUAAAABAAEAAAABABYAAAABAAEAAAABABcAAAABAAEAAAACABIAAAABAAEAAAACABMAAAABAAEAAAACABQAAAABAAEAAAACABUAAAABAAEAAAACABYAAAABAAEAAAACABcAAAABAAEAAAADABIAAAABAAEAAAADABMAAAABAAEAAAADABQAAAABAAEAAAADABUAAAABAAEAAAADABYAAAABAAEAAAADABcAAAABAAEAAAAEABIAAAABAAEAAAAEABMAAAABAAEAAAAEABQAAAABAAEAAAAEABUAAAABAAEAAAAEABYAAAABAAEAAAAEABcAAAABAAEAAAAFABIAAAABAAEAAAAFABMAAAABAAEAAAAFABQAAAABAAEAAAAFABUAAAABAAEAAAAFABYAAAABAAEAAAAFABcAAAABAAEAAAAGABIAAAABAAEAAAAGABMAAAABAAEAAAAGABQAAAABAAEAAAAGABUAAAABAAEAAAAGABYAAAABAAEAAAAGABcAAAABAAEAAAAHABIAAAABAAEAAAAHABMAAAABAAEAAAAHABQAAAABAAEAAAAHABUAAAABAAEAAAAHABYAAAABAAEAAAAHABcAAAABAAEAAAAIABIAAAABAAEAAAAIABMAAAABAAEAAAAIABQAAAABAAEAAAAIABUAAAABAAEAAAAIABYAAAABAAEAAAAIABcAAAABAAEAAAAJABIAAAABAAEAAAAJABMAAAABAAEAAAAJABQAAAABAAEAAAAJABUAAAABAAEAAAAJABYAAAABAAEAAAAJABcAAAABAAEAAAAKABIAAAABAAEAAAAKABMAAAABAAEAAAAKABQAAAABAAEAAAAKABUAAAABAAEAAAAKABYAAAABAAEAAAAKABcAAAABAAEAAAALABIAAAABAAEAAAALABMAAAABAAEAAAALABQAAAABAAEAAAALABUAAAABAAEAAAALABYAAAABAAEAAAALABcAAAABAAEAAAAMABIAAAABAAEAAAAMABMAAAABAAEAAAAMABQAAAABAAEAAAAMABUAAAABAAEAAAAMABYAAAABAAEAAAAMABcAAAABAAEAAAANABIAAAABAAEAAAANABMAAAABAAEAAAANABQAAAABAAEAAAANABUAAAABAAEAAAANABYAAAABAAEAAAANABcAAAABAAEAAAAOABIAAAABAAEAAAAOABMAAAABAAEAAAAOABQAAAABAAEAAAAOABUAAAABAAEAAAAOABYAAAABAAEAAAAOABcAAAABAAEAAAAPABIAAAABAAEAAAAPABMAAAABAAEAAAAPABQAAAABAAEAAAAPABUAAAABAAEAAAAPABYAAAABAAEAAAAPABcAAAABAAEAAAAQABIAAAABAAEAAAAQABMAAAABAAEAAAAQABQAAAABAAEAAAAQABUAAAABAAEAAAAQABYAAAABAAEAAAAQABcAAAABAAEAAAARABIAAAABAAEAAAARABMAAAABAAEAAAARABQAAAABAAEAAAARABUAAAABAAEAAAARABYAAAABAAEAAAARABcAAAABAAEAAAASABIAAAABAAEAAAASABMAAAABAAEAAAASABQAAAABAAEAAAASABUAAAABAAEAAAASABYAAAABAAEAAAASABcAAAABAAEAAAATABIAAAABAAEAAAATABMAAAABAAEAAAATABQAAAABAAEAAAATABUAAAABAAEAAAATABYAAAABAAEAAAATABcAAAABAAEAAAAUABIAAAABAAEAAAAUABMAAAABAAEAAAAUABQAAAABAAEAAAAUABUAAAABAAEAAAAUABYAAAABAAEAAAAUABcAAAABAAEAAAAVABIAAAABAAEAAAAVABMAAAABAAEAAAAVABQAAAABAAEAAAAVABUAAAABAAEAAAAVABYAAAABAAEAAAAVABcAAAABAAEAAAAWABIAAAABAAEAAAAWABMAAAABAAEAAAAWABQAAAABAAEAAAAWABUAAAABAAEAAAAWABYAAAABAAEAAAAWABcAAAABAAEAAAAXABIAAAABAAEAAAAXABMAAAABAAEAAAAXABQAAAABAAEAAAAXABUAAAABAAEAAAAXABYAAAABAAEAAAAXABcAAAABAAEAAAAAAA4AAAAEAAEAAAABAA4AAAAEAAEAAAACAA4AAAAEAAEAAAADAA4AAAAEAAEAAAAEAA4AAAAEAAEAAAAFAA4AAAAEAAEAAAAGAA4AAAAEAAEAAAAHAA4AAAAEAAEAAAAIAA4AAAAEAAEAAAAJAA4AAAAEAAEAAAAAAAoAAAAEAAEAAAAAAAsAAAAEAAEAAAAAAAwAAAAEAAEAAAAAAA0AAAAEAAEAAAABAAoAAAAEAAEAAAABAAsAAAAEAAEAAAABAAwAAAAEAAEAAAABAA0AAAAEAAEAAAACAAoAAAAEAAEAAAACAAsAAAAEAAEAAAACAAwAAAAEAAEAAAACAA0AAAAEAAEAAAADAAoAAAAEAAEAAAADAAsAAAAEAAEAAAADAAwAAAAEAAEAAAADAA0AAAAEAAEAAAAEAAoAAAAEAAEAAAAEAAsAAAAEAAEAAAAEAAwAAAAEAAEAAAAEAA0AAAAEAAEAAAAFAAoAAAAEAAEAAAAFAAsAAAAEAAEAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAGAAoAAAAEAAEAAAAGAAsAAAAEAAEAAAAGAAwAAAAEAAEAAAAGAA0AAAAEAAEAAAAHAAoAAAAEAAEAAAAHAAsAAAAEAAEAAAAHAAwAAAAEAAEAAAAHAA0AAAAEAAEAAAAIAAoAAAAEAAEAAAAIAAsAAAAEAAEAAAAIAAwAAAAEAAEAAAAIAA0AAAAEAAEAAAAJAAoAAAAEAAEAAAAJAAsAAAAEAAEAAAAJAAwAAAAEAAEAAAAJAA0AAAAEAAEAAAAOAAoAAAAHAAEAAAAOAAsAAAAHAAEAAAAOAAwAAAAHAAEAAAAOAA0AAAAHAAEAAAAOAA4AAAAHAAEAAAAPAAoAAAAHAAEAAAAPAAsAAAAHAAEAAAAPAAwAAAAHAAEAAAAPAA0AAAAHAAEAAAAPAA4AAAAHAAEAAAAQAAoAAAAHAAEAAAAQAAsAAAAHAAEAAAAQAAwAAAAHAAEAAAAQAA0AAAAHAAEAAAAQAA4AAAAHAAEAAAARAAoAAAAHAAEAAAARAAsAAAAHAAEAAAARAAwAAAAHAAEAAAARAA0AAAAHAAEAAAARAA4AAAAHAAEAAAASAAoAAAAHAAEAAAASAAsAAAAHAAEAAAASAAwAAAAHAAEAAAASAA0AAAAHAAEAAAASAA4AAAAHAAEAAAATAAoAAAAHAAEAAAATAAsAAAAHAAEAAAATAAwAAAAHAAEAAAATAA0AAAAHAAEAAAATAA4AAAAHAAEAAAAUAAoAAAAHAAEAAAAUAAsAAAAHAAEAAAAUAAwAAAAHAAEAAAAUAA0AAAAHAAEAAAAUAA4AAAAHAAEAAAAVAAoAAAAHAAEAAAAVAAsAAAAHAAEAAAAVAAwAAAAHAAEAAAAVAA0AAAAHAAEAAAAVAA4AAAAHAAEAAAAWAAoAAAAHAAEAAAAWAAsAAAAHAAEAAAAWAAwAAAAHAAEAAAAWAA0AAAAHAAEAAAAWAA4AAAAHAAEAAAAXAAoAAAAHAAEAAAAXAAsAAAAHAAEAAAAXAAwAAAAHAAEAAAAXAA0AAAAHAAEAAAAXAA4AAAAHAAEAAAALAAoAAAABAAEAAAALAAsAAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAALAA4AAAABAAEAAAAMAAoAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAABAAAAABAAEAAAAAABEAAAABAAEAAAABAA8AAAABAAEAAAABABAAAAABAAEAAAABABEAAAABAAEAAAACAA8AAAABAAEAAAACABAAAAABAAEAAAACABEAAAABAAEAAAADAA8AAAABAAEAAAADABAAAAABAAEAAAADABEAAAABAAEAAAAEAA8AAAABAAEAAAAEABAAAAABAAEAAAAEABEAAAABAAEAAAAFAA8AAAABAAEAAAAFABAAAAABAAEAAAAFABEAAAABAAEAAAAGAA8AAAABAAEAAAAGABAAAAABAAEAAAAGABEAAAABAAEAAAAHAA8AAAABAAEAAAAHABAAAAABAAEAAAAHABEAAAABAAEAAAAIAA8AAAABAAEAAAAIABAAAAABAAEAAAAIABEAAAABAAEAAAAJAA8AAAABAAEAAAAJABAAAAABAAEAAAAJABEAAAABAAEAAAAKAA8AAAABAAEAAAAKABAAAAABAAEAAAAKABEAAAABAAEAAAALAA8AAAABAAEAAAALABAAAAABAAEAAAALABEAAAABAAEAAAAMAA8AAAABAAEAAAAMABAAAAABAAEAAAAMABEAAAABAAEAAAANAA8AAAABAAEAAAANABAAAAABAAEAAAANABEAAAABAAEAAAAOAA8AAAABAAEAAAAOABAAAAABAAEAAAAOABEAAAABAAEAAAAPAA8AAAABAAEAAAAPABAAAAABAAEAAAAPABEAAAABAAEAAAAQAA8AAAABAAEAAAAQABAAAAABAAEAAAAQABEAAAABAAEAAAARAA8AAAABAAEAAAARABAAAAABAAEAAAARABEAAAABAAEAAAASAA8AAAABAAEAAAASABAAAAABAAEAAAASABEAAAABAAEAAAATAA8AAAABAAEAAAATABAAAAABAAEAAAATABEAAAABAAEAAAAUAA8AAAABAAEAAAAUABAAAAABAAEAAAAUABEAAAABAAEAAAAVAA8AAAABAAEAAAAVABAAAAABAAEAAAAVABEAAAABAAEAAAAWAA8AAAABAAEAAAAWABAAAAABAAEAAAAWABEAAAABAAEAAAAXAA8AAAABAAEAAAAXABAAAAABAAEAAAAXABEAAAABAAEAAAAKAAoAAAABAAEAAAAKAAsAAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAANAAoAAAABAAEAAAANAAsAAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAANAA4AAAABAAEAAAA=")
+tile_set = ExtResource("1_wetxt")
+
+[node name="BackWalls" type="TileMapLayer" parent="Structure"]
+z_index = 1
+tile_map_data = PackedByteArray("AAABAAkABAAHAAAAAAACAAkABAAHAAAAAAADAAkABAAHAAAAAAAEAAkABAAHAAAAAAAFAAkABAAHAAAAAAAGAAkABAAHAAAAAAAHAAkABAAHAAAAAAAIAAkABAAHAAAAAAAJAAkABAAHAAAAAAAKAAkABAAHAAAAAAALAAkABAAHAAAAAAAMAAkABAAHAAAAAAANAAkABAAHAAAAAAAOAAkABAAHAAAAAAAPAAkABAAHAAAAAAAQAAkABAAHAAAAAAARAAkABAAHAAAAAAASAAkABAAHAAAAAAATAAkABAAHAAAAAAAUAAkABAAHAAAAAAAVAAkABAAHAAAAAAAWAAkABAAHAAAAAAAAAAcABAAGAAAAAAAAAA0ABAAGAAMAAAAXAAcABAAKAAAAAAAIABAABAAHAAAAAAAFABAABAAHAAAAAAACABAABAAHAAAAAAABABAABAAHAAAAAAAPABAABAAHAAAAAAAQABAABAAHAAAAAAARABAABAAHAAAAAAASABAABAAHAAAAAAATABAABAAHAAAAAAAUABAABAAHAAAAAAAVABAABAAHAAAAAAAWABAABAAHAAAAAAANAA4ABAAKAAIAAAANAA8ABAAKAAIAAAANABAABAAKAAIAAAAKAA4ABAAGAAIAAAAKAA8ABAAGAAIAAAAKABAABAAGAAIAAAA=")
+tile_set = ExtResource("1_wetxt")
+
+[node name="SideWalls" type="TileMapLayer" parent="Structure"]
+z_index = 2
+tile_map_data = PackedByteArray("AAAXAAkABAAKAAEAAAAXAAoABAAKAAEAAAAXAAsABAAKAAEAAAAXAAwABAAKAAEAAAAXAA0ABAAKAAEAAAAXAA4ABAAKAAEAAAAXAA8ABAAKAAEAAAAXABAABAAKAAEAAAAXABEABAAKAAEAAAAXABIABAAKAAEAAAAXABMABAAKAAEAAAAXABQABAAKAAEAAAAXABUABAAKAAEAAAAXABYABAAKAAEAAAAXABcABAAKAAEAAAAXAAgABAAKAAEAAAAXAAcABAAKAAEAAAAAAAcABAAGAAEAAAAAAAgABAAGAAEAAAAAAAkABAAGAAEAAAAAAAoABAAGAAEAAAAAAAsABAAGAAEAAAAAAAwABAAGAAEAAAAAAA0ABAAGAAEAAAAAAA4ABAAGAAEAAAAAAA8ABAAGAAEAAAAAABAABAAGAAEAAAAAABEABAAGAAEAAAAAABIABAAGAAEAAAAAABMABAAGAAEAAAAAABQABAAGAAEAAAAAABUABAAGAAEAAAAAABYABAAGAAEAAAAAABcABAAGAAEAAAAKAAoABAAGAAEAAAANAAoABAAKAAEAAAANAA0ABAAKAAIAAAAKAA0ABAAGAAIAAAAKAA4ABAAGAAIAAAAKAA8ABAAGAAIAAAAKABAABAAGAAIAAAANAA4ABAAKAAIAAAANAA8ABAAKAAIAAAANABAABAAKAAIAAAABABoABAAHAAAAAAACABoABAAHAAAAAAADABoABAAHAAAAAAAEABoABAAHAAAAAAAFABoABAAHAAAAAAAGABoABAAHAAAAAAAHABoABAAHAAAAAAAIABoABAAHAAAAAAAJABoABAAHAAAAAAAKABoABAAHAAAAAAALABoABAAHAAAAAAAMABoABAAHAAAAAAANABoABAAHAAAAAAAOABoABAAHAAAAAAAPABoABAAHAAAAAAAQABoABAAHAAAAAAARABoABAAHAAAAAAASABoABAAHAAAAAAATABoABAAHAAAAAAAUABoABAAHAAAAAAAVABoABAAHAAAAAAAWABoABAAHAAAAAAA=")
+tile_set = ExtResource("1_wetxt")
+
+[node name="Bathroom" type="Node2D" parent="."]
+
+[node name="Shower" type="StaticBody2D" parent="Bathroom"]
+position = Vector2(-339, -110)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Shower"]
+z_index = 2
+position = Vector2(362.5, 261.5)
+shape = SubResource("RectangleShape2D_gr21l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bathroom/Shower"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("9_eps7e")
+region_enabled = true
+region_rect = Rect2(16.7201, 18.6266, 31.229, 66.584)
+
+[node name="Area2D" type="Area2D" parent="Bathroom/Shower"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Shower/Area2D"]
+z_index = 2
+position = Vector2(365.5, 265)
+shape = SubResource("RectangleShape2D_7y0hq")
+
+[node name="SearchPrompt" type="Label" parent="Bathroom/Shower/Area2D"]
+z_index = 3
+offset_left = 335.0
+offset_top = 257.0
+offset_right = 401.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Toilet" type="StaticBody2D" parent="Bathroom"]
+position = Vector2(-280, -98)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Toilet"]
+z_index = 2
+position = Vector2(361.5, 264.5)
+shape = SubResource("RectangleShape2D_l5lhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bathroom/Toilet"]
+z_index = 1
+position = Vector2(361.5, 264)
+scale = Vector2(1.05, 1)
+texture = ExtResource("9_eps7e")
+region_enabled = true
+region_rect = Rect2(46.2776, 30.9361, 20.3406, 35.3177)
+
+[node name="Area2D" type="Area2D" parent="Bathroom/Toilet"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Toilet/Area2D"]
+z_index = 2
+position = Vector2(362.5, 267)
+shape = SubResource("RectangleShape2D_bajav")
+
+[node name="SearchPrompt" type="Label" parent="Bathroom/Toilet/Area2D"]
+z_index = 3
+offset_left = 335.0
+offset_top = 257.0
+offset_right = 401.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Sink" type="StaticBody2D" parent="Bathroom"]
+position = Vector2(-220, -101)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Sink"]
+z_index = 2
+position = Vector2(362, 261)
+shape = SubResource("RectangleShape2D_hdyjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bathroom/Sink"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("9_eps7e")
+region_enabled = true
+region_rect = Rect2(66.4495, 38.9353, 28.1234, 39.8959)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bathroom/Sink"]
+z_index = 1
+position = Vector2(362, 229)
+texture = ExtResource("9_eps7e")
+region_enabled = true
+region_rect = Rect2(99.9686, 28.9613, 27.6329, 37.6068)
+
+[node name="Area2D" type="Area2D" parent="Bathroom/Sink"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom/Sink/Area2D"]
+z_index = 2
+position = Vector2(361, 267)
+shape = SubResource("RectangleShape2D_qhvjm")
+
+[node name="SearchPrompt" type="Label" parent="Bathroom/Sink/Area2D"]
+z_index = 3
+offset_left = 336.0
+offset_top = 235.0
+offset_right = 402.0
+offset_bottom = 258.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Kitchen" type="Node2D" parent="."]
+
+[node name="Stove" type="StaticBody2D" parent="Kitchen"]
+position = Vector2(-124, -118)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Stove"]
+z_index = 2
+position = Vector2(360.5, 271.5)
+shape = SubResource("RectangleShape2D_x5h5u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kitchen/Stove"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("10_gr21l")
+region_enabled = true
+region_rect = Rect2(119.259, 15.8954, 25.1362, 63.4389)
+
+[node name="Area2D" type="Area2D" parent="Kitchen/Stove"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Stove/Area2D"]
+z_index = 2
+position = Vector2(363, 278.5)
+shape = SubResource("RectangleShape2D_q54tc")
+
+[node name="SearchPrompt" type="Label" parent="Kitchen/Stove/Area2D"]
+z_index = 3
+offset_left = 333.0
+offset_top = 265.0
+offset_right = 399.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Sink" type="StaticBody2D" parent="Kitchen"]
+position = Vector2(-69, -108)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Sink"]
+z_index = 2
+position = Vector2(361, 267.75)
+shape = SubResource("RectangleShape2D_cvjng")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kitchen/Sink"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("10_gr21l")
+region_enabled = true
+region_rect = Rect2(197.377, 41.9409, 46.1093, 37.5394)
+
+[node name="Area2D" type="Area2D" parent="Kitchen/Sink"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Sink/Area2D"]
+z_index = 2
+position = Vector2(361, 269.75)
+shape = SubResource("RectangleShape2D_qcqe1")
+
+[node name="SearchPrompt" type="Label" parent="Kitchen/Sink/Area2D"]
+z_index = 3
+offset_left = 333.0
+offset_top = 265.0
+offset_right = 399.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Fridge" type="StaticBody2D" parent="Kitchen"]
+position = Vector2(2, -121)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Fridge"]
+z_index = 2
+position = Vector2(362, 265.5)
+shape = SubResource("RectangleShape2D_l5gu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kitchen/Fridge"]
+z_index = 1
+position = Vector2(361, 264)
+texture = ExtResource("10_gr21l")
+region_enabled = true
+region_rect = Rect2(84.1661, 18.4835, 28.2523, 60.1364)
+
+[node name="Area2D" type="Area2D" parent="Kitchen/Fridge"]
+script = ExtResource("5_v5yls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Fridge/Area2D"]
+z_index = 2
+position = Vector2(358, 269)
+shape = SubResource("RectangleShape2D_2ogif")
+
+[node name="SearchPrompt" type="Label" parent="Kitchen/Fridge/Area2D"]
+z_index = 3
+offset_left = 333.0
+offset_top = 265.0
+offset_right = 399.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 10
