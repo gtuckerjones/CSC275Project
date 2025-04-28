@@ -76,3 +76,18 @@ func _on_tommygun_pickup_pickedup_tommy() -> void:
 	$"Ranged Weapons".hasRifle = false
 	$"Ranged Weapons".hasTommygun = true
 	$"Ranged Weapons".hasRevolver = false
+
+func _on_revolver_ammo_pickup_pickedup_revolver_ammo() -> void:
+	$"Ranged Weapons".revolverAmmo += randi_range(3,8)
+
+
+func _on_shotgun_ammo_pickup_pickedup_shotgun_ammo() -> void:
+	$"Ranged Weapons".shotgunAmmo += randi_range(2,5) * 5
+
+
+func _on_rifle_ammo_pickup_pickedup_rifle() -> void:
+	$"Ranged Weapons".rifleAmmo += randi_range(2,5)
+
+
+func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
+	$"Ranged Weapons".tommyAmmo += randi_range(10,30)

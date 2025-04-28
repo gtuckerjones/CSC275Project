@@ -9,6 +9,7 @@ script = ExtResource("1_lv0gj")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(0, -2)
 rotation = 4.71239
 scale = Vector2(0.15, 0.15)
