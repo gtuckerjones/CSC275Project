@@ -13,7 +13,6 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
-		#_update_inventory_ui()
 		if is_open:
 			close()
 		else:
@@ -53,7 +52,7 @@ func _update_inventory_ui():
 # CONNECT properly
 		if i < item_keys.size():
 			var item_id = item_keys[i]
-			var item_data = Global.food_dictionary.get(item_id, {})
+			var item_data = Global.get_item_data(item_id)
 			var atlas = item_data.get("texture", null) 
 			var region = item_data.get("region_rect", Rect2())
 
@@ -76,6 +75,7 @@ func _update_inventory_ui():
 		else:
 			quantity_label.text = ""
 			slot.visible = true
+			
 
 func show_item_details(item_data):
 	for child in vbox_container.get_children():

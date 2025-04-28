@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="3_67byq"]
 [ext_resource type="PackedScene" uid="uid://codpcep2d3frw" path="res://Scenes/Inventory/hud.tscn" id="4_g8h5j"]
-[ext_resource type="PackedScene" uid="uid://dfp3olwusga1y" path="res://Scenes/Pickups/shotgun_pickup.tscn" id="4_hdk3q"]
-[ext_resource type="PackedScene" uid="uid://bdnolrg1iett6" path="res://Scenes/Pickups/revolver_pickup.tscn" id="5_hdk3q"]
-[ext_resource type="PackedScene" uid="uid://bmn61j08v1q0p" path="res://Scenes/Pickups/rifle_pickup.tscn" id="6_rag27"]
-[ext_resource type="PackedScene" uid="uid://dctlu8nmy7fam" path="res://Scenes/Pickups/tommygun_pickup.tscn" id="7_81c5q"]
+[ext_resource type="PackedScene" path="res://Scenes/Pickups/shotgun_pickup.tscn" id="4_hdk3q"]
+[ext_resource type="PackedScene" path="res://Scenes/Pickups/revolver_pickup.tscn" id="5_hdk3q"]
+[ext_resource type="PackedScene" path="res://Scenes/Pickups/rifle_pickup.tscn" id="6_rag27"]
+[ext_resource type="PackedScene" path="res://Scenes/Pickups/tommygun_pickup.tscn" id="7_81c5q"]
 
 [sub_resource type="Gradient" id="Gradient_6o00c"]
 interpolation_mode = 1

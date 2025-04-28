@@ -23,12 +23,12 @@ stretch_mode = 5
 [node name="QuantityLabel" type="RichTextLabel" parent="."]
 z_index = 10
 layout_mode = 0
-offset_left = 13.0
-offset_top = 12.0
-offset_right = 21.0
-offset_bottom = 20.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 2.0
 mouse_force_pass_scroll_events = false
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 6
 scroll_active = false
 shortcut_keys_enabled = false
+horizontal_alignment = 1
