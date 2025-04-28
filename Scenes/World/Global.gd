@@ -10,13 +10,13 @@ var world_data := {
 var player_data := {
 	"last_player_position": Vector2i.ZERO,
 	"inventory": {
-		"apple": 3,
-		"bread": 2,
-		"banana": 1,
-		"pistol ammo": 50,
-		"rifle ammo": 30,
-		"shotgun ammo": 15,
-		"submachine gun ammo": 150
+		"apple": 0,
+		"bread": 0,
+		"banana": 0,
+		"pistol ammo": 0,
+		"rifle ammo": 0,
+		"shotgun ammo": 0,
+		"submachine gun ammo": 0
 	}
 }
 
