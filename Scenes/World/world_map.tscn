@@ -69,7 +69,11 @@ tile_set = ExtResource("3_67byq")
 
 [node name="Cacodaemon2" parent="World" instance=ExtResource("9_lh8t4")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 position = Vector2(163, 48)
+=======
+position = Vector2(269, 72)
+>>>>>>> Stashed changes
 =======
 position = Vector2(269, 72)
 >>>>>>> Stashed changes
