@@ -68,9 +68,7 @@ z_as_relative = false
 tile_set = ExtResource("3_67byq")
 
 [node name="Cacodaemon2" parent="World" instance=ExtResource("9_lh8t4")]
-
 position = Vector2(269, 72)
-
 
 [node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
 position = Vector2(120, -43)
@@ -164,12 +162,10 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "E"
 
-
 [node name="Spider Mob" parent="." instance=ExtResource("18_h6arw")]
 position = Vector2(200, 246)
 
 [connection signal="switchedWeapons" from="World/Player" to="." method="_on_player_switched_weapons"]
-
 [connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="." method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
