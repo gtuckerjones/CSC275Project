@@ -216,7 +216,7 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 	
 func game_over():
-	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over.tscn")
 
 #mj edit finish
 

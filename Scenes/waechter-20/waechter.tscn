@@ -1,11 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://s4u42hpl1e8v"]
+[gd_scene load_steps=40 format=3 uid="uid://s4u42hpl1e8v"]
 
 [ext_resource type="Script" uid="uid://b6xuhtw4xf87r" path="res://Scenes/waechter-20/waechter.gd" id="1_i6faf"]
 [ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Spritesheets2/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
 [ext_resource type="Texture2D" uid="uid://13k5fnr6civ5" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 Charset.png" id="3_qyy35"]
-
-[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_kmgx1"]
-
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf4ud"]
 atlas = ExtResource("2_cc734")
@@ -118,30 +115,6 @@ region = Rect2(384, 96, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vj0b"]
 atlas = ExtResource("3_qyy35")
 region = Rect2(480, 96, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r162a"]
-atlas = ExtResource("2_cc734")
-region = Rect2(0, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_grfx2"]
-atlas = ExtResource("2_cc734")
-region = Rect2(192, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_46a3f"]
-atlas = ExtResource("2_cc734")
-region = Rect2(384, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8vir"]
-atlas = ExtResource("2_cc734")
-region = Rect2(576, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhwjq"]
-atlas = ExtResource("2_cc734")
-region = Rect2(768, 0, 192, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vdqxd"]
-atlas = ExtResource("2_cc734")
-region = Rect2(960, 0, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gohjy"]
 atlas = ExtResource("3_qyy35")
@@ -275,41 +248,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r162a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r162a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grfx2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grfx2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grfx2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grfx2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46a3f")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_w8vir")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_mhwjq")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_vdqxd")
-}],
-"loop": true,
-"name": &"puff",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_gohjy")
 }, {
 "duration": 1.0,
@@ -341,16 +279,11 @@ script = ExtResource("1_i6faf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4t5yu")
-animation = &"puff"
+animation = &"fireball"
+frame_progress = 0.0439227
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.58491
 shape = SubResource("CapsuleShape2D_x8o00")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[node name="HealthBar" parent="." instance=ExtResource("4_kmgx1")]
-offset_left = -21.0
-offset_top = 50.0
-offset_right = 17.0
-offset_bottom = 57.0
