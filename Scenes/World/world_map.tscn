@@ -67,6 +67,7 @@ z_as_relative = false
 tile_set = ExtResource("3_67byq")
 
 [node name="Cacodaemon2" parent="World" instance=ExtResource("9_lh8t4")]
+
 position = Vector2(163, 48)
 
 [node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
@@ -98,10 +99,16 @@ visible = false
 position = Vector2(18, -12)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="WeaponDisplay" type="HBoxContainer" parent="HUD"]
 offset_right = 104.0
 offset_bottom = 132.0
+
+[node name="Label2" type="Label" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+text = "Q"
 
 [node name="RevolverSlot" type="VBoxContainer" parent="HUD/WeaponDisplay"]
 layout_mode = 2
@@ -151,10 +158,19 @@ layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="HUD/WeaponDisplay"]
+layout_mode = 2
+text = "E"
+
+[connection signal="switchedWeapons" from="World/Player" to="." method="_on_player_switched_weapons"]
 [connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
+[connection signal="pickedupShotgun" from="World/ShotgunPickup" to="." method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
+[connection signal="pickedupGun" from="World/RevolverPickup" to="." method="_on_revolver_pickup_pickedup_gun"]
 [connection signal="pickedupGun" from="World/RevolverPickup" to="World/Player" method="_on_revolver_pickup_pickedup_gun"]
+[connection signal="pickedupRifle" from="World/RiflePickup" to="." method="_on_rifle_pickup_pickedup_rifle"]
 [connection signal="pickedupRifle" from="World/RiflePickup" to="World/Player" method="_on_rifle_pickup_pickedup_rifle"]
+[connection signal="pickedupTommy" from="World/TommygunPickup" to="." method="_on_tommygun_pickup_pickedup_tommy"]
 [connection signal="pickedupTommy" from="World/TommygunPickup" to="World/Player" method="_on_tommygun_pickup_pickedup_tommy"]
 [connection signal="pickedupRevolverAmmo" from="World/revolverAmmoPickup" to="World/Player" method="_on_revolver_ammo_pickup_pickedup_revolver_ammo"]
 [connection signal="pickedupShotgunAmmo" from="World/shotgunAmmoPickup" to="World/Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]

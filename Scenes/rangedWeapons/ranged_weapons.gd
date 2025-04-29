@@ -2,10 +2,10 @@ extends Node2D
 
 const BULLET = preload("res://Scenes/Bullet/bullet.tscn")
 @onready var muzzle: Marker2D = $Marker2D
-var hasRevolver = false
-var hasShotgun = false
-var hasRifle = false
-var hasTommygun = false
+var equipRevolver = false
+var equipShotgun = false
+var equipRifle = false
+var equipTommygun = false
 var damage = 0
 var fire_cooldown = 0.0
 var fire_rate = 0.1 
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	else:
 		scale.y = .25
 		
-	if hasRevolver == true:
+	if equipRevolver == true:
 		$Revolver.visible = true
 		$Shotgun.visible = false
 		$Rifle.visible = false
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 			
 			
 			
-	if hasShotgun == true:
+	if equipShotgun == true:
 		$Revolver.visible = false
 		$Shotgun.visible = true
 		$Rifle.visible = false
@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 				shotgunAmmo -= 1
 				emit_signal("ammo_fired", "shotgun", shotgunAmmo)
 			
-	if hasRifle == true:
+	if equipRifle == true:
 		$Revolver.visible = false
 		$Shotgun.visible = false
 		$Rifle.visible = true
@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 			rifleAmmo -= 1 
 			emit_signal("ammo_fired", "rifle", rifleAmmo)
 			
-	if hasTommygun == true:
+	if equipTommygun == true:
 		$Revolver.visible = false
 		$Shotgun.visible = false
 		$Rifle.visible = false
