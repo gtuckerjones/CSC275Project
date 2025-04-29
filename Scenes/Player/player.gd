@@ -11,7 +11,15 @@ var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true
-
+var hasRevolver = false
+var hasShotgun = false
+var hasRifle = false
+var hasTommy = false
+#######################################
+var available_weapons: Array[String] = []
+var current_weapon_idx: int = 0
+var equipped_weapon
+signal switchedWeapons
 #mj edit finish
 
 func handleInput():
@@ -71,29 +79,35 @@ func _process(delta):
 	else:
 		$"Ranged Weapons".position.x = 4
 		
+	accessedWeapons()
+		
 func _on_revolver_pickup_pickedup_gun() -> void:
-	$"Ranged Weapons".hasRevolver = true
-	$"Ranged Weapons".hasShotgun = false
-	$"Ranged Weapons".hasRifle = false
-	$"Ranged Weapons".hasTommygun = false
+	hasRevolver = true
+	$"Ranged Weapons".equipRevolver = true
+	$"Ranged Weapons".equipShotgun = false
+	$"Ranged Weapons".equipRifle = false
+	$"Ranged Weapons".equipTommygun = false
 
 func _on_shotgun_pickup_pickedup_shotgun() -> void:
-	$"Ranged Weapons".hasShotgun = true
-	$"Ranged Weapons".hasRifle = false
-	$"Ranged Weapons".hasTommygun = false
-	$"Ranged Weapons".hasRevolver = false
+	hasShotgun = true
+	$"Ranged Weapons".equipShotgun = true
+	$"Ranged Weapons".equipRifle = false
+	$"Ranged Weapons".equipTommygun = false
+	$"Ranged Weapons".equipRevolver = false
 
 func _on_rifle_pickup_pickedup_rifle() -> void:
-	$"Ranged Weapons".hasShotgun = false
-	$"Ranged Weapons".hasRifle = true
-	$"Ranged Weapons".hasTommygun = false
-	$"Ranged Weapons".hasRevolver = false
+	hasRifle = true
+	$"Ranged Weapons".equipShotgun = false
+	$"Ranged Weapons".equipRifle = true
+	$"Ranged Weapons".equipTommygun = false
+	$"Ranged Weapons".equipRevolver = false
 
 func _on_tommygun_pickup_pickedup_tommy() -> void:
-	$"Ranged Weapons".hasShotgun = false
-	$"Ranged Weapons".hasRifle = false
-	$"Ranged Weapons".hasTommygun = true
-	$"Ranged Weapons".hasRevolver = false
+	hasTommy = true
+	$"Ranged Weapons".equipShotgun = false
+	$"Ranged Weapons".equipRifle = false
+	$"Ranged Weapons".equipTommygun = true
+	$"Ranged Weapons".equipRevolver = false
 
 func _on_revolver_ammo_pickup_pickedup_revolver_ammo() -> void:
 	var addedAmmo = randi_range(3,8)
@@ -114,9 +128,57 @@ func _on_rifle_ammo_pickup_pickedup_rifle() -> void:
 func _on_tommy_ammo_pickup_pickedup_tommy_ammo() -> void:
 	var addedAmmo = randi_range(10,30)
 	$"Ranged Weapons".tommyAmmo += addedAmmo
+	$"Ranged Weapons".emit_signal("ammo_fired", "tommy", $"Ranged Weapons".tommyAmmo)
+	
+func accessedWeapons():
+	available_weapons.clear()
+	
+	if hasRevolver:
+		available_weapons.append("revolver")
+	if hasShotgun:
+		available_weapons.append("shotgun")
+	if hasRifle:
+		available_weapons.append("rifle")
+	if hasTommy:
+		available_weapons.append("tommy")
 
-	Global.add_item_to_inventory("submachine gun ammo", addedAmmo)
+	if available_weapons.is_empty():
+		return
 
+	if Input.is_action_just_pressed("cycleRight"):
+		current_weapon_idx = (current_weapon_idx + 1) % available_weapons.size()
+		_equip_weapon(available_weapons[current_weapon_idx])
+		switchedWeapons.emit()
+
+	if Input.is_action_just_pressed("cycleLeft"):
+		current_weapon_idx = (current_weapon_idx - 1 + available_weapons.size()) % available_weapons.size()
+		_equip_weapon(available_weapons[current_weapon_idx])
+		switchedWeapons.emit()
+
+func _equip_weapon(weapon: String):
+	match weapon:
+		"revolver":
+			$"Ranged Weapons".equipRevolver = true
+			$"Ranged Weapons".equipShotgun = false
+			$"Ranged Weapons".equipRifle = false
+			$"Ranged Weapons".equipTommygun = false
+		"shotgun":
+			$"Ranged Weapons".equipRevolver = false
+			$"Ranged Weapons".equipShotgun = true
+			$"Ranged Weapons".equipRifle = false
+			$"Ranged Weapons".equipTommygun = false
+		"rifle":
+			$"Ranged Weapons".equipRevolver = false
+			$"Ranged Weapons".equipShotgun = false
+			$"Ranged Weapons".equipRifle = true
+			$"Ranged Weapons".equipTommygun = false
+		"tommy":
+			$"Ranged Weapons".equipRevolver = false
+			$"Ranged Weapons".equipShotgun = false
+			$"Ranged Weapons".equipRifle = false
+			$"Ranged Weapons".equipTommygun = true
+		_:
+			print("Unknown weapon: ", weapon)
 
 #mj edit start
 func player():
@@ -148,8 +210,6 @@ func game_over():
 
 #mj edit finish
 
-	$"Ranged Weapons".emit_signal("ammo_fired", "tommy", $"Ranged Weapons".tommyAmmo)
   
 func _on_food_picked_up_food() -> void:
 	pass # Replace with function body.
-

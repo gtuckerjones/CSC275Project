@@ -4,6 +4,7 @@
 
 [node name="Tree" type="Node2D"]
 y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
