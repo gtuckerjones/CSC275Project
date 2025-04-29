@@ -152,4 +152,3 @@ func game_over():
   
 func _on_food_picked_up_food() -> void:
 	pass # Replace with function body.
-
