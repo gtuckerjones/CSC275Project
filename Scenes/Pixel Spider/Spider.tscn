@@ -81,7 +81,7 @@ height = 58.1269
 
 [node name="Spider Mob" type="CharacterBody2D"]
 z_index = 2
-collision_layer = 17
+collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_cgp8y")
 
