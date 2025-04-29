@@ -49,7 +49,6 @@ func _process(delta: float) -> void:
 			emit_signal("ammo_fired", "revolver", revolverAmmo)
 			
 			
-			
 	if equipShotgun == true:
 		$Revolver.visible = false
 		$Shotgun.visible = true
