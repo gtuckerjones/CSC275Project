@@ -57,7 +57,7 @@ func show_prompt():
 	var prompt = get_node_or_null(prompt_node_path)
 	if prompt:
 		prompt.visible = true
-		prompt.text = "Press [E] to Enter"
+		prompt.text = "Press [Right Click] to Enter"
 
 func hide_prompt():
 	var prompt = get_node_or_null(prompt_node_path)

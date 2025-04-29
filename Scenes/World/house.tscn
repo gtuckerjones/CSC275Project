@@ -21,9 +21,8 @@ func set_player_and_camera(player_node: Node, camera_node: Camera2D):
 size = Vector2(56, 54)
 
 [node name="House" type="Node2D"]
-z_index = 2
+z_index = 3
 z_as_relative = false
-position = Vector2(0, -1)
 script = SubResource("GDScript_3jr7h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

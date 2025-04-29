@@ -25,6 +25,7 @@ var placed_trees = []
 var last_y_used = null
 
 func _ready():
+	setIcons()
 	if Global.has_saved_data():
 		_load_world_from_global()
 	else:
@@ -314,6 +315,41 @@ func _start_random_drops_timer():
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
 
+@onready var revolverIcon = $HUD/WeaponDisplay/RevolverSlot/revolverIcon
+@onready var shotgunIcon = $HUD/WeaponDisplay/ShotgunSlot/shotgunIcon
+@onready var rifleIcon = $HUD/WeaponDisplay/RifleSlot/rifleIcon
+@onready var tommyIcon = $HUD/WeaponDisplay/TommySlot4/tommyIcon
+
+func setIcons():
+	revolverIcon.modulate = Color(0, 0, 0, 1)
+	shotgunIcon.modulate = Color(0, 0, 0, 1)
+	rifleIcon.modulate = Color(0, 0, 0, 1)
+	tommyIcon.modulate = Color(0, 0, 0, 1)
+	
+	
+func update_weapon_display():
+	if $World/Player.hasRevolver == true:
+		revolverIcon.modulate = Color(1, 1, 1, 0.5)
+	elif $"World/Player/Ranged Weapons".equipRevolver == true:
+		revolverIcon.modulate = Color(1, 1, 1, 1)
+		
+	if $World/Player.hasShotgun == true:
+		shotgunIcon.modulate = Color(1, 1, 1, 0.5)
+	elif $"World/Player/Ranged Weapons".equipShotgun == true:
+		shotgunIcon.modulate = Color(1, 1, 1, 1)
+		
+	if $World/Player.hasRifle == true:
+		rifleIcon.modulate = Color(1, 1, 1, 0.5)
+	elif $"World/Player/Ranged Weapons".equipRifle == true:
+		rifleIcon.modulate = Color(1, 1, 1, 1)
+		
+	if $World/Player.hasTommy == true:
+		tommyIcon.modulate = Color(1, 1, 1, 0.5)
+	elif $"World/Player/Ranged Weapons".equipTommygun == true:
+		tommyIcon.modulate = Color(1, 1, 1, 1)
+		
+		
+
 func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
 	if weapon_fired == "revolver":
 		$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
@@ -323,3 +359,19 @@ func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) ->
 		$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
 	else:
 		$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
+
+
+func _on_revolver_pickup_pickedup_gun() -> void:
+	update_weapon_display()
+
+func _on_shotgun_pickup_pickedup_shotgun() -> void:
+	update_weapon_display()
+
+func _on_rifle_pickup_pickedup_rifle() -> void:
+	update_weapon_display()
+
+func _on_tommygun_pickup_pickedup_tommy() -> void:
+	update_weapon_display()
+
+func _on_player_switched_weapons() -> void:
+	update_weapon_display()
