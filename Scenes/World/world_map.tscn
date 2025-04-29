@@ -67,7 +67,8 @@ z_as_relative = false
 tile_set = ExtResource("3_67byq")
 
 [node name="Cacodaemon2" parent="World" instance=ExtResource("9_lh8t4")]
-position = Vector2(-312, -202)
+
+position = Vector2(163, 48)
 
 [node name="ShotgunPickup" parent="World" instance=ExtResource("4_hdk3q")]
 position = Vector2(120, -43)
