@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo42ilfc3jyyf"]
+[gd_scene load_steps=7 format=3 uid="uid://bo42ilfc3jyyf"]
 
 [ext_resource type="Script" uid="uid://bhj3w1hew0vbr" path="res://Scenes/rangedWeapons/ranged_weapons.gd" id="1_5apgt"]
 [ext_resource type="Texture2D" uid="uid://cutp4kcy06g66" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/revolver.png" id="2_2vyhm"]
 [ext_resource type="Texture2D" uid="uid://cjnowiaipftwn" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/shotgun.png" id="3_gdhog"]
 [ext_resource type="Texture2D" uid="uid://k02ppllxvot8" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/rifle.png" id="4_wp81g"]
 [ext_resource type="Texture2D" uid="uid://cffxut8sgriom" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="5_cpplj"]
+[ext_resource type="PackedScene" uid="uid://epp6giysi7kw" path="res://Scenes/Bullet/bullet.tscn" id="6_gdhog"]
 
 [node name="Ranged Weapons" type="Node2D"]
 script = ExtResource("1_5apgt")
@@ -34,3 +35,8 @@ visible = false
 position = Vector2(6, -4)
 scale = Vector2(2, 2)
 texture = ExtResource("5_cpplj")
+
+[node name="Bullet" parent="." instance=ExtResource("6_gdhog")]
+visible = false
+
+[connection signal="damageGiven" from="." to="Bullet" method="_on_ranged_weapons_damage_given"]
