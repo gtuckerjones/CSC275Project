@@ -17,7 +17,6 @@ var shotgunAmmo = 0
 var rifleAmmo = 0
 var tommyAmmo = 0
 signal ammo_fired(weapon_fired: String, current_amount: int)
-signal damageGiven(pain: int)
 
 
 func _process(delta: float) -> void:
