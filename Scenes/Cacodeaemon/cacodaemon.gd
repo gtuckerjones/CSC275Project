@@ -6,6 +6,8 @@ var player_chase = false
 var player = null
 
 var health = 100
+var max_health = 100
+var min_health = 0
 var player_inattack_range = false
 
 func _physics_process(delta):

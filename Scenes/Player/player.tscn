@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=11 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://7i6ixhxkk214" path="res://Scenes/Player/player.gd" id="1_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="2_a3d8c"]
+[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_mtuoh"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -133,6 +134,12 @@ position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_xpcdj")
 
 [node name="attack_cooldown" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("4_mtuoh")]
+offset_left = -21.0
+offset_top = 19.0
+offset_right = 17.0
+offset_bottom = 26.0
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

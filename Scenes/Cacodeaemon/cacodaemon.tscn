@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://bg5s34m5sl756"]
+[gd_scene load_steps=32 format=3 uid="uid://bg5s34m5sl756"]
 
 [ext_resource type="Script" uid="uid://0n2yclhm0kd4" path="res://Scenes/Cacodeaemon/cacodaemon.gd" id="1_wj647"]
 [ext_resource type="Texture2D" uid="uid://j2ufgam5jk8m" path="res://Artwork/Spritesheets2/Mob Sprites/Cacodeaemon/Cacodaemon Sprite Sheet.png" id="2_mpf6j"]
+[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="3_uuwj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqpfm"]
 atlas = ExtResource("2_mpf6j")
@@ -229,6 +230,12 @@ shape = SubResource("CapsuleShape2D_hqpfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("CircleShape2D_uuwj2")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_uuwj2")]
+offset_left = -21.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
