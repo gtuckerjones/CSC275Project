@@ -4,20 +4,13 @@ extends Area2D
 @export var exit_position_interior: Vector2
 @export var return_position_exterior: Vector2
 @export var prompt_node_path: NodePath = "EnterPrompt"
-@onready var player = $Player
 var player_in_range := false
-var player_reference: Node = null
-var camera_reference: Camera2D = null
 
 func _ready():
 	# Connect signals for player entering and exiting the Area2D
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
 	hide_prompt()
-
-	# Get references to the player and camera nodes
-	player_reference = get_node("/root/world_map/Player")  # Adjust path as necessary
-	camera_reference = get_node("/root/world_map/Player/Camera2D")  # Adjust path as necessary
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -57,7 +50,7 @@ func show_prompt():
 	var prompt = get_node_or_null(prompt_node_path)
 	if prompt:
 		prompt.visible = true
-		prompt.text = "Press [Right Click] to Enter"
+		prompt.text = "Right click to Enter"
 
 func hide_prompt():
 	var prompt = get_node_or_null(prompt_node_path)
