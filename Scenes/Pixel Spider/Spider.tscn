@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwvian32unebf"]
+[gd_scene load_steps=15 format=3 uid="uid://dwvian32unebf"]
 
 [ext_resource type="Script" uid="uid://ddfptx5gblcaq" path="res://Scenes/Pixel Spider/spider.gd" id="1_cgp8y"]
 [ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Artwork/Spritesheets2/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
+[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="3_vjgkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbg4t"]
 atlas = ExtResource("2_oc654")
@@ -96,5 +97,11 @@ shape = SubResource("CapsuleShape2D_vvjur")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_vjgkn")]
+offset_left = -21.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

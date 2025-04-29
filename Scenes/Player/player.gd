@@ -10,6 +10,9 @@ extends CharacterBody2D
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var health = 100
+var max_health = 100
+var min_health = 0
+#mj edit finish
 var player_alive = true
 var hasRevolver = false
 var hasShotgun = false
@@ -20,7 +23,7 @@ var available_weapons: Array[String] = []
 var current_weapon_idx: int = 0
 var equipped_weapon
 signal switchedWeapons
-#mj edit finish
+
 
 func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
