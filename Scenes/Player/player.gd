@@ -44,6 +44,13 @@ func updateAnimation():
 			animations.play("WalkRight")
 		else:
 			animations.play("WalkLeft")
+#mj start edit
+func _ready():
+	Global.playerBody = self
+	
+#mj end edit
+
+
 
 func _physics_process(delta):
 	enemy_attack()
