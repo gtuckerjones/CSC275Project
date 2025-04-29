@@ -8,6 +8,10 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_kmgx1"]
+>>>>>>> Stashed changes
 =======
 [ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_kmgx1"]
 >>>>>>> Stashed changes
