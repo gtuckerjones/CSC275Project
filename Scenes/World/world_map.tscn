@@ -180,7 +180,6 @@ parameters/looping = true
 
 [connection signal="switchedWeapons" from="World/Player" to="." method="_on_player_switched_weapons"]
 [connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
-[connection signal="damageGiven" from="World/Player/Ranged Weapons" to="World/Player/Ranged Weapons/Bullet" method="_on_ranged_weapons_damage_given"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="." method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupShotgun" from="World/ShotgunPickup" to="World/Player" method="_on_shotgun_pickup_pickedup_shotgun"]
 [connection signal="pickedupGun" from="World/RevolverPickup" to="." method="_on_revolver_pickup_pickedup_gun"]
