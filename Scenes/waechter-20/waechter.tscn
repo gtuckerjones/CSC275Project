@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Spritesheets2/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
 [ext_resource type="Texture2D" uid="uid://13k5fnr6civ5" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 Charset.png" id="3_qyy35"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_kmgx1"]
+>>>>>>> Stashed changes
 =======
 [ext_resource type="PackedScene" uid="uid://chpsk558782d4" path="res://Scenes/health_bar.tscn" id="4_kmgx1"]
 >>>>>>> Stashed changes
