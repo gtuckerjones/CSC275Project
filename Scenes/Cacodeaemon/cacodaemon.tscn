@@ -210,6 +210,7 @@ top_level = true
 z_index = 2
 
 collision_layer = 4
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_wj647")
 

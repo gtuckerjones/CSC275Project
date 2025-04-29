@@ -264,6 +264,23 @@ func random_drops():
 		var item = chosen_drop["scene"].instantiate()
 		item.position = tile_pos * ground_tile_map.tile_set.tile_size
 		add_child(item)
+		
+		if item.has_signal("pickedupRevolverAmmo"):
+			item.connect("pickedupRevolverAmmo", Callable(player, "_on_revolver_ammo_pickup_pickedup_revolver_ammo"))
+		elif item.has_signal("pickedupShotgunAmmo"):
+			item.connect("pickedupShotgunAmmo", Callable(player, "_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"))
+		elif item.has_signal("pickedupRifleAmmo"):
+			item.connect("pickedupRifleAmmo", Callable(player, "_on_rifle_ammo_pickup_pickedup_rifle"))
+		elif item.has_signal("pickedupTommyAmmo"):
+			item.connect("pickedupTommyAmmo", Callable(player, "_on_tommy_ammo_pickup_pickedup_tommy_ammo"))
+		elif item.has_signal("pickedupShotgun"):
+			item.connect("pickedupShotgun", Callable(player, "_on_shotgun_pickup_pickedup_shotgun"))
+		elif item.has_signal("pickedupRifle"):
+			item.connect("pickedupRifle", Callable(player, "_on_rifle_pickup_pickedup_rifle"))
+		elif item.has_signal("pickedupTommy"):
+			item.connect("pickedupTommy", Callable(player, "_on_tommygun_pickup_pickedup_tommy"))
+		elif item.has_signal("pickedUpFood"):
+			item.connect("pickedUpFood", Callable(player, "_on_food_picked_up_food"))
 
 		print("Spawned drop: %s at %s" % [chosen_drop["name"], tile_pos])
 		return
