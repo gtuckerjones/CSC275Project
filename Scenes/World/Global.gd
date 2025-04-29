@@ -41,29 +41,13 @@ var gun_dictionary = {
 	},
 }
 var findable_items := {
-	"apple": {
-		"id": "apple",
-		"name": "Apple",
-		"description": "A juicy red apple.",
+	"food": {
+		"id": "food",
+		"name": "Food",
+		"description": "Edible, hopefully I feel better",
 		"heal": 5,
 		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
 		"region_rect": get_region_from_coords(40, 1)
-	},
-	"banana": {
-		"id": "banana",
-		"name": "Banana",
-		"description": "A perfectly ripe banana.",
-		"heal": 5,
-		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
-		"region_rect": get_region_from_coords(40, 4)
-	},
-	"bread": {
-		"id": "bread",
-		"name": "Bread",
-		"description": "Plain old bread.",
-		"heal": 5,
-		"texture": preload("res://Artwork/Tilemap/ProjectUtumno_full.png"),
-		"region_rect": get_region_from_coords(40, 9)
 	},
 	"pistol ammo": {
 		"id": "pistol ammo",
