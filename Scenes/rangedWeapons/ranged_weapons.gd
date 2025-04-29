@@ -47,8 +47,6 @@ func _process(delta: float) -> void:
 			fire_cooldown = fire_rate
 			revolverAmmo -= 1
 			emit_signal("ammo_fired", "revolver", revolverAmmo)
-			damageGiven.emit(revolverDamage)
-			
 			
 			
 	if equipShotgun == true:
