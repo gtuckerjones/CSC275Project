@@ -78,16 +78,24 @@ animations = [{
 radius = 21.973
 height = 58.1269
 
-[node name="Spider Mob" type="RigidBody2D"]
+[node name="Spider Mob" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 17
+collision_mask = 9
 script = ExtResource("1_cgp8y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pjr06")
 animation = &"walk"
-frame_progress = 0.366214
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.62032
+scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_vvjur")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

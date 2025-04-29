@@ -24,8 +24,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-#Script worked on by Megan
-	
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
@@ -54,3 +52,7 @@ func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
 
 func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+#Script worked on by Megan
+#Credit to DevWorm for major outline
