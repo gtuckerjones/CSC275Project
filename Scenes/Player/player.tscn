@@ -105,7 +105,7 @@ _data = {
 radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 15
+collision_mask = 31
 script = ExtResource("1_xpcdj")
 metadata/_edit_group_ = true
 
@@ -128,6 +128,7 @@ position = Vector2(5, 5)
 scale = Vector2(0.25, 0.25)
 
 [node name="player_hitbox" type="Area2D" parent="."]
+collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 position = Vector2(-2, 0)

@@ -165,11 +165,11 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "E"
 
+[node name="Waechter" parent="." instance=ExtResource("19_kda2h")]
+position = Vector2(452, 209)
+
 [node name="Spider Mob" parent="." instance=ExtResource("18_h6arw")]
 position = Vector2(200, 246)
-
-[node name="Waechter" parent="Spider Mob" instance=ExtResource("19_kda2h")]
-position = Vector2(252, -37)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_r1ohy")

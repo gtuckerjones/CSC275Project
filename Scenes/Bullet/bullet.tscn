@@ -9,6 +9,7 @@ height = 16.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.25, 0.25)
+collision_mask = 19
 script = ExtResource("1_lv0gj")
 metadata/_edit_group_ = true
 
