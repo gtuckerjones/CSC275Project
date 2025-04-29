@@ -26,8 +26,9 @@ func _on_timer_timeout() -> void:
 func move(delta):
 	if is_spider_chase:
 		player = Global.playerBody
-		velocity = position.direction_to(player.position) * speed
-		dir.x = abs(velocity.x)/velocity.x
+		if is_instance_valid(player):
+			velocity = position.direction_to(player.position) * speed
+			dir.x = abs(velocity.x)/velocity.x
 	elif !is_spider_chase:
 		velocity += dir * speed * delta
 	move_and_slide()

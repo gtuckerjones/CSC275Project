@@ -1,42 +1,6 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[gd_scene load_steps=4 format=3 uid="uid://cogts6fjg0vd6"]
-
-[ext_resource type="Script" path="res://Scenes/health_bar.gd" id="1_78m4n"]
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
+[gd_scene load_steps=4 format=3 uid="uid://bav02jg43gyxs"]
 
 [ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
-
-[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
-
-[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
-
-[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
-
-[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=4 format=3 uid="uid://chpsk558782d4"]
-
-[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/health_bar.gd" id="1_78m4n"]
->>>>>>> Stashed changes
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl3mn"]
 bg_color = Color(0.682439, 0.222006, 0.123369, 1)
