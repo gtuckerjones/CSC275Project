@@ -1,8 +1,8 @@
 [gd_scene load_steps=40 format=3 uid="uid://s4u42hpl1e8v"]
 
 [ext_resource type="Script" uid="uid://b6xuhtw4xf87r" path="res://Scenes/waechter-20/waechter.gd" id="1_i6faf"]
-[ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Spritesheets/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
-[ext_resource type="Texture2D" uid="uid://13k5fnr6civ5" path="res://Spritesheets/Mob Sprites/waechter-20/waechter-20/waechter-20 Charset.png" id="3_qyy35"]
+[ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Spritesheets2/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
+[ext_resource type="Texture2D" uid="uid://13k5fnr6civ5" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 Charset.png" id="3_qyy35"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf4ud"]
 atlas = ExtResource("2_cc734")
