@@ -39,7 +39,11 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	player_chase = false
 	
 
-	
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		$AnimatedSprite2D.play("defeated")
+		self.queue_free()
 
 
 
