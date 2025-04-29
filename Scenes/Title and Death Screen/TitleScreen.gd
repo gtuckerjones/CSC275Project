@@ -3,10 +3,31 @@ extends Control
 @onready var texture_rect = $TextureRect
 @onready var color_rect = $ColorRect
 @onready var buttonLabel = $PlayGame
+@onready var music = $AudioStreamPlayer2D
+
+var pitch_direction := 1  # 1 = increasing, -1 = decreasing
+var pitch_timer := 0.0
 
 func _ready():
 	pass
 	#update_texture_size()
+
+func _process(delta):
+	pitch_timer += delta
+	if pitch_timer >= 1.0:
+		pitch_timer = 0.0  # Reset timer every second
+		
+		# Update pitch
+		music.pitch_scale += 0.01 * pitch_direction
+
+		# Check bounds and reverse direction
+		if music.pitch_scale >= 4.0:
+			music.pitch_scale = 4.0
+			pitch_direction = -1
+		elif music.pitch_scale <= 1.0:
+			music.pitch_scale = 1.0
+			pitch_direction = 1
+
 
 func update_texture_size():
 	var viewport_width = get_viewport().size.x

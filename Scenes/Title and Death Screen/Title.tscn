@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://0gnaecvrnmdt"]
+[gd_scene load_steps=4 format=3 uid="uid://dv5vaugwgbj6n"]
 
-[ext_resource type="Script" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_47fe0"]
+[ext_resource type="Script" uid="uid://do56o5a37o2u5" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_47fe0"]
 [ext_resource type="Texture2D" uid="uid://b8io1vgthkxwg" path="res://Artwork/Title and Death Screen/agent-1294795_1920.png" id="2_c8wq5"]
+[ext_resource type="AudioStream" uid="uid://br1neeaeoianu" path="res://Artwork/Music/horror-tension-suspense-322304.mp3" id="3_c8wq5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -45,5 +46,11 @@ offset_bottom = 606.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Play Game"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c8wq5")
+autoplay = true
+playback_type = 1
+parameters/looping = true
 
 [connection signal="pressed" from="PlayGame" to="." method="_on_play_game_pressed"]

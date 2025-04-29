@@ -1,8 +1,16 @@
 extends Area2D
 
 @export var object_name: String = "Furniture"
-@export var prompt_text: String = "Press [E] to search"
+@export var prompt_text: String = "Right click to search"
 @export var prompt_node_path: NodePath = "SearchPrompt"
+
+@onready var spawnable_scenes := {
+	"food": preload("res://Scenes/Pickups/food.tscn"),
+	"pistol ammo": preload("res://Scenes/Pickups/revolver_ammo_pickup.tscn"),
+	"shotgun ammo": preload("res://Scenes/Pickups/shotgun_ammo_pickup.tscn"),
+	"rifle ammo": preload("res://Scenes/Pickups/rifle_ammo_pickup.tscn"),
+	"submachine gun ammo": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"),
+}
 
 var player_in_range := false
 var can_search := true
@@ -39,28 +47,35 @@ func hide_prompt():
 		prompt.visible = false
 
 func search_furniture():
-	can_search = false  # Disable searching immediately
+	can_search = false
 
 	var prompt = get_node_or_null(prompt_node_path)
 	if prompt:
 		prompt.text = "Searching..."
 		prompt.visible = true
-		await get_tree().create_timer(3.0).timeout  # Wait 3 seconds
+		await get_tree().create_timer(3.0).timeout
 
 		var found_item = "Nothing"
-		if randf() > 0.25:  # 25% chance to find nothing
+		if randf() > 0.25:
 			var keys = Global.findable_items.keys()
 			var random_key = keys[randi() % keys.size()]
 			found_item = random_key
 			Global.add_item_to_inventory(found_item, 1)
 
+			# 🪄 Try to instantiate the corresponding scene
+			if spawnable_scenes.has(found_item):
+				print("Has Item")
+				var pickup = spawnable_scenes[found_item].instantiate()
+				pickup.position = position + Vector2(193, 319)
+				pickup.z_index = 2
+				print("Here", get_parent().get_parent())
+				get_parent().get_parent().add_child(pickup)
+
 		prompt.text = "Found: " + found_item
 		print("Player found:", found_item)
 
-		await get_tree().create_timer(2.0).timeout  # Show result for 2 seconds
+		await get_tree().create_timer(2.0).timeout
 		hide_prompt()
-
-		# Now start the cooldown timer (2 minutes)
 		start_search_cooldown()
 	else:
 		print("Prompt not found at path:", prompt_node_path)
