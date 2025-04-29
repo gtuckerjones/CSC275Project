@@ -20,10 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://cffxut8sgriom" path="res://Spritesheets/mainCharacter/mainCharacter/weapons/tommygun.png" id="18_kda2h"]
 [ext_resource type="PackedScene" uid="uid://s4u42hpl1e8v" path="res://Scenes/waechter-20/waechter.tscn" id="19_r1ohy"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 [ext_resource type="PackedScene" uid="uid://s4u42hpl1e8v" path="res://Scenes/waechter-20/waechter.tscn" id="19_r1ohy"]
 [ext_resource type="AudioStream" uid="uid://cgrs7b0eincpp" path="res://Artwork/Music/tense-detective-looped-drone-10054.mp3" id="19_r1ohy"]
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -176,6 +179,7 @@ position = Vector2(200, 246)
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 [node name="Waechter" parent="." instance=ExtResource("19_r1ohy")]
 position = Vector2(439, 196)
@@ -188,6 +192,11 @@ autoplay = true
 parameters/looping = true
 
 
+=======
+[node name="Waechter" parent="." instance=ExtResource("19_r1ohy")]
+position = Vector2(439, 196)
+
+>>>>>>> Stashed changes
 =======
 [node name="Waechter" parent="." instance=ExtResource("19_r1ohy")]
 position = Vector2(439, 196)
