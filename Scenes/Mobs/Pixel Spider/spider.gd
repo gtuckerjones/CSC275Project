@@ -52,7 +52,7 @@ func enemy():
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		Global.score += randi_range(50,200)
+		Global.score += 100
 		self.queue_free()
 
 func set_player(p: CharacterBody2D) -> void:
