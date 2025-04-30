@@ -18,3 +18,6 @@ func _process(delta):
 			self.visible = false
 	else:
 		self.visible = false
+
+
+#Created by Megan

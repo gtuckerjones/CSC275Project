@@ -23,7 +23,6 @@ Global="*res://Scenes/World/Global.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor]
