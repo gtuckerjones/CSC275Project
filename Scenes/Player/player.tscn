@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtnewlnjvtsyw"]
+[gd_scene load_steps=13 format=3 uid="uid://dtnewlnjvtsyw"]
 
 [ext_resource type="Script" uid="uid://7i6ixhxkk214" path="res://Scenes/Player/player.gd" id="1_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="2_a3d8c"]
 [ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/Health/health_bar.tscn" id="4_mtuoh"]
 [ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/Health/health_bar.gd" id="5_htcer"]
+[ext_resource type="PackedScene" uid="uid://45vsxolyaqq3" path="res://Scenes/HUD/hud.tscn" id="6_dd0ac"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -144,6 +145,10 @@ offset_right = 18.0
 offset_bottom = -18.0
 script = ExtResource("5_htcer")
 
+[node name="HUD" parent="." instance=ExtResource("6_dd0ac")]
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+
+[editable path="HUD"]

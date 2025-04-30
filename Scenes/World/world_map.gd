@@ -367,7 +367,7 @@ func random_mob_spawns():
 	print("No valid spot found for a random mob.")
 	
 	
-var min_wait_time = 0.01
+var min_wait_time = 0.02
 var time_change = 0.02
 var mob_timer = Timer.new()
 
@@ -384,10 +384,10 @@ func _mobs_timer():
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
 
-@onready var revolverIcon = $HUD/WeaponDisplay/RevolverSlot/revolverIcon
-@onready var shotgunIcon = $HUD/WeaponDisplay/ShotgunSlot/shotgunIcon
-@onready var rifleIcon = $HUD/WeaponDisplay/RifleSlot/rifleIcon
-@onready var tommyIcon = $HUD/WeaponDisplay/TommySlot4/tommyIcon
+@onready var revolverIcon = $World/Player/HUD/WeaponDisplay/RevolverSlot/revolverIcon
+@onready var shotgunIcon = $World/Player/HUD/WeaponDisplay/ShotgunSlot/shotgunIcon
+@onready var rifleIcon = $World/Player/HUD/WeaponDisplay/RifleSlot/rifleIcon
+@onready var tommyIcon = $World/Player/HUD/WeaponDisplay/TommySlot4/tommyIcon
 
 func setIcons():
 	revolverIcon.modulate = Color(0, 0, 0, 1)
@@ -421,13 +421,13 @@ func update_weapon_display():
 
 func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
 	if weapon_fired == "revolver":
-		$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
 	elif weapon_fired == "shotgun":
-		$HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
+		$World/Player/HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
 	elif weapon_fired == "rifle":
-		$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
 	else:
-		$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
 
 
 func _on_revolver_pickup_pickedup_gun() -> void:

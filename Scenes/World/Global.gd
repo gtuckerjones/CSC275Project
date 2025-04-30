@@ -10,6 +10,15 @@ var world_data := {
 	"tree_positions": []
 }
 
+var player_has_revolver = false
+var player_has_shotgun = false
+var player_has_rifle = false
+var player_has_tommy = false
+var pistol_ammo = 0
+var shotgun_ammo = 0
+var rifle_ammo = 0
+var tommy_ammo = 0
+
 var player_data := {
 	"last_player_position": Vector2i.ZERO,
 	"inventory": {
