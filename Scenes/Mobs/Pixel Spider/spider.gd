@@ -29,6 +29,8 @@ func move(delta):
 		if is_instance_valid(player):
 			velocity = position.direction_to(player.position) * speed
 			dir.x = abs(velocity.x)/velocity.x
+		else: 
+			print("NO PLAYER IS FOUND")
 	elif !is_spider_chase:
 		velocity += dir * speed * delta
 	move_and_slide()
@@ -52,5 +54,7 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		self.queue_free()
 
+func set_player(p: CharacterBody2D) -> void:
+	player = p
 #Script worked on by Megan
 #Credit to DevWorm for major outline

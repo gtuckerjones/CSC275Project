@@ -8,6 +8,8 @@ extends Node2D
 @onready var camera: Camera2D = $World/Player/Camera2D
 @onready var house_scene = preload("res://Scenes/World/house.tscn")
 @onready var tree_scene = preload("res://Scenes/World/tree.tscn")
+@onready var mob_scene = preload("res://Scenes/Mobs/waechter-20/waechter.tscn")
+
 
 var noise: Noise
 var map_width = 250
@@ -166,6 +168,17 @@ func _spawn_house(pos: Vector2i):
 	for x in range(pos.x - 5, pos.x + 5):
 		for y in range(pos.y - 14, pos.y):
 			placed_houses.append(Vector2i(x, y))
+			
+	#mj edit
+	var front_pos = pos + Vector2i(3.5, 0.5) 
+	_spawn_house_guard(front_pos)
+	
+func _spawn_house_guard(pos: Vector2i):
+	print("mob spawned!!!!!!!!!")
+	var mob = mob_scene.instantiate()
+	mob.position = pos * ground_tile_map.tile_set.tile_size
+	add_child(mob)
+	#mj close
 
 func _add_trees():
 	var count = randi_range(30, 60)
