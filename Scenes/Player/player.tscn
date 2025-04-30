@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7i6ixhxkk214" path="res://Scenes/Player/player.gd" id="1_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="2_a3d8c"]
-[ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/health_bar.tscn" id="4_mtuoh"]
+[ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/Health/health_bar.tscn" id="4_mtuoh"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -128,7 +128,7 @@ position = Vector2(5, 5)
 scale = Vector2(0.25, 0.25)
 
 [node name="player_hitbox" type="Area2D" parent="."]
-collision_mask = 19
+collision_mask = 51
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 position = Vector2(-2, 0)

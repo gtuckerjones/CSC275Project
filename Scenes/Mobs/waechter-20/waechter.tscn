@@ -1,8 +1,17 @@
-[gd_scene load_steps=40 format=3 uid="uid://s4u42hpl1e8v"]
+[gd_scene load_steps=50 format=3 uid="uid://s4u42hpl1e8v"]
 
+<<<<<<< Updated upstream:Scenes/waechter-20/waechter.tscn
 [ext_resource type="Script" uid="uid://b6xuhtw4xf87r" path="res://Scenes/waechter-20/waechter.gd" id="1_i6faf"]
+<<<<<<< Updated upstream:Scenes/waechter-20/waechter.tscn
 [ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
+=======
+=======
+[ext_resource type="Script" uid="uid://b6xuhtw4xf87r" path="res://Scenes/Mobs/waechter-20/waechter.gd" id="1_i6faf"]
+>>>>>>> Stashed changes:Scenes/Mobs/waechter-20/waechter.tscn
+[ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Spritesheets2/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="2_cc734"]
+>>>>>>> Stashed changes:Scenes/Mobs/waechter-20/waechter.tscn
 [ext_resource type="Texture2D" uid="uid://13k5fnr6civ5" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 Charset.png" id="3_qyy35"]
+[ext_resource type="Texture2D" uid="uid://crknpplh8viyo" path="res://Artwork/Mob Sprites/waechter-20/waechter-20/waechter-20 SV_Battler.png" id="4_axftl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf4ud"]
 atlas = ExtResource("2_cc734")
@@ -115,6 +124,42 @@ region = Rect2(384, 96, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vj0b"]
 atlas = ExtResource("3_qyy35")
 region = Rect2(480, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axftl"]
+atlas = ExtResource("4_axftl")
+region = Rect2(0, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vixg1"]
+atlas = ExtResource("4_axftl")
+region = Rect2(192, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ganqa"]
+atlas = ExtResource("4_axftl")
+region = Rect2(384, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf8n2"]
+atlas = ExtResource("4_axftl")
+region = Rect2(0, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menvw"]
+atlas = ExtResource("4_axftl")
+region = Rect2(192, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh3a2"]
+atlas = ExtResource("4_axftl")
+region = Rect2(384, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaod8"]
+atlas = ExtResource("4_axftl")
+region = Rect2(576, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hib6x"]
+atlas = ExtResource("4_axftl")
+region = Rect2(768, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmsgu"]
+atlas = ExtResource("4_axftl")
+region = Rect2(960, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gohjy"]
 atlas = ExtResource("3_qyy35")
@@ -248,6 +293,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_axftl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vixg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ganqa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf8n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_menvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh3a2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaod8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hib6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmsgu")
+}],
+"loop": true,
+"name": &"puff",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gohjy")
 }, {
 "duration": 1.0,
@@ -270,20 +352,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8o00"]
-radius = 56.0085
-height = 112.017
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axftl"]
+radius = 23.0
+height = 82.0
 
-[node name="Waechter" type="RigidBody2D"]
+[node name="Waechter" type="CharacterBody2D"]
+z_index = 3
+collision_layer = 64
 script = ExtResource("1_i6faf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_4t5yu")
-animation = &"fireball"
-frame_progress = 0.0439227
+animation = &"puff"
+frame_progress = 0.508086
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.58491
-shape = SubResource("CapsuleShape2D_x8o00")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PuffTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="PoisonHitbox" type="Area2D" parent="."]
+collision_layer = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PoisonHitbox"]
+position = Vector2(-34, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_axftl")
+
+[connection signal="timeout" from="PuffTimer" to="." method="_on_puff_timer_timeout"]
+[connection signal="body_entered" from="PoisonHitbox" to="." method="_on_poison_hitbox_body_entered"]

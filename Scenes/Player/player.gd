@@ -217,7 +217,12 @@ func _on_attack_cooldown_timeout():
 	
 func game_over():
 	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over.tscn")
-
+	
+	
+func apply_poison_damage():
+	if health > 0:
+		health -= 10  # Or whatever damage value
+		print("Poisoned! Health now:", health)
 #mj edit finish
 
   
