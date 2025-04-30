@@ -329,7 +329,7 @@ func choose_weighted_drop(drop_table):
 
 func _start_random_drops_timer():
 	var timer = Timer.new()
-	timer.wait_time = 1.0
+	timer.wait_time = 3.0
 	timer.autostart = true
 	timer.one_shot = false
 	timer.timeout.connect(random_drops)
@@ -359,17 +359,24 @@ func random_mob_spawns():
 		add_child(item)
 		
 		print("Spawned mob: %s at %s" % [chosen_drop["name"], tile_pos])
+		if mob_timer.wait_time > min_wait_time:
+			mob_timer.wait_time = max(mob_timer.wait_time - time_change, min_wait_time)
+			print(mob_timer.wait_time)
 		return
 
 	print("No valid spot found for a random mob.")
 	
+	
+var min_wait_time = 0.01
+var time_change = 0.02
+var mob_timer = Timer.new()
+
 func _mobs_timer():
-	var timer = Timer.new()
-	timer.wait_time = 5.00
-	timer.autostart = true
-	timer.one_shot = false
-	timer.timeout.connect(random_mob_spawns)
-	add_child(timer)
+	mob_timer.wait_time = 5.00
+	mob_timer.autostart = true
+	mob_timer.one_shot = false
+	mob_timer.timeout.connect(random_mob_spawns)
+	add_child(mob_timer)
 	
 	
 #Artwork Credits
