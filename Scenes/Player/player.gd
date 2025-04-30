@@ -23,6 +23,7 @@ var available_weapons: Array[String] = []
 var current_weapon_idx: int = 0
 var equipped_weapon
 signal switchedWeapons
+var is_game_over = false
 
 
 func handleInput():
@@ -216,6 +217,7 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 	
 func game_over():
+	is_game_over = true
 	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over.tscn")
 	
 	
@@ -227,4 +229,5 @@ func apply_poison_damage():
 
   
 func _on_food_picked_up_food() -> void:
-	pass # Replace with function body.
+	if health < max_health:
+		health += randi_range(5, 25)
