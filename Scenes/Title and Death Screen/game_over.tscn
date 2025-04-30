@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://coiu1w3vk2y2e"]
+[gd_scene load_steps=6 format=3 uid="uid://coiu1w3vk2y2e"]
 
 [ext_resource type="Script" uid="uid://bj57vthdaqun0" path="res://Scenes/Title and Death Screen/game_over.gd" id="1_ooheg"]
 [ext_resource type="AudioStream" uid="uid://dkb44108a647q" path="res://Artwork/Music/tense-crime-atmosphere-for-films-and-media-15s-237444.mp3" id="1_uo04k"]
+[ext_resource type="Texture2D" uid="uid://c0p5ynnslwejq" path="res://Artwork/Title and Death Screen/Game Over 2.jpg" id="2_3m3mi"]
+[ext_resource type="Script" uid="uid://dkfacxx5cj4qs" path="res://Scenes/Title and Death Screen/label.gd" id="3_h2x7y"]
 [ext_resource type="PackedScene" uid="uid://iwlfqxqvh75f" path="res://Scenes/HUD/survival_timer.tscn" id="3_tukaa"]
 
 [node name="Game Over" type="Control"]
@@ -13,35 +15,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ooheg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="GameOverScreen" type="Sprite2D" parent="."]
+position = Vector2(570, 307.75)
+scale = Vector2(0.518153, 0.31537)
+texture = ExtResource("2_3m3mi")
+
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 1155.0
-offset_bottom = 652.0
-color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+offset_left = -6.0
+offset_top = -3.0
+offset_right = 1145.0
+offset_bottom = 651.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 63.0
+offset_left = -545.0
+offset_right = -164.0
+offset_bottom = 99.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 59
 text = "Game Over"
+script = ExtResource("3_h2x7y")
 
 [node name="PlayGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 456.0
-offset_top = 460.0
-offset_right = 674.0
-offset_bottom = 516.0
+offset_left = 892.0
+offset_top = 573.0
+offset_right = 1110.0
+offset_bottom = 629.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Try Again"
