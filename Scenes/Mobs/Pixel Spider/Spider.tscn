@@ -100,8 +100,8 @@ autostart = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_vjgkn")]
 offset_left = -21.0
-offset_top = 25.0
+offset_top = -31.0
 offset_right = 17.0
-offset_bottom = 32.0
+offset_bottom = -25.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
