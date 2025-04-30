@@ -244,7 +244,7 @@ func _on_attack_cooldown_timeout():
 	
 func game_over():
 	is_game_over = true
-	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over 2.tscn")
 	
 	
 func apply_poison_damage():

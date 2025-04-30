@@ -2,6 +2,7 @@ extends Node
 
 var player_current_attack = false
 var playerBody: CharacterBody2D
+var timer = 0
 
 var world_data := {
 	"seed": null,
