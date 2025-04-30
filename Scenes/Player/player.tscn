@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ik3f4konjco4" path="res://Artwork/Spritesheets2/mainCharacter/mainCharacter/animation/characterAnimation.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bo42ilfc3jyyf" path="res://Scenes/rangedWeapons/ranged_weapons.tscn" id="2_a3d8c"]
 [ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/Health/health_bar.tscn" id="4_mtuoh"]
-[ext_resource type="Script" path="res://Scenes/Health/health_bar.gd" id="5_htcer"]
+[ext_resource type="Script" uid="uid://big1kp8qr7iii" path="res://Scenes/Health/health_bar.gd" id="5_htcer"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
