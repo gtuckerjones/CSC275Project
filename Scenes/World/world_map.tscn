@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhdxhtov61apx"]
+[gd_scene load_steps=22 format=3 uid="uid://bhdxhtov61apx"]
 
 [ext_resource type="Script" uid="uid://b8hsjt6y22bfl" path="res://Scenes/World/world_map.gd" id="1_llh6y"]
 [ext_resource type="PackedScene" uid="uid://dtnewlnjvtsyw" path="res://Scenes/Player/player.tscn" id="2_g8h5j"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ba66qwal6i0c8" path="res://Scenes/Pickups/rifle_ammo_pickup.tscn" id="10_c103g"]
 [ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="12_t6a4a"]
 [ext_resource type="PackedScene" uid="uid://b0w4x0tniud7w" path="res://Scenes/Pickups/food.tscn" id="13_j3p7k"]
-[ext_resource type="PackedScene" uid="uid://45vsxolyaqq3" path="res://Scenes/HUD/hud.tscn" id="14_h6arw"]
 [ext_resource type="PackedScene" uid="uid://dwvian32unebf" path="res://Scenes/Mobs/Pixel Spider/Spider.tscn" id="18_h6arw"]
 [ext_resource type="PackedScene" uid="uid://iwlfqxqvh75f" path="res://Scenes/HUD/survival_timer.tscn" id="18_r1ohy"]
 [ext_resource type="PackedScene" uid="uid://s4u42hpl1e8v" path="res://Scenes/Mobs/waechter-20/waechter.tscn" id="19_kda2h"]
@@ -76,7 +75,7 @@ position = Vector2(269, 72)
 position = Vector2(-187, 256)
 
 [node name="RevolverPickup" parent="World/pickups" instance=ExtResource("5_hdk3q")]
-position = Vector2(-491, -50)
+position = Vector2(9, -17)
 
 [node name="RiflePickup" parent="World/pickups" instance=ExtResource("6_rag27")]
 position = Vector2(-475, -282)
@@ -85,7 +84,7 @@ position = Vector2(-475, -282)
 position = Vector2(503, -58)
 
 [node name="revolverAmmoPickup" parent="World/pickups" instance=ExtResource("8_lh8t4")]
-position = Vector2(-429, 165)
+position = Vector2(42, -12)
 
 [node name="shotgunAmmoPickup" parent="World/pickups" instance=ExtResource("9_ige11")]
 position = Vector2(-112, -217)
@@ -100,8 +99,6 @@ position = Vector2(250, -215)
 [node name="Food" parent="World/pickups" instance=ExtResource("13_j3p7k")]
 visible = false
 position = Vector2(18, -12)
-
-[node name="HUD" parent="." instance=ExtResource("14_h6arw")]
 
 [node name="Waechter" parent="." instance=ExtResource("19_kda2h")]
 position = Vector2(452, 209)
@@ -141,5 +138,5 @@ theme_override_font_sizes/font_size = 50
 
 [editable path="World/Player"]
 [editable path="World/Player/Ranged Weapons"]
-[editable path="HUD"]
+[editable path="World/Player/HUD"]
 [editable path="SurvivalTimer"]
