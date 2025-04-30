@@ -52,6 +52,7 @@ func _generate_world():
 func _process(delta: float) -> void:
 	if $World/Player.is_game_over == false:
 		survival_time += delta
+		Global.timer = survival_time
 		timer_label.text = format_time(survival_time)
 
 func format_time(seconds: float) -> String:
