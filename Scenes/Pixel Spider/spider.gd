@@ -6,8 +6,8 @@ var dir: Vector2
 var is_spider_chase: bool
 
 var player: CharacterBody2D
-var health = 100
-var max_health = 100
+var health = 200
+var max_health = 200
 var min_health = 0
 
 func _ready():

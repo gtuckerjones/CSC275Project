@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://bg5s34m5sl756"]
 
 [ext_resource type="Script" uid="uid://0n2yclhm0kd4" path="res://Scenes/Cacodeaemon/cacodaemon.gd" id="1_wj647"]
-[ext_resource type="Texture2D" uid="uid://j2ufgam5jk8m" path="res://Artwork/Spritesheets2/Mob Sprites/Cacodeaemon/Cacodaemon Sprite Sheet.png" id="2_mpf6j"]
+[ext_resource type="Texture2D" uid="uid://j2ufgam5jk8m" path="res://Artwork/Mob Sprites/Cacodeaemon/Cacodaemon Sprite Sheet.png" id="2_mpf6j"]
 [ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/health_bar.tscn" id="3_uuwj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqpfm"]
