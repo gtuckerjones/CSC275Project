@@ -15,10 +15,9 @@ script = ExtResource("1_ooheg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 1155.0
-offset_bottom = 652.0
+offset_left = -1.0
+offset_right = 1152.0
+offset_bottom = 651.0
 color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -49,15 +48,15 @@ text = "Try Again"
 [node name="SurvivalTimer" parent="." instance=ExtResource("3_tukaa")]
 
 [node name="SurvivalTimerLabel" parent="SurvivalTimer" index="0"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.5
-offset_top = -17.5
-offset_right = 48.5
-offset_bottom = 17.5
+anchors_preset = -1
+anchor_left = 0.476
+anchor_top = 0.601
+anchor_right = 0.476
+anchor_bottom = 0.601
+offset_left = -100.352
+offset_top = -17.448
+offset_right = 119.648
+offset_bottom = 39.552
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.975736, 0.975736, 0.975736, 1)
@@ -67,6 +66,33 @@ stream = ExtResource("1_uo04k")
 autoplay = true
 parameters/looping = true
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 537.0
+offset_right = 670.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 32
+text = "Quit Game"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.579
+anchor_right = 0.483
+anchor_bottom = 0.579
+offset_left = -183.416
+offset_top = -99.192
+offset_right = 183.584
+offset_bottom = -30.192
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.982372, 0.91948, 0.945796, 1)
+theme_override_font_sizes/font_size = 50
+text = "Time Survied:"
+
 [connection signal="pressed" from="PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="SurvivalTimer"]

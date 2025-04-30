@@ -59,6 +59,23 @@ func updateAnimation():
 #mj start edit
 func _ready():
 	Global.playerBody = self
+	$"Ranged Weapons".revolverAmmo = Global.pistol_ammo
+	$"Ranged Weapons".shotgunAmmo = Global.shotgun_ammo
+	$"Ranged Weapons".rifleAmmo = Global.rifle_ammo
+	$"Ranged Weapons".tommyAmmo = Global.tommy_ammo
+	$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str($"Ranged Weapons".revolverAmmo)
+	$HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str($"Ranged Weapons".shotgunAmmo)
+	$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str($"Ranged Weapons".rifleAmmo)
+	$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str($"Ranged Weapons".tommyAmmo)
+	
+	if Global.player_has_revolver:
+		hasRevolver = true
+	if Global.player_has_shotgun:
+		hasShotgun = true
+	if Global.player_has_rifle:
+		hasRifle = true
+	if Global.player_has_tommy:
+		hasTommy = true
 	
 #mj end edit
 
@@ -91,9 +108,15 @@ func _process(delta):
 		$"Ranged Weapons".position.x = 4
 		
 	accessedWeapons()
+	
+	Global.pistol_ammo = $"Ranged Weapons".revolverAmmo
+	Global.shotgun_ammo = $"Ranged Weapons".shotgunAmmo
+	Global.rifle_ammo = $"Ranged Weapons".rifleAmmo
+	Global.tommy_ammo = $"Ranged Weapons".tommyAmmo
 		
 func _on_revolver_pickup_pickedup_gun() -> void:
 	hasRevolver = true
+	Global.player_has_revolver = true
 	$"Ranged Weapons".equipRevolver = true
 	$"Ranged Weapons".equipShotgun = false
 	$"Ranged Weapons".equipRifle = false
@@ -101,6 +124,7 @@ func _on_revolver_pickup_pickedup_gun() -> void:
 
 func _on_shotgun_pickup_pickedup_shotgun() -> void:
 	hasShotgun = true
+	Global.player_has_shotgun = true
 	$"Ranged Weapons".equipShotgun = true
 	$"Ranged Weapons".equipRifle = false
 	$"Ranged Weapons".equipTommygun = false
@@ -108,6 +132,7 @@ func _on_shotgun_pickup_pickedup_shotgun() -> void:
 
 func _on_rifle_pickup_pickedup_rifle() -> void:
 	hasRifle = true
+	Global.player_has_rifle = true
 	$"Ranged Weapons".equipShotgun = false
 	$"Ranged Weapons".equipRifle = true
 	$"Ranged Weapons".equipTommygun = false
@@ -115,6 +140,7 @@ func _on_rifle_pickup_pickedup_rifle() -> void:
 
 func _on_tommygun_pickup_pickedup_tommy() -> void:
 	hasTommy = true
+	Global.player_has_tommy = true
 	$"Ranged Weapons".equipShotgun = false
 	$"Ranged Weapons".equipRifle = false
 	$"Ranged Weapons".equipTommygun = true
@@ -218,7 +244,7 @@ func _on_attack_cooldown_timeout():
 	
 func game_over():
 	is_game_over = true
-	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/game_over 2.tscn")
 	
 	
 func apply_poison_damage():
