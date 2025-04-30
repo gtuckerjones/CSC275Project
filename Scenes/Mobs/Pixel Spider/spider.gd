@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 20
+var speed = 50
 var dir: Vector2
 
 var is_spider_chase: bool

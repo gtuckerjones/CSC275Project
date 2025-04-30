@@ -119,8 +119,10 @@ parameters/looping = true
 [node name="SurvivalTimer" parent="." instance=ExtResource("18_r1ohy")]
 
 [node name="SurvivalTimerLabel" parent="SurvivalTimer" index="0"]
-offset_left = -40.0
-offset_bottom = 23.0
+
+offset_left = -178.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 50
 
 [connection signal="switchedWeapons" from="World/Player" to="." method="_on_player_switched_weapons"]
 [connection signal="ammo_fired" from="World/Player/Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
