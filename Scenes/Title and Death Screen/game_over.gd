@@ -23,4 +23,3 @@ func _on_play_game_pressed() -> void:
 func _on_button_pressed() -> void:
 	print("quit")
 	get_tree().quit()
-
