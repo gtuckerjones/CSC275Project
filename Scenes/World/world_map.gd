@@ -9,7 +9,8 @@ extends Node2D
 @onready var house_scene = preload("res://Scenes/World/house.tscn")
 @onready var tree_scene = preload("res://Scenes/World/tree.tscn")
 @onready var mob_scene = preload("res://Scenes/Mobs/waechter-20/waechter.tscn")
-
+var survival_time: float = 0.0
+@onready var timer_label = $SurvivalTimer/SurvivalTimerLabel
 
 var noise: Noise
 var map_width = 250
@@ -46,6 +47,16 @@ func _generate_world():
 	_add_trees()
 
 	_setup_player(Vector2i(0,0))
+	
+func _process(delta: float) -> void:
+	if $World/Player.is_game_over == false:
+		survival_time += delta
+		timer_label.text = format_time(survival_time)
+
+func format_time(seconds: float) -> String:
+	var mins = int(seconds) / 60
+	var secs = int(seconds) % 60
+	return "%02d:%02d" % [mins, secs]
 
 func _load_world_from_global():
 	print("Loading saved world...")
@@ -388,3 +399,4 @@ func _on_tommygun_pickup_pickedup_tommy() -> void:
 
 func _on_player_switched_weapons() -> void:
 	update_weapon_display()
+	
