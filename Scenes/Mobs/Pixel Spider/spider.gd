@@ -33,7 +33,13 @@ func move(delta):
 			print("NO PLAYER IS FOUND")
 	elif !is_spider_chase:
 		velocity += dir * speed * delta
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		if global_position.y < player.global_position.y:
+			position.y -= 1
+		else:
+			position.y += 1
+		
 	
 func choose(array):
 	array.shuffle()

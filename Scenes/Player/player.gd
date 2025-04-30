@@ -224,7 +224,6 @@ func player():
 func _on_player_hitbox_body_entered(body: Node2D):
 	if body.has_method("enemy"):
 		enemy_inattack_range = true
-		
 
 func _on_player_hitbox_body_exited(body: Node2D):
 	if body.has_method("enemy"):
