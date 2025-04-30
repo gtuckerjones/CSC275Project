@@ -77,8 +77,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vvjur"]
-radius = 21.973
-height = 58.1269
+radius = 26.0176
+height = 60.0255
 
 [node name="Spider Mob" type="CharacterBody2D"]
 z_index = 2
