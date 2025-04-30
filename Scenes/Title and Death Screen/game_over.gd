@@ -18,7 +18,9 @@ func _on_play_game_pressed() -> void:
 
 
 #Created by Megan and Sam
+#Image by Rochak Shukla on Freepik
 
 func _on_button_pressed() -> void:
 	print("quit")
 	get_tree().quit()
+
