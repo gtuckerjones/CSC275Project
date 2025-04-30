@@ -34,6 +34,7 @@ func _ready():
 	else:
 		_generate_world()
 	_start_random_drops_timer()
+	_mobs_timer()
 func _generate_world():
 	print("Generating new world...")
 
@@ -312,7 +313,6 @@ func random_drops():
 
 	print("No valid spot found for a random drop.")
 
-
 func choose_weighted_drop(drop_table):
 	var total_weight = 0
 	for item in drop_table:
@@ -334,6 +334,44 @@ func _start_random_drops_timer():
 	timer.one_shot = false
 	timer.timeout.connect(random_drops)
 	add_child(timer)
+
+func random_mob_spawns():
+	var max_attempts = 100
+	var attempt = 0
+
+	while attempt < max_attempts:
+		attempt += 1
+		var tile_pos = ground_tiles_arr[randi() % ground_tiles_arr.size()]
+		if placed_houses.has(tile_pos): continue
+		if placed_trees.has(tile_pos): continue
+		if expanded_path.has(tile_pos): continue
+		if tile_pos == Vector2i(0, 0): continue
+
+		# Drop table with weights
+		var drop_table = [
+			{"name": "Spider", "scene": preload("res://Scenes/Mobs/Pixel Spider/Spider.tscn")},
+			{"name": "Cocodaemon", "scene": preload("res://Scenes/Mobs/Cacodeaemon/cacodaemon.tscn")}
+			]
+
+		var chosen_drop = drop_table[randi() % drop_table.size()]
+		var item = chosen_drop["scene"].instantiate()
+		item.position = tile_pos * ground_tile_map.tile_set.tile_size
+		add_child(item)
+		
+		print("Spawned mob: %s at %s" % [chosen_drop["name"], tile_pos])
+		return
+
+	print("No valid spot found for a random mob.")
+	
+func _mobs_timer():
+	var timer = Timer.new()
+	timer.wait_time = 5.00
+	timer.autostart = true
+	timer.one_shot = false
+	timer.timeout.connect(random_mob_spawns)
+	add_child(timer)
+	
+	
 #Artwork Credits
 #All ground, water, and road tiles by Sam Pritchett
 #RPG House by Diogo Vernier
