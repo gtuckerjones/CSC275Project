@@ -1,15 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://dwvian32unebf"]
 
-<<<<<<< Updated upstream:Scenes/Pixel Spider/Spider.tscn
-[ext_resource type="Script" uid="uid://ddfptx5gblcaq" path="res://Scenes/Pixel Spider/spider.gd" id="1_cgp8y"]
-[ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Artwork/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
-[ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/health_bar.tscn" id="3_vjgkn"]
-=======
 [ext_resource type="Script" uid="uid://ddfptx5gblcaq" path="res://Scenes/Mobs/Pixel Spider/spider.gd" id="1_cgp8y"]
 [ext_resource type="Texture2D" uid="uid://c4ob4pqjan68o" path="res://Artwork/Spritesheets2/Mob Sprites/Pixel Spider/spider-chp-1-makeitmove.png" id="2_oc654"]
 [ext_resource type="PackedScene" uid="uid://bav02jg43gyxs" path="res://Scenes/Health/health_bar.tscn" id="3_vjgkn"]
->>>>>>> Stashed changes:Scenes/Mobs/Pixel Spider/Spider.tscn
->>>>>>> Stashed changes:Scenes/Mobs/Pixel Spider/Spider.tscn
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbg4t"]
 atlas = ExtResource("2_oc654")
