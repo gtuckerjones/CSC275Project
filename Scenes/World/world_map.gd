@@ -11,6 +11,7 @@ extends Node2D
 @onready var mob_scene = preload("res://Scenes/Mobs/waechter-20/waechter.tscn")
 var survival_time: float = 0.0
 @onready var timer_label = $SurvivalTimer/SurvivalTimerLabel
+@onready var mob_timer = Timer.new()
 
 var noise: Noise
 var map_width = 250
@@ -29,12 +30,17 @@ var last_y_used = null
 
 func _ready():
 	setIcons()
+	_mobs_timer()
 	if Global.has_saved_data():
 		_load_world_from_global()
+		survival_time = Global.timer
+		print("Global Mob Timer", Global.mob_timer)
+		mob_timer.wait_time = Global.mob_timer
 	else:
 		_generate_world()
+		mob_timer.wait_time = 5.00
 	_start_random_drops_timer()
-	_mobs_timer()
+	
 func _generate_world():
 	print("Generating new world...")
 
@@ -53,6 +59,7 @@ func _process(delta: float) -> void:
 	if $World/Player.is_game_over == false:
 		survival_time += delta
 		Global.timer = survival_time
+		Global.mob_timer = mob_timer.wait_time
 		timer_label.text = format_time(survival_time)
 
 func format_time(seconds: float) -> String:
@@ -297,7 +304,7 @@ func random_drops():
 		elif item.has_signal("pickedupShotgunAmmo"):
 			item.connect("pickedupShotgunAmmo", Callable(player, "_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"))
 		elif item.has_signal("pickedupRifleAmmo"):
-			item.connect("pickedupRifleAmmo", Callable(player, "_on_rifle_ammo_pickup_pickedup_rifle"))
+			item.connect("pickedupRifleAmmo", Callable(player, "_on_rifle_ammo_pickup_pickedup_rifle_ammo"))
 		elif item.has_signal("pickedupTommyAmmo"):
 			item.connect("pickedupTommyAmmo", Callable(player, "_on_tommy_ammo_pickup_pickedup_tommy_ammo"))
 		elif item.has_signal("pickedupShotgun"):
@@ -370,10 +377,9 @@ func random_mob_spawns():
 	
 var min_wait_time = 0.02
 var time_change = 0.02
-var mob_timer = Timer.new()
 
 func _mobs_timer():
-	mob_timer.wait_time = 5.00
+	#mob_timer.wait_time = 5.00
 	mob_timer.autostart = true
 	mob_timer.one_shot = false
 	mob_timer.timeout.connect(random_mob_spawns)

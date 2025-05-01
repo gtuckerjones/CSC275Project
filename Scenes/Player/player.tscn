@@ -125,10 +125,6 @@ libraries = {
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_3nc41")
 
-[node name="Ranged Weapons" parent="." instance=ExtResource("2_a3d8c")]
-position = Vector2(5, 5)
-scale = Vector2(0.25, 0.25)
-
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_mask = 51
 
@@ -147,8 +143,14 @@ script = ExtResource("5_htcer")
 
 [node name="HUD" parent="." instance=ExtResource("6_dd0ac")]
 
+[node name="Ranged Weapons" parent="." instance=ExtResource("2_a3d8c")]
+position = Vector2(5, 5)
+scale = Vector2(0.25, 0.25)
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="ammo_fired" from="Ranged Weapons" to="." method="_on_ranged_weapons_ammo_fired"]
 
 [editable path="HUD"]
+[editable path="Ranged Weapons"]
