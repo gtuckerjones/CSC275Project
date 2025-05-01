@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://berctq5i3aqua"]
+
+[ext_resource type="FontFile" uid="uid://cp62i34xuec1u" path="res://Artwork/SpecialElite-Regular.ttf" id="1_66f2y"]
+[ext_resource type="Script" uid="uid://inj1seqeqfi3" path="res://Scenes/Title and Death Screen/credits.gd" id="1_e75hx"]
+[ext_resource type="Texture2D" uid="uid://dsup4hfd2uaqq" path="res://Artwork/button_unpressed.png" id="2_e75hx"]
+[ext_resource type="Texture2D" uid="uid://mmgapa6taak6" path="res://Artwork/button_pressed.png" id="3_d1h4o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u47os"]
+texture = ExtResource("3_d1h4o")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e75hx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Credits" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 17
+text = "Artwork:
+RPG House by Diogo Vernier
+Nature Trees by Admurin
+2D Health and Ammo Pickups by fightswithbears
+ProjectUtumno Art by MedicineStorm and Chris Hamons
+Cacodaemon by Elthen's Pixel Art Shop
+Waetcher by Jitsukoan
+Pixel Spider by UndeadGamedev
+Buttons by Krial
+
+Music:
+Horror Tension Suspense by DeloSound
+Dark Story Investigator by UniqueCreativeAudio
+Tense Crime Atmosphere for Films and Media by Universfield
+Tense Detective Looped Drone by Good_B_Music
+
+Resources:
+How to make a gun that shoots at the cursor [Godot 4] Youtube Video by Cold
+Godot 4 TileMap Tutorial Ep 7 | Procedural Generation Youtube Video by Jackie Codes
+"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_66f2y")
+theme_override_font_sizes/font_size = 37
+theme_override_icons/icon = ExtResource("2_e75hx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_u47os")
+text = "Back"
+icon_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

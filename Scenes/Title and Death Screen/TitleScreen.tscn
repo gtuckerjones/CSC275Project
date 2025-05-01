@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://d4e1qgx2xhl46"]
 
-[ext_resource type="Script" uid="uid://do56o5a37o2u5" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_47fe0"]
-[ext_resource type="Texture2D" uid="uid://b8io1vgthkxwg" path="res://Artwork/Title and Death Screen/agent-1294795_1920.png" id="2_c8wq5"]
-[ext_resource type="Texture2D" uid="uid://dsup4hfd2uaqq" path="res://Artwork/button_unpressed.png" id="3_7i8tg"]
-[ext_resource type="FontFile" uid="uid://cp62i34xuec1u" path="res://Artwork/SpecialElite-Regular.ttf" id="3_78fqn"]
-[ext_resource type="AudioStream" uid="uid://br1neeaeoianu" path="res://Artwork/Music/horror-tension-suspense-322304.mp3" id="3_c8wq5"]
-[ext_resource type="Texture2D" uid="uid://mmgapa6taak6" path="res://Artwork/button_pressed.png" id="4_78fqn"]
+[ext_resource type="Script" uid="uid://bwnwoxrm30s7u" path="res://Scenes/Title and Death Screen/TitleScreen.gd" id="1_nmffo"]
+[ext_resource type="Texture2D" uid="uid://b8io1vgthkxwg" path="res://Artwork/Title and Death Screen/agent-1294795_1920.png" id="2_kmlam"]
+[ext_resource type="FontFile" uid="uid://cp62i34xuec1u" path="res://Artwork/SpecialElite-Regular.ttf" id="3_oefg3"]
+[ext_resource type="Texture2D" uid="uid://dsup4hfd2uaqq" path="res://Artwork/button_unpressed.png" id="4_ekfm4"]
+[ext_resource type="Texture2D" uid="uid://mmgapa6taak6" path="res://Artwork/button_pressed.png" id="5_wo0yw"]
+[ext_resource type="AudioStream" uid="uid://br1neeaeoianu" path="res://Artwork/Music/horror-tension-suspense-322304.mp3" id="6_wcbm0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48mky"]
-texture = ExtResource("4_78fqn")
+texture = ExtResource("5_wo0yw")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_47fe0")
+script = ExtResource("1_nmffo")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
@@ -29,7 +29,7 @@ layout_mode = 0
 offset_top = 1.0
 offset_right = 778.0
 offset_bottom = 647.0
-texture = ExtResource("2_c8wq5")
+texture = ExtResource("2_kmlam")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="."]
@@ -39,7 +39,7 @@ offset_top = 100.0
 offset_right = 1147.0
 offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.991164, 0.991164, 0.991164, 1)
-theme_override_fonts/font = ExtResource("3_78fqn")
+theme_override_fonts/font = ExtResource("3_oefg3")
 theme_override_font_sizes/font_size = 40
 text = "The Black Fedora"
 
@@ -59,9 +59,9 @@ offset_right = 1139.0
 offset_bottom = 294.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_78fqn")
+theme_override_fonts/font = ExtResource("3_oefg3")
 theme_override_font_sizes/font_size = 37
-theme_override_icons/icon = ExtResource("3_7i8tg")
+theme_override_icons/icon = ExtResource("4_ekfm4")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_48mky")
 text = "Play"
 icon_alignment = 1
@@ -74,9 +74,9 @@ offset_right = 1139.0
 offset_bottom = 357.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_78fqn")
+theme_override_fonts/font = ExtResource("3_oefg3")
 theme_override_font_sizes/font_size = 37
-theme_override_icons/icon = ExtResource("3_7i8tg")
+theme_override_icons/icon = ExtResource("4_ekfm4")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_48mky")
 text = "Credits"
 icon_alignment = 1
@@ -89,14 +89,14 @@ offset_right = 1139.0
 offset_bottom = 420.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_78fqn")
+theme_override_fonts/font = ExtResource("3_oefg3")
 theme_override_font_sizes/font_size = 37
-theme_override_icons/icon = ExtResource("3_7i8tg")
+theme_override_icons/icon = ExtResource("4_ekfm4")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_48mky")
 text = "How to Play"
 icon_alignment = 1
 
-[node name="How to Play2" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 875.0
 offset_top = 411.0
@@ -104,17 +104,20 @@ offset_right = 1139.0
 offset_bottom = 483.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_78fqn")
+theme_override_fonts/font = ExtResource("3_oefg3")
 theme_override_font_sizes/font_size = 37
-theme_override_icons/icon = ExtResource("3_7i8tg")
+theme_override_icons/icon = ExtResource("4_ekfm4")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_48mky")
 text = "Quit"
 icon_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_c8wq5")
+stream = ExtResource("6_wcbm0")
 autoplay = true
 playback_type = 1
 parameters/looping = true
 
 [connection signal="pressed" from="PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="How to Play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

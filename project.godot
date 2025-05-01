@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CSC275Project"
-run/main_scene="uid://dv5vaugwgbj6n"
+run/main_scene="uid://d4e1qgx2xhl46"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 Global="*res://Scripts/World Scripts/Global.gd"

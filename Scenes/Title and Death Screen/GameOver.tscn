@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://coiu1w3vk2y2e"]
+[gd_scene load_steps=6 format=3 uid="uid://dwoxfq1x1xxh8"]
 
-[ext_resource type="Script" uid="uid://bj57vthdaqun0" path="res://Scenes/Title and Death Screen/game_over.gd" id="1_ooheg"]
+[ext_resource type="Script" uid="uid://b2ln451hntkrh" path="res://Scenes/Title and Death Screen/GameOver.gd" id="1_36ff6"]
 [ext_resource type="AudioStream" uid="uid://dkb44108a647q" path="res://Artwork/Music/tense-crime-atmosphere-for-films-and-media-15s-237444.mp3" id="1_uo04k"]
-[ext_resource type="Texture2D" uid="uid://c0p5ynnslwejq" path="res://Artwork/Title and Death Screen/Game Over 2.jpg" id="2_3m3mi"]
-[ext_resource type="Script" uid="uid://dkfacxx5cj4qs" path="res://Scenes/Title and Death Screen/label.gd" id="3_h2x7y"]
+[ext_resource type="Texture2D" uid="uid://c0p5ynnslwejq" path="res://Artwork/Title and Death Screen/Game Over 2.jpg" id="2_2wmr2"]
 [ext_resource type="PackedScene" uid="uid://iwlfqxqvh75f" path="res://Scenes/HUD/survival_timer.tscn" id="3_tukaa"]
+
+[sub_resource type="GDScript" id="GDScript_b6tfc"]
+script/source = "extends Label
+"
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -13,43 +16,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ooheg")
+script = ExtResource("1_36ff6")
 
 [node name="GameOverScreen" type="Sprite2D" parent="."]
-position = Vector2(570, 307.75)
+position = Vector2(575, 329)
 scale = Vector2(0.518153, 0.31537)
-texture = ExtResource("2_3m3mi")
-
-[node name="ColorRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -6.0
-offset_top = -3.0
-offset_right = 1145.0
-offset_bottom = 651.0
+texture = ExtResource("2_2wmr2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -545.0
-offset_right = -164.0
-offset_bottom = 99.0
+offset_left = -560.0
+offset_top = -3.0
+offset_right = -222.0
+offset_bottom = 80.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 59
-text = "Game Over"
-script = ExtResource("3_h2x7y")
+theme_override_font_sizes/font_size = 60
+text = "Score:"
+script = SubResource("GDScript_b6tfc")
 
 [node name="PlayGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 892.0
-offset_top = 573.0
-offset_right = 1110.0
-offset_bottom = 629.0
+offset_left = 52.0
+offset_top = 572.0
+offset_right = 270.0
+offset_bottom = 628.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Try Again"
@@ -62,14 +59,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.0
-offset_top = -17.0
-offset_right = 88.0
-offset_bottom = 24.0
+offset_left = 136.0
+offset_top = -332.0
+offset_right = 561.0
+offset_bottom = -249.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
 text = "Time Survived:"
+horizontal_alignment = 1
+
+[node name="TimeSurvived" type="Label" parent="SurvivalTimer"]
+offset_left = 847.0
+offset_top = 103.0
+offset_right = 1011.0
+offset_bottom = 187.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="SurvivalTimer"]
+anchors_preset = -1
+offset_left = 134.0
+offset_top = 100.0
+offset_right = 247.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_uo04k")
@@ -83,10 +101,11 @@ anchor_left = 0.023
 anchor_top = 0.027
 anchor_right = 0.023
 anchor_bottom = 0.027
-offset_left = 432.504
-offset_top = 521.504
-offset_right = 645.504
-offset_bottom = 574.504
+offset_left = 859.504
+offset_top = 557.504
+offset_right = 1072.5
+offset_bottom = 610.504
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Quit Game"
 

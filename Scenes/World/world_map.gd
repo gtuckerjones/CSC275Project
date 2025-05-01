@@ -9,23 +9,23 @@ extends Node2D
 @onready var house_scene = preload("res://Scenes/World/house.tscn")
 @onready var tree_scene = preload("res://Scenes/World/tree.tscn")
 @onready var mob_scene = preload("res://Scenes/Mobs/waechter-20/waechter.tscn")
-var survival_time: float = 0.0
+var survival_time: float = 0.0 
 @onready var timer_label = $SurvivalTimer/SurvivalTimerLabel
-@onready var mob_timer = Timer.new()
+@onready var mob_timer = Timer.new() #timer to spawn mobs after X amount of time
 
-var noise: Noise
-var map_width = 250
+var noise: Noise #randomly produced noise with seed
+var map_width = 250 #X and Y for map
 var map_height = 250
 var tilemap_source_id = 5
-var water_atlas = Vector2i(3, 2)
-var ground_atlas = Vector2i(1, 1)
-var ground_tiles_arr = []
-var ground_tileset_int = 1
+var water_atlas = Vector2i(3, 2) #tile location on tilemap
+var ground_atlas = Vector2i(1, 1) #tile location on tilemap
+var ground_tiles_arr = [] #stored Vector of each ground tile placed
+var ground_tileset_int = 1 #tileset number
 var road_tileset_int = 0
-var road_tiles_arr = []
-var expanded_path = []
-var placed_houses = []
-var placed_trees = []
+var road_tiles_arr = [] #stored vector of each road tile
+var expanded_path = [] #stored vector of expanded raod tiles
+var placed_houses = [] #stored vector of each placed house
+var placed_trees = [] #stored vector of each placed tree
 var last_y_used = null
 
 func _ready():
@@ -64,74 +64,74 @@ func _process(delta: float) -> void:
 
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
-	var secs = int(seconds) % 60
+	var secs = int(seconds) % 60 #formats time correctly
 	return "%02d:%02d" % [mins, secs]
 
 func _load_world_from_global():
 	print("Loading saved world...")
 	noise = noise_height_text.noise
-	noise.seed = Global.world_data.seed
+	noise.seed = Global.world_data.seed #retrieves the saved seed and generates the world using the same seed as previously
 
-	_generate_terrain()
+	_generate_terrain() #generates terrain
 
 	# Roads
 	for i in range(Global.world_data.road_points.size()):
-		var pair = Global.world_data.road_points[i]
+		var pair = Global.world_data.road_points[i] #places roads based on the saved vectors
 		connect_points_with_roads(pair[0], pair[1])
 
 	# Houses
-	for house_pos in Global.world_data.house_positions:
+	for house_pos in Global.world_data.house_positions: #places houses based on saved vectors
 		_spawn_house(house_pos)
 
 	# Trees
-	for tree_pos in Global.world_data.tree_positions:
+	for tree_pos in Global.world_data.tree_positions: #places trees based on saved vectors
 		_spawn_tree(tree_pos)
 	
-	_setup_player(Global.player_data.last_player_position)
+	_setup_player(Global.player_data.last_player_position) #puts the player back at their last position when they left the scene
 
 func _generate_terrain():
-	ground_tile_map.clear()
-	var buffer = 10
-	var center_x = map_width / 2.0
+	ground_tile_map.clear() #clears the layer in case there's anything on it
+	var buffer = 10 #variable for water buffer around the edges of the map, essentially making an island
+	var center_x = map_width / 2.0 #finds the center of the map
 	var center_y = map_height / 2.0
-	var max_distance = sqrt(center_x * center_x + center_y * center_y)
+	var max_distance = sqrt(center_x * center_x + center_y * center_y) #max distance to any corner
 
 	for x in range(-center_x, center_x):
-		for y in range(-center_y, center_y):
+		for y in range(-center_y, center_y): #loops through each tile on the map
 			if abs(x) > center_x - buffer or abs(y) > center_y - buffer:
-				ground_tile_map.set_cell(Vector2i(x, y), tilemap_source_id, water_atlas)
+				ground_tile_map.set_cell(Vector2i(x, y), tilemap_source_id, water_atlas) #sets all tiles in the buffer zone to water
 				continue
 
 			var val = noise.get_noise_2d(x, y)
-			var dist = sqrt(x * x + y * y) / max_distance
-			val += 8.0 * pow((1.0 - dist), 1.5) - 3.0
+			var dist = sqrt(x * x + y * y) / max_distance #distance from center
+			val += 8.0 * pow((1.0 - dist), 1.5) - 3.0 #calculates the dropoff rate to ensure that close to center is always land, but towards the outer edges it always drops off to water
 
 			var pos = Vector2i(x, y)
 			if val > 0.0:
-				ground_tiles_arr.append(pos)
+				ground_tiles_arr.append(pos) #saves the pos to the ground tiles array
 			else:
-				ground_tile_map.set_cell(pos, tilemap_source_id, water_atlas)
+				ground_tile_map.set_cell(pos, tilemap_source_id, water_atlas) #sets pos to water
 
-	ground_tile_map.set_cells_terrain_connect(ground_tiles_arr, ground_tileset_int, 0, 0)
+	ground_tile_map.set_cells_terrain_connect(ground_tiles_arr, ground_tileset_int, 0, 0) #sets every tile in the ground tile array as a ground tile using the ground tileset
 
 func _generate_roads():
-	var start_positions = []
-	var end_positions = []
+	var start_positions = [] # array to hold the start position of each road
+	var end_positions = [] # array to hold the end position of each road
 
-	for i in range(8):
-		var a = get_valid_random_position()
-		var b = get_valid_random_position()
+	for i in range(8): # creates 8 roads on the map
+		var a = get_valid_random_position() #starting point
+		var b = get_valid_random_position() #end point
 		start_positions.append(a)
 		end_positions.append(b)
-		Global.world_data.road_points.append([a, b])
-		connect_points_with_roads(a, b)
+		Global.world_data.road_points.append([a, b]) #saves the positions to global so they can be used if reloading
+		connect_points_with_roads(a, b) #passes points to function to connect the roads together
 
 func connect_points_with_roads(start: Vector2i, end: Vector2i):
-	var path = []
+	var path = [] #array to hold all the tiles in the raod path
 	var current = start
-	var horizontal_first = randi() % 2 == 0
+	var horizontal_first = randi() % 2 == 0 #gives a 50/50 chance of the road changing the horizontal values or vertical values first, otherwise all roads would be formed the same way
 
-	if horizontal_first:
+	if horizontal_first: #loops through all the tiles between start and end point and adds them to the path array
 		while current.x != end.x:
 			current.x += sign(end.x - current.x)
 			if ground_tiles_arr.has(current):
@@ -140,7 +140,7 @@ func connect_points_with_roads(start: Vector2i, end: Vector2i):
 			current.y += sign(end.y - current.y)
 			if ground_tiles_arr.has(current):
 				path.append(current)
-	else:
+	else: #same thing but for y values first
 		while current.y != end.y:
 			current.y += sign(end.y - current.y)
 			if ground_tiles_arr.has(current):
@@ -150,26 +150,27 @@ func connect_points_with_roads(start: Vector2i, end: Vector2i):
 			if ground_tiles_arr.has(current):
 				path.append(current)
 
-	for pos in path:
+	for pos in path: #expands the path from 1x1 to 3x3 tiles to fit size of the player and monster sprites
 		for dx in range(-1, 2):
 			for dy in range(-1, 2):
 				var expanded_pos = pos + Vector2i(dx, dy)
 				if ground_tiles_arr.has(expanded_pos):
 					expanded_path.append(expanded_pos)
 
-	road_tiles_arr += path
-	road_tile_map.set_cells_terrain_connect(expanded_path, road_tileset_int, 0, 0)
+	road_tiles_arr += path #sets all the tiles to the road tiles array for other use
+	road_tile_map.set_cells_terrain_connect(expanded_path, road_tileset_int, 0, 0) #sets every vector to actually be a road tile and uses the road tileset
 
 func _add_buildings():
-	var size = Vector2i(10, -14)
-	var count = randi_range(8, 12)
-	var used = []
-	var placed = 0
+	var size = Vector2i(10, -14) #size variable that will create a rectangle around the sprite
+	var count = randi_range(8, 12) #variable to spawn between 8-12 houses
+	var used = [] #array to store used vectors so you don't get houses stacked
+	var placed = 0 
 
-	while placed < count and used.size() < road_tiles_arr.size():
-		var i = randi() % road_tiles_arr.size()
-		if used.has(i): continue
-		used.append(i)
+	while placed < count and used.size() < road_tiles_arr.size(): #makes sure that you don't place more houses than there are road tiles
+		var i = randi() % road_tiles_arr.size() #picks a random vector from the road tiles array to build a house off of
+		if used.has(i): 
+			continue #skip if vector is already used
+		used.append(i) #if not used, save to used
 
 		var origin = road_tiles_arr[i] + Vector2i(0, -1)
 		var spawn_pos = origin - Vector2i(size.x / 2, 0)
@@ -384,12 +385,7 @@ func _mobs_timer():
 	mob_timer.one_shot = false
 	mob_timer.timeout.connect(random_mob_spawns)
 	add_child(mob_timer)
-	
-	
-#Artwork Credits
-#All ground, water, and road tiles by Sam Pritchett
-#RPG House by Diogo Vernier
-#Nature Trees by Admurin
+
 
 @onready var revolverIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/RevolverSlot/revolverIcon
 @onready var shotgunIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/ShotgunSlot/shotgunIcon
