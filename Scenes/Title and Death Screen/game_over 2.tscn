@@ -90,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.982372, 0.91948, 0.945796, 1)
 theme_override_font_sizes/font_size = 50
-text = "Time Survied:"
+text = "Time Survived:"
 
 [connection signal="pressed" from="PlayGame" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
