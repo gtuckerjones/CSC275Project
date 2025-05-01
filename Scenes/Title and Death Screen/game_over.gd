@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	$SurvivalTimer/SurvivalTimerLabel.text = format_time(Global.timer)
+	$VBoxContainer/scoreAmount.text = str(Global.score)
 	
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
@@ -18,6 +19,7 @@ func _on_play_game_pressed() -> void:
 
 
 #Created by Megan and Sam
+#Image by Rochak Shukla on Freepik
 
 func _on_button_pressed() -> void:
 	print("quit")

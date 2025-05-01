@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed = 80
+var speed = 130
 var player_chase = false
 var player = null
 
@@ -42,6 +42,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		Global.score += 100
 		$AnimatedSprite2D.play("defeated")
 		self.queue_free()
 
