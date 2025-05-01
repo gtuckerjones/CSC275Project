@@ -77,6 +77,8 @@ func _ready():
 	if Global.player_has_tommy:
 		hasTommy = true
 	
+	if Global.health < 100:
+		health = Global.health
 #mj end edit
 
 
@@ -108,6 +110,8 @@ func _process(delta):
 		$"Ranged Weapons".position.x = 4
 		
 	accessedWeapons()
+	
+	Global.health = health
 	
 	Global.pistol_ammo = $"Ranged Weapons".revolverAmmo
 	Global.shotgun_ammo = $"Ranged Weapons".shotgunAmmo
@@ -156,7 +160,7 @@ func _on_shotgun_ammo_pickup_pickedup_shotgun_ammo() -> void:
 	$"Ranged Weapons".shotgunAmmo += addedAmmo
 	$"Ranged Weapons".emit_signal("ammo_fired", "shotgun", $"Ranged Weapons".shotgunAmmo)
 
-func _on_rifle_ammo_pickup_pickedup_rifle() -> void:
+func _on_rifle_ammo_pickup_pickedup_rifle_ammo() -> void:
 	var addedAmmo = randi_range(2,5)
 	$"Ranged Weapons".rifleAmmo += addedAmmo
 	$"Ranged Weapons".emit_signal("ammo_fired", "rifle", $"Ranged Weapons".rifleAmmo)
@@ -256,3 +260,14 @@ func apply_poison_damage():
 func _on_food_picked_up_food() -> void:
 	if health < max_health:
 		health += randi_range(5, 25)
+		$HUD/VBoxContainer/WeaponDisplay/RevolverSlot/rAmmoAmount
+
+func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
+	if weapon_fired == "revolver":
+		$HUD/VBoxContainer/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
+	elif weapon_fired == "shotgun":
+		$HUD/VBoxContainer/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
+	elif weapon_fired == "rifle":
+		$HUD/VBoxContainer/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
+	else:
+		$HUD/VBoxContainer/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)

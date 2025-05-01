@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c52q3ed7bn2n8"]
+[gd_scene load_steps=44 format=4 uid="uid://c52q3ed7bn2n8"]
 
 [ext_resource type="Script" uid="uid://dbajvkwbppg28" path="res://Scenes/World/house_interior.gd" id="1_mj5fi"]
 [ext_resource type="TileSet" uid="uid://xe4rgpnhhonl" path="res://Artwork/Tilemap/custom_tileset.tres" id="1_wetxt"]
@@ -11,6 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://bcx3s21jvoojh" path="res://Artwork/Tilemap/house/bathroom.png" id="9_eps7e"]
 [ext_resource type="Texture2D" uid="uid://bf42o821y85r5" path="res://Artwork/Tilemap/house/kitchen furniture.png" id="10_gr21l"]
 [ext_resource type="AudioStream" uid="uid://c814ki37wapja" path="res://Artwork/Music/dark-story-investigator-sinister-mystery-instrumental-309020.mp3" id="11_7y0hq"]
+[ext_resource type="PackedScene" uid="uid://dfp3olwusga1y" path="res://Scenes/Pickups/shotgun_pickup.tscn" id="12_l5gu5"]
+[ext_resource type="PackedScene" uid="uid://bdnolrg1iett6" path="res://Scenes/Pickups/revolver_pickup.tscn" id="13_2ogif"]
+[ext_resource type="PackedScene" uid="uid://bmn61j08v1q0p" path="res://Scenes/Pickups/rifle_pickup.tscn" id="14_65ssv"]
+[ext_resource type="PackedScene" uid="uid://dctlu8nmy7fam" path="res://Scenes/Pickups/tommygun_pickup.tscn" id="15_pw2q4"]
+[ext_resource type="PackedScene" uid="uid://s6e2tqkvl5vw" path="res://Scenes/Pickups/revolver_ammo_pickup.tscn" id="16_vtt1d"]
+[ext_resource type="PackedScene" uid="uid://cuctnwehnwbby" path="res://Scenes/Pickups/shotgun_ammo_pickup.tscn" id="17_xhom8"]
+[ext_resource type="PackedScene" uid="uid://ba66qwal6i0c8" path="res://Scenes/Pickups/rifle_ammo_pickup.tscn" id="18_t5lo1"]
+[ext_resource type="PackedScene" uid="uid://dyrjtc048mljx" path="res://Scenes/Pickups/tommy_ammo_pickup.tscn" id="19_58pod"]
+[ext_resource type="PackedScene" uid="uid://b0w4x0tniud7w" path="res://Scenes/Pickups/food.tscn" id="20_ev4b2"]
 
 [sub_resource type="GDScript" id="GDScript_ebh1n"]
 
@@ -288,7 +297,7 @@ tile_set = ExtResource("1_wetxt")
 z_index = 1
 
 [node name="Shower" type="StaticBody2D" parent="Bathroom"]
-position = Vector2(-339, -110)
+position = Vector2(-340, -111)
 collision_layer = 8
 collision_mask = 5
 metadata/_edit_group_ = true
@@ -323,7 +332,7 @@ offset_bottom = 280.0
 theme_override_font_sizes/font_size = 10
 
 [node name="Toilet" type="StaticBody2D" parent="Bathroom"]
-position = Vector2(-280, -98)
+position = Vector2(-275, -100)
 collision_layer = 8
 collision_mask = 5
 metadata/_edit_group_ = true
@@ -360,7 +369,7 @@ offset_bottom = 280.0
 theme_override_font_sizes/font_size = 10
 
 [node name="Sink" type="StaticBody2D" parent="Bathroom"]
-position = Vector2(-220, -101)
+position = Vector2(-217, -101)
 collision_layer = 8
 collision_mask = 5
 metadata/_edit_group_ = true
@@ -514,4 +523,43 @@ pitch_scale = 0.9
 autoplay = true
 parameters/looping = true
 
+[node name="pickups" type="Node2D" parent="."]
+
+[node name="ShotgunPickup" parent="pickups" instance=ExtResource("12_l5gu5")]
+position = Vector2(-90, -35)
+
+[node name="RevolverPickup" parent="pickups" instance=ExtResource("13_2ogif")]
+position = Vector2(-29, -31)
+
+[node name="RiflePickup" parent="pickups" instance=ExtResource("14_65ssv")]
+position = Vector2(-475, -282)
+
+[node name="TommygunPickup" parent="pickups" instance=ExtResource("15_pw2q4")]
+position = Vector2(18, -32)
+
+[node name="revolverAmmoPickup" parent="pickups" instance=ExtResource("16_vtt1d")]
+position = Vector2(-47, -31)
+
+[node name="shotgunAmmoPickup" parent="pickups" instance=ExtResource("17_xhom8")]
+position = Vector2(-112, -217)
+
+[node name="rifleAmmoPickup" parent="pickups" instance=ExtResource("18_t5lo1")]
+position = Vector2(-308, -149)
+collision_layer = 1
+
+[node name="TommyAmmoPickup" parent="pickups" instance=ExtResource("19_58pod")]
+position = Vector2(250, -215)
+
+[node name="Food" parent="pickups" instance=ExtResource("20_ev4b2")]
+visible = false
+position = Vector2(18, -12)
+
+[connection signal="pickedupRevolverAmmo" from="pickups/revolverAmmoPickup" to="Player" method="_on_revolver_ammo_pickup_pickedup_revolver_ammo"]
+[connection signal="pickedupShotgunAmmo" from="pickups/shotgunAmmoPickup" to="Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]
+[connection signal="pickedupRifleAmmo" from="pickups/rifleAmmoPickup" to="Player" method="_on_rifle_ammo_pickup_pickedup_rifle_ammo"]
+[connection signal="pickedupTommyAmmo" from="pickups/TommyAmmoPickup" to="Player" method="_on_tommy_ammo_pickup_pickedup_tommy_ammo"]
+[connection signal="pickedUpFood" from="pickups/Food" to="Player" method="_on_food_picked_up_food"]
+
 [editable path="Player"]
+[editable path="Player/HUD"]
+[editable path="Player/Ranged Weapons"]

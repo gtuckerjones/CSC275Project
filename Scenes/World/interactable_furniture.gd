@@ -3,6 +3,7 @@ extends Area2D
 @export var object_name: String = "Furniture"
 @export var prompt_text: String = "Right click to search"
 @export var prompt_node_path: NodePath = "SearchPrompt"
+@onready var player = $"../../../Player"
 
 @onready var spawnable_scenes := {
 	"food": preload("res://Scenes/Pickups/food.tscn"),
@@ -70,7 +71,24 @@ func search_furniture():
 				pickup.z_index = 2
 				print("Here", get_parent().get_parent())
 				get_parent().get_parent().add_child(pickup)
-
+				
+				if pickup.has_signal("pickedupRevolverAmmo"):
+					pickup.connect("pickedupRevolverAmmo", Callable(player, "_on_revolver_ammo_pickup_pickedup_revolver_ammo"))
+				elif pickup.has_signal("pickedupShotgunAmmo"):
+					pickup.connect("pickedupShotgunAmmo", Callable(player, "_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"))
+				elif pickup.has_signal("pickedupRifleAmmo"):
+					pickup.connect("pickedupRifleAmmo", Callable(player, "_on_rifle_ammo_pickup_pickedup_rifle_ammo"))
+				elif pickup.has_signal("pickedupTommyAmmo"):
+					pickup.connect("pickedupTommyAmmo", Callable(player, "_on_tommy_ammo_pickup_pickedup_tommy_ammo"))
+				elif pickup.has_signal("pickedupShotgun"):
+					pickup.connect("pickedupShotgun", Callable(player, "_on_shotgun_pickup_pickedup_shotgun"))
+				elif pickup.has_signal("pickedupRifle"):
+					pickup.connect("pickedupRifle", Callable(player, "_on_rifle_pickup_pickedup_rifle"))
+				elif pickup.has_signal("pickedupTommy"):
+					pickup.connect("pickedupTommy", Callable(player, "_on_tommygun_pickup_pickedup_tommy"))
+				elif pickup.has_signal("pickedUpFood"):
+					pickup.connect("pickedUpFood", Callable(player, "_on_food_picked_up_food"))
+				
 		prompt.text = "Found: " + found_item
 		print("Player found:", found_item)
 

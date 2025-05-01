@@ -132,11 +132,11 @@ theme_override_font_sizes/font_size = 50
 [connection signal="pickedupTommy" from="World/pickups/TommygunPickup" to="World/Player" method="_on_tommygun_pickup_pickedup_tommy"]
 [connection signal="pickedupRevolverAmmo" from="World/pickups/revolverAmmoPickup" to="World/Player" method="_on_revolver_ammo_pickup_pickedup_revolver_ammo"]
 [connection signal="pickedupShotgunAmmo" from="World/pickups/shotgunAmmoPickup" to="World/Player" method="_on_shotgun_ammo_pickup_pickedup_shotgun_ammo"]
-[connection signal="pickedupRifleAmmo" from="World/pickups/rifleAmmoPickup" to="World/Player" method="_on_rifle_ammo_pickup_pickedup_rifle"]
+[connection signal="pickedupRifleAmmo" from="World/pickups/rifleAmmoPickup" to="World/Player" method="_on_rifle_ammo_pickup_pickedup_rifle_ammo"]
 [connection signal="pickedupTommyAmmo" from="World/pickups/TommyAmmoPickup" to="World/Player" method="_on_tommy_ammo_pickup_pickedup_tommy_ammo"]
 [connection signal="pickedUpFood" from="World/pickups/Food" to="World/Player" method="_on_food_picked_up_food"]
 
 [editable path="World/Player"]
-[editable path="World/Player/Ranged Weapons"]
 [editable path="World/Player/HUD"]
+[editable path="World/Player/Ranged Weapons"]
 [editable path="SurvivalTimer"]

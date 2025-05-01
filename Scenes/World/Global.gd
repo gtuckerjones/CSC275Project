@@ -4,6 +4,8 @@ var player_current_attack = false
 var playerBody: CharacterBody2D
 var timer = 0
 var score = 0
+var health = 100
+var mob_timer = 5.00
 
 var world_data := {
 	"seed": null,
