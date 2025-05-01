@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var base_speed: int = 100
+@export var base_speed: int = 85
 @export var road_speed_bonus: int = 50
 @onready var animations = $AnimationPlayer
 @onready var road_tile_map = $"../Layers/roads" # Adjust path to your TileMap
@@ -63,10 +63,10 @@ func _ready():
 	$"Ranged Weapons".shotgunAmmo = Global.shotgun_ammo
 	$"Ranged Weapons".rifleAmmo = Global.rifle_ammo
 	$"Ranged Weapons".tommyAmmo = Global.tommy_ammo
-	$HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str($"Ranged Weapons".revolverAmmo)
-	$HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str($"Ranged Weapons".shotgunAmmo)
-	$HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str($"Ranged Weapons".rifleAmmo)
-	$HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str($"Ranged Weapons".tommyAmmo)
+	$HUD/VBoxContainer/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str($"Ranged Weapons".revolverAmmo)
+	$HUD/VBoxContainer/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str($"Ranged Weapons".shotgunAmmo)
+	$HUD/VBoxContainer/WeaponDisplay/RifleSlot/riAmmoAmount.text = str($"Ranged Weapons".rifleAmmo)
+	$HUD/VBoxContainer/WeaponDisplay/TommySlot4/tAmmoAmount.text = str($"Ranged Weapons".tommyAmmo)
 	
 	if Global.player_has_revolver:
 		hasRevolver = true

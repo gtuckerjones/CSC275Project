@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-var speed = 50
+var speed = 85
 var dir: Vector2
 
 var is_spider_chase: bool
 
 var player: CharacterBody2D
-var health = 300
-var max_health = 300
+var health = 200
+var max_health = 200
 var min_health = 0
 
 func _ready():
@@ -58,6 +58,7 @@ func enemy():
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		Global.score += 100
 		self.queue_free()
 
 func set_player(p: CharacterBody2D) -> void:

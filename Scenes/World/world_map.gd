@@ -279,12 +279,12 @@ func random_drops():
 		var drop_table = [
 			{"name": "food", "scene": preload("res://Scenes/Pickups/food.tscn"), "weight": 50},
 			{"name": "pistol ammo", "scene": preload("res://Scenes/Pickups/revolver_ammo_pickup.tscn"), "weight": 30},
-			{"name": "rifle ammo", "scene": preload("res://Scenes/Pickups/rifle_ammo_pickup.tscn"), "weight": 20},
-			{"name": "shotgun ammo", "scene": preload("res://Scenes/Pickups/shotgun_ammo_pickup.tscn"), "weight": 10},
-			{"name": "submachine gun ammo", "scene": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"), "weight": 10},
+			{"name": "rifle ammo", "scene": preload("res://Scenes/Pickups/rifle_ammo_pickup.tscn"), "weight": 15},
+			{"name": "shotgun ammo", "scene": preload("res://Scenes/Pickups/shotgun_ammo_pickup.tscn"), "weight": 15},
+			{"name": "submachine gun ammo", "scene": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"), "weight": 30},
 			{"name": "rifle", "scene": preload("res://Scenes/Pickups/rifle_pickup.tscn"), "weight": 5},
-			{"name": "shotgun", "scene": preload("res://Scenes/Pickups/shotgun_pickup.tscn"), "weight": 3},
-			{"name": "tommy gun", "scene": preload("res://Scenes/Pickups/tommygun_pickup.tscn"), "weight": 3}
+			{"name": "shotgun", "scene": preload("res://Scenes/Pickups/shotgun_pickup.tscn"), "weight": 5},
+			{"name": "tommy gun", "scene": preload("res://Scenes/Pickups/tommygun_pickup.tscn"), "weight": 2}
 		]
 
 		var chosen_drop = choose_weighted_drop(drop_table)
@@ -385,10 +385,10 @@ func _mobs_timer():
 #RPG House by Diogo Vernier
 #Nature Trees by Admurin
 
-@onready var revolverIcon = $World/Player/HUD/WeaponDisplay/RevolverSlot/revolverIcon
-@onready var shotgunIcon = $World/Player/HUD/WeaponDisplay/ShotgunSlot/shotgunIcon
-@onready var rifleIcon = $World/Player/HUD/WeaponDisplay/RifleSlot/rifleIcon
-@onready var tommyIcon = $World/Player/HUD/WeaponDisplay/TommySlot4/tommyIcon
+@onready var revolverIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/RevolverSlot/revolverIcon
+@onready var shotgunIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/ShotgunSlot/shotgunIcon
+@onready var rifleIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/RifleSlot/rifleIcon
+@onready var tommyIcon = $World/Player/HUD/VBoxContainer/WeaponDisplay/TommySlot4/tommyIcon
 
 func setIcons():
 	revolverIcon.modulate = Color(0, 0, 0, 1)
@@ -422,13 +422,13 @@ func update_weapon_display():
 
 func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
 	if weapon_fired == "revolver":
-		$World/Player/HUD/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/VBoxContainer/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
 	elif weapon_fired == "shotgun":
-		$World/Player/HUD/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
+		$World/Player/HUD/VBoxContainer/WeaponDisplay/ShotgunSlot/sAmmoAmount.text = str(current_amount/5)
 	elif weapon_fired == "rifle":
-		$World/Player/HUD/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/VBoxContainer/WeaponDisplay/RifleSlot/riAmmoAmount.text = str(current_amount)
 	else:
-		$World/Player/HUD/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
+		$World/Player/HUD/VBoxContainer/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
 
 
 func _on_revolver_pickup_pickedup_gun() -> void:
