@@ -17,7 +17,6 @@ func _process(delta):
 	if pitch_timer >= 1.0:
 		pitch_timer = 0.0  # Reset timer every second
 		
-		# Update pitch
 		music.pitch_scale += 0.01 * pitch_direction
 
 		# Check bounds and reverse direction
@@ -44,3 +43,12 @@ func _on_play_game_pressed() -> void:
 	buttonLabel.text = "Loading..."
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/World/world_map.tscn")
+	
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/Credits.tscn")
+	
+func _on_how_to_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Title and Death Screen/howToPlay.tscn")
+	
+func _on_quit_pressed() -> void:
+	get_tree().quit()
