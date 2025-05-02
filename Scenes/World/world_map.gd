@@ -75,9 +75,10 @@ func _load_world_from_global():
 	_generate_terrain() #generates terrain
 
 	# Roads
-	for i in range(Global.world_data.road_points.size()):
-		var pair = Global.world_data.road_points[i] #places roads based on the saved vectors
-		connect_points_with_roads(pair[0], pair[1])
+	road_tile_map.set_cells_terrain_connect(Global.road_tiles_arr, road_tileset_int, 0, 0)
+	#for i in range(Global.world_data.road_points.size()):
+		#var pair = Global.world_data.road_points[i] #places roads based on the saved vectors
+		#connect_points_with_roads(pair[0], pair[1])
 
 	# Houses
 	for house_pos in Global.world_data.house_positions: #places houses based on saved vectors
@@ -158,6 +159,7 @@ func connect_points_with_roads(start: Vector2i, end: Vector2i):
 					expanded_path.append(expanded_pos)
 
 	road_tiles_arr += path #sets all the tiles to the road tiles array for other use
+	Global.road_tiles_arr = expanded_path
 	road_tile_map.set_cells_terrain_connect(expanded_path, road_tileset_int, 0, 0) #sets every vector to actually be a road tile and uses the road tileset
 
 func _add_buildings():

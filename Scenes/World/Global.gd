@@ -36,6 +36,9 @@ var player_data := {
 	}
 }
 
+var road_tiles_arr = [
+]
+
 # Now this is a full usable loot table
 
 var gun_dictionary = {
