@@ -172,81 +172,79 @@ func _add_buildings():
 			continue #skip if vector is already used
 		used.append(i) #if not used, save to used
 
-		var origin = road_tiles_arr[i] + Vector2i(0, -1)
-		var spawn_pos = origin - Vector2i(size.x / 2, 0)
+		var origin = road_tiles_arr[i] + Vector2i(0, -1) #adjusts the building origin 1 tile up from the roadf
 
-		if can_place_building_at(origin, size.x, size.y, placed_houses, 10):
-			_spawn_house(origin)
-			Global.world_data.house_positions.append(origin)
+		if can_place_building_at(origin, size.x, size.y, placed_houses, 10): #passes values to function to make sure that it's valid to build a house there
+			_spawn_house(origin) #spawn a house on origin
+			Global.world_data.house_positions.append(origin) #save house position for reloads
 			placed += 1
 
 func _spawn_house(pos: Vector2i):
 	var house = house_scene.instantiate()
-	house.set_player_and_camera(player, camera)
-	house.position = pos * ground_tile_map.tile_set.tile_size
-	add_child(house)
+	house.position = pos * ground_tile_map.tile_set.tile_size #sets the vector to the size of a whole tile
+	add_child(house) #adds house as a child of the main node
 
 	for x in range(pos.x - 5, pos.x + 5):
-		for y in range(pos.y - 14, pos.y):
+		for y in range(pos.y - 14, pos.y): #sets all the tiles under the house sprite as invalid tiles for future spawns
 			placed_houses.append(Vector2i(x, y))
 			
 	#mj edit
-	var front_pos = pos + Vector2i(3.5, 0.5) 
+	var front_pos = pos + Vector2i(3.5, 0.5) #spawns a house guard
 	_spawn_house_guard(front_pos)
 	
 func _spawn_house_guard(pos: Vector2i):
 	print("mob spawned!!!!!!!!!")
-	var mob = mob_scene.instantiate()
+	var mob = mob_scene.instantiate() #spawns the house guard mob
 	mob.position = pos * ground_tile_map.tile_set.tile_size
 	add_child(mob)
 	#mj close
 
 func _add_trees():
-	var count = randi_range(30, 60)
+	var count = randi_range(30, 60) #spawns between 30 and 60 trees	
 	var tries = 0
 
 	while placed_trees.size() < count and tries < count * 50:
 		tries += 1
 		var tile_pos = ground_tiles_arr[randi() % ground_tiles_arr.size()]
 		if tile_pos == Vector2i(0, 0): continue
-		if expanded_path.has(tile_pos): continue
+		if expanded_path.has(tile_pos): continue #checks to make sure that spaces aren't being used by roads or houses
 		if placed_houses.has(tile_pos): continue
 
 		if placed_trees.any(func(t): return t.distance_to(tile_pos) < 5): continue
-		if placed_houses.any(func(h): return h.distance_to(tile_pos) < 3): continue
+		if placed_houses.any(func(h): return h.distance_to(tile_pos) < 3): continue  #spaces the trees out from other trees, houses and the roads
 		if expanded_path.any(func(r): return r.distance_to(tile_pos) < 2): continue
 
 		_spawn_tree(tile_pos)
-		Global.world_data.tree_positions.append(tile_pos)
+		Global.world_data.tree_positions.append(tile_pos) #saves trees to gloval for reloading later
 
 func _spawn_tree(pos: Vector2i):
 	var tree = tree_scene.instantiate()
-	tree.position = pos * ground_tile_map.tile_set.tile_size
+	tree.position = pos * ground_tile_map.tile_set.tile_size #function to instantiate a tree scene at a given location
 	add_child(tree)
 	placed_trees.append(pos)
 
 func _setup_player(pos):
 	if not player:
-		player = player_scene.instantiate()
+		player = player_scene.instantiate() #set up player if they don't exist
 	player.position = pos
-	camera.zoom = Vector2(2.2, 2.2)
+	camera.zoom = Vector2(2.2, 2.2) #sets camera zoom to a reasonable size
 
 func get_valid_random_position(bias_horizontal := true) -> Vector2i:
 	var min_x = -map_width / 2
-	var max_x = map_width / 2
+	var max_x = map_width / 2	#mins and maxes for road vectors
 	var min_y = -map_height / 2
 	var max_y = map_height / 2
 
 	var y = randi_range(min_y, max_y)
-	var x = randi_range(min_x, max_x)
+	var x = randi_range(min_x, max_x) #pick a random vector
 
 	if bias_horizontal and randf() < 0.9:
-		y = last_y_used if typeof(last_y_used) == TYPE_INT else y
+		y = last_y_used if typeof(last_y_used) == TYPE_INT else y #had to bias the roads to spawn horizontally by reusing y 90% of the time, in order to make enough space to spawn houses
 	else:
 		last_y_used = y
 
 	var pos = Vector2i(x, y)
-	while not ground_tiles_arr.has(pos):
+	while not ground_tiles_arr.has(pos): #late while loop to find a valid position if the original y reuse value isn't valid
 		x = randi_range(min_x, max_x)
 		y = last_y_used if bias_horizontal and typeof(last_y_used) == TYPE_INT and randf() < 0.7 else randi_range(min_y, max_y)
 		pos = Vector2i(x, y)
@@ -257,49 +255,50 @@ func can_place_building_at(origin: Vector2i, width: int, height: int, existing: 
 	for x in range(origin.x - width / 2, origin.x + width / 2):
 		for y in range(origin.y + height, origin.y):
 			var pos = Vector2i(x, y)
-			if pos == Vector2i(0, 0): return false
-			if not ground_tiles_arr.has(pos): return false
-			if placed_houses.has(pos): return false
-			if road_tile_map.get_cell_source_id(pos) != -1: return false
+			if pos == Vector2i(0, 0): return false #don't want houses spawning on player spawn
+			if not ground_tiles_arr.has(pos): return false #can't have houses spawn on water
+			if placed_houses.has(pos): return false #can't double stack houses
+			if road_tile_map.get_cell_source_id(pos) != -1: return false #can't spawn houses on roads
 
 	var new_center = Vector2(origin.x, origin.y)
 	for other in existing:
-		if new_center.distance_to(Vector2(other.x, other.y)) < min_distance:
+		if new_center.distance_to(Vector2(other.x, other.y)) < min_distance: #checks to make sure houses spawn far enough apart to not have overlapping sprites
 			return false
 	return true
 
 func get_player_position() -> Vector2i:
-	return player.global_position
+	return player.global_position #function to return the player's position
 
 func random_drops():
 	var max_attempts = 100
 	var attempt = 0
 
-	while attempt < max_attempts:
+	while attempt < max_attempts: #sets attempts to make sure that items are spawned or the loop is cut after enough failures
 		attempt += 1
 		var tile_pos = ground_tiles_arr[randi() % ground_tiles_arr.size()]
 		if placed_houses.has(tile_pos): continue
-		if placed_trees.has(tile_pos): continue
+		if placed_trees.has(tile_pos): continue #several checks to make sure we have a valid spawn point that doesn't interfere with other items
 		if expanded_path.has(tile_pos): continue
 		if tile_pos == Vector2i(0, 0): continue
 
 		# Drop table with weights
 		var drop_table = [
-			{"name": "food", "scene": preload("res://Scenes/Pickups/food.tscn"), "weight": 50},
-			{"name": "pistol ammo", "scene": preload("res://Scenes/Pickups/revolver_ammo_pickup.tscn"), "weight": 30},
+			{"name": "food", "scene": preload("res://Scenes/Pickups/food.tscn"), "weight": 25},
+			{"name": "pistol ammo", "scene": preload("res://Scenes/Pickups/revolver_ammo_pickup.tscn"), "weight": 15},
 			{"name": "rifle ammo", "scene": preload("res://Scenes/Pickups/rifle_ammo_pickup.tscn"), "weight": 15},
 			{"name": "shotgun ammo", "scene": preload("res://Scenes/Pickups/shotgun_ammo_pickup.tscn"), "weight": 15},
-			{"name": "submachine gun ammo", "scene": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"), "weight": 30},
+			{"name": "submachine gun ammo", "scene": preload("res://Scenes/Pickups/tommy_ammo_pickup.tscn"), "weight": 15},
 			{"name": "rifle", "scene": preload("res://Scenes/Pickups/rifle_pickup.tscn"), "weight": 5},
 			{"name": "shotgun", "scene": preload("res://Scenes/Pickups/shotgun_pickup.tscn"), "weight": 5},
-			{"name": "tommy gun", "scene": preload("res://Scenes/Pickups/tommygun_pickup.tscn"), "weight": 2}
+			{"name": "tommy gun", "scene": preload("res://Scenes/Pickups/tommygun_pickup.tscn"), "weight": 5}
 		]
 
-		var chosen_drop = choose_weighted_drop(drop_table)
-		var item = chosen_drop["scene"].instantiate()
-		item.position = tile_pos * ground_tile_map.tile_set.tile_size
-		add_child(item)
+		var chosen_drop = choose_weighted_drop(drop_table) #chooses a drop from the table based on weight
+		var item = chosen_drop["scene"].instantiate() #instantiate
+		item.position = tile_pos * ground_tile_map.tile_set.tile_size #assign it's vector to a tile
+		add_child(item) #add child to scene
 		
+		#uses conditionals to set signal connections based on what type of drop is spawned
 		if item.has_signal("pickedupRevolverAmmo"):
 			item.connect("pickedupRevolverAmmo", Callable(player, "_on_revolver_ammo_pickup_pickedup_revolver_ammo"))
 		elif item.has_signal("pickedupShotgunAmmo"):
@@ -325,21 +324,21 @@ func random_drops():
 func choose_weighted_drop(drop_table):
 	var total_weight = 0
 	for item in drop_table:
-		total_weight += item["weight"]
+		total_weight += item["weight"] #weights are based out of 100
 
-	var random_value = randf() * total_weight
+	var random_value = randf() * total_weight #chooses a random vlue from the weighted values
 	var current = 0
 
 	for item in drop_table:
 		current += item["weight"]
-		if random_value <= current:
+		if random_value <= current: #adds the weights of items in the drop table until it finds the range the random value falls into
 			return item
-	return drop_table[0]  # fallback
+	return drop_table[0]  # fallback to food if it doesn't work
 
 func _start_random_drops_timer():
 	var timer = Timer.new()
 	timer.wait_time = 3.0
-	timer.autostart = true
+	timer.autostart = true #timer that calls the random_drops function every 3 seconds and randomly spawns something on the map
 	timer.one_shot = false
 	timer.timeout.connect(random_drops)
 	add_child(timer)
@@ -348,28 +347,28 @@ func random_mob_spawns():
 	var max_attempts = 100
 	var attempt = 0
 
-	while attempt < max_attempts:
+	while attempt < max_attempts: #able to break loop if spawns repeatedly fail
 		attempt += 1
 		var tile_pos = ground_tiles_arr[randi() % ground_tiles_arr.size()]
 		if placed_houses.has(tile_pos): continue
 		if placed_trees.has(tile_pos): continue
-		if expanded_path.has(tile_pos): continue
+		if expanded_path.has(tile_pos): continue #checks to make sure they are being spawned in a valid tile
 		if tile_pos == Vector2i(0, 0): continue
 
 		# Drop table with weights
-		var drop_table = [
+		var drop_table = [ #drop table of spawnable monsters
 			{"name": "Spider", "scene": preload("res://Scenes/Mobs/Pixel Spider/Spider.tscn")},
 			{"name": "Cocodaemon", "scene": preload("res://Scenes/Mobs/Cacodeaemon/cacodaemon.tscn")}
 			]
 
 		var chosen_drop = drop_table[randi() % drop_table.size()]
 		var item = chosen_drop["scene"].instantiate()
-		item.position = tile_pos * ground_tile_map.tile_set.tile_size
+		item.position = tile_pos * ground_tile_map.tile_set.tile_size #instantiate and add monster to scene
 		add_child(item)
 		
 		print("Spawned mob: %s at %s" % [chosen_drop["name"], tile_pos])
 		if mob_timer.wait_time > min_wait_time:
-			mob_timer.wait_time = max(mob_timer.wait_time - time_change, min_wait_time)
+			mob_timer.wait_time = max(mob_timer.wait_time - time_change, min_wait_time) #reduces the mob_timer to make the game progressively harder
 			print(mob_timer.wait_time)
 		return
 
@@ -380,9 +379,8 @@ var min_wait_time = 0.02
 var time_change = 0.02
 
 func _mobs_timer():
-	#mob_timer.wait_time = 5.00
 	mob_timer.autostart = true
-	mob_timer.one_shot = false
+	mob_timer.one_shot = false #mob timer to spawn mobs at a set interval that slowly speeds up after each monster spawned
 	mob_timer.timeout.connect(random_mob_spawns)
 	add_child(mob_timer)
 
@@ -399,7 +397,7 @@ func setIcons():
 	tommyIcon.modulate = Color(0, 0, 0, 1)
 	
 	
-func update_weapon_display():
+func update_weapon_display(): #when you switch your weapon using Q or E, it'll highlight the current weapon while fading out the other weapons
 	if $World/Player.hasRevolver == true:
 		revolverIcon.modulate = Color(1, 1, 1, 0.5)
 	elif $"World/Player/Ranged Weapons".equipRevolver == true:
@@ -422,7 +420,7 @@ func update_weapon_display():
 		
 		
 
-func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void:
+func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) -> void: #when the specified weapon is fired this lowers the on screen text value that shows your ammo count
 	if weapon_fired == "revolver":
 		$World/Player/HUD/VBoxContainer/WeaponDisplay/RevolverSlot/rAmmoAmount.text = str(current_amount)
 	elif weapon_fired == "shotgun":
@@ -432,6 +430,8 @@ func _on_ranged_weapons_ammo_fired(weapon_fired: String, current_amount: int) ->
 	else:
 		$World/Player/HUD/VBoxContainer/WeaponDisplay/TommySlot4/tAmmoAmount.text = str(current_amount)
 
+
+#signal functions
 
 func _on_revolver_pickup_pickedup_gun() -> void:
 	update_weapon_display()

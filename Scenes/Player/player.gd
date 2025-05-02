@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var base_speed: int = 85
+@export var base_speed: int = 90
 @export var road_speed_bonus: int = 50
 @onready var animations = $AnimationPlayer
 @onready var road_tile_map = $"../Layers/roads" # Adjust path to your TileMap
