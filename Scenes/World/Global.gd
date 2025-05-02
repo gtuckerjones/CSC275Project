@@ -190,3 +190,39 @@ func get_item_data(item_id: String) -> Dictionary:
 	# You could add other categories here too (weapons, armor, etc)
 	else:
 		return {}
+
+func reset():
+	player_current_attack = false
+	timer = 0
+	score = 0
+	health = 100
+	mob_timer = 5.00
+
+	world_data = {
+	"seed": null,
+	"road_points": [],
+	"house_positions": [],
+	"tree_positions": []
+}
+
+	player_has_revolver = false
+	player_has_shotgun = false
+	player_has_rifle = false
+	player_has_tommy = false
+	pistol_ammo = 0
+	shotgun_ammo = 0
+	rifle_ammo = 0
+	tommy_ammo = 0
+	
+	player_data = {
+	"last_player_position": Vector2i.ZERO,
+	"inventory": {
+		"revolver": 0,
+		"bread": 0,
+		"banana": 0,
+		"pistol ammo": 0,
+		"rifle ammo": 0,
+		"shotgun ammo": 0,
+		"submachine gun ammo": 0
+	}
+}
